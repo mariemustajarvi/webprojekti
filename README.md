@@ -1,3 +1,3 @@
 # webprojekti
-Niko Honkanen: nikohonkanen
+Niko Honkanen: nikohonkanen <br/>
 Nilla Nordman: nillanordman
