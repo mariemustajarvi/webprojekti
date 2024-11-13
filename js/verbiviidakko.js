@@ -1,0 +1,1 @@
+// Verbiviidakon käyttämät javascript-koodit.

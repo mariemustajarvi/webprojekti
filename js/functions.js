@@ -1,0 +1,1 @@
+// Tämä koodi pitää kirjaa mitä tasoja on läpäisty milläkin saarella.
