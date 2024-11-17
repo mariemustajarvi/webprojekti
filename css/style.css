@@ -9,154 +9,179 @@
 /* Fonttimääritykset */
 
 .anton-regular {
-    font-family: "Anton", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
-  .barlow-thin {
-    font-family: "Barlow", serif;
-    font-weight: 100;
-    font-style: normal;
-  }
+.barlow-thin {
+  font-family: "Barlow", serif;
+  font-weight: 100;
+  font-style: normal;
+}
   
-  .barlow-extralight {
-    font-family: "Barlow", serif;
-    font-weight: 200;
-    font-style: normal;
-  }
+.barlow-extralight {
+  font-family: "Barlow", serif;
+  font-weight: 200;
+  font-style: normal;
+}
   
-  .barlow-light {
-    font-family: "Barlow", serif;
-    font-weight: 300;
-    font-style: normal;
-  }
+.barlow-light {
+  font-family: "Barlow", serif;
+  font-weight: 300;
+  font-style: normal;
+}
   
-  .barlow-regular {
-    font-family: "Barlow", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
+.barlow-regular {
+  font-family: "Barlow", serif;
+  font-weight: 400;
+  font-style: normal;
+}
   
-  .barlow-medium {
-    font-family: "Barlow", serif;
-    font-weight: 500;
-    font-style: normal;
-  }
+.barlow-medium {
+  font-family: "Barlow", serif;
+  font-weight: 500;
+  font-style: normal;
+}
   
-  .barlow-semibold {
-    font-family: "Barlow", serif;
-    font-weight: 600;
-    font-style: normal;
-  }
+.barlow-semibold {
+  font-family: "Barlow", serif;
+  font-weight: 600;
+  font-style: normal;
+}
   
-  .barlow-bold {
-    font-family: "Barlow", serif;
-    font-weight: 700;
-    font-style: normal;
-  }
+.barlow-bold {
+  font-family: "Barlow", serif;
+  font-weight: 700;
+  font-style: normal;
+}
   
-  .barlow-extrabold {
-    font-family: "Barlow", serif;
-    font-weight: 800;
-    font-style: normal;
-  }
+.barlow-extrabold {
+  font-family: "Barlow", serif;
+  font-weight: 800;
+  font-style: normal;
+}
   
-  .barlow-black {
-    font-family: "Barlow", serif;
-    font-weight: 900;
-    font-style: normal;
-  }
+.barlow-black {
+  font-family: "Barlow", serif;
+  font-weight: 900;
+  font-style: normal;
+}
   
-  .barlow-thin-italic {
-    font-family: "Barlow", serif;
-    font-weight: 100;
-    font-style: italic;
-  }
+.barlow-thin-italic {
+  font-family: "Barlow", serif;
+  font-weight: 100;
+  font-style: italic;
+}
   
-  .barlow-extralight-italic {
-    font-family: "Barlow", serif;
-    font-weight: 200;
-    font-style: italic;
-  }
+.barlow-extralight-italic {
+  font-family: "Barlow", serif;
+  font-weight: 200;
+  font-style: italic;
+}
   
-  .barlow-light-italic {
-    font-family: "Barlow", serif;
-    font-weight: 300;
-    font-style: italic;
-  }
+.barlow-light-italic {
+  font-family: "Barlow", serif;
+  font-weight: 300;
+  font-style: italic;
+}
   
-  .barlow-regular-italic {
-    font-family: "Barlow", serif;
-    font-weight: 400;
-    font-style: italic;
-  }
+.barlow-regular-italic {
+  font-family: "Barlow", serif;
+  font-weight: 400;
+  font-style: italic;
+}
   
-  .barlow-medium-italic {
-    font-family: "Barlow", serif;
-    font-weight: 500;
-    font-style: italic;
-  }
+.barlow-medium-italic {
+  font-family: "Barlow", serif;
+  font-weight: 500;
+  font-style: italic;
+}
   
-  .barlow-semibold-italic {
-    font-family: "Barlow", serif;
-    font-weight: 600;
-    font-style: italic;
-  }
+.barlow-semibold-italic {
+  font-family: "Barlow", serif;
+  font-weight: 600;
+  font-style: italic;
+}
   
-  .barlow-bold-italic {
-    font-family: "Barlow", serif;
-    font-weight: 700;
-    font-style: italic;
-  }
+.barlow-bold-italic {
+  font-family: "Barlow", serif;
+  font-weight: 700;
+  font-style: italic;
+}
   
-  .barlow-extrabold-italic {
-    font-family: "Barlow", serif;
-    font-weight: 800;
-    font-style: italic;
-  }
+.barlow-extrabold-italic {
+   font-family: "Barlow", serif;
+  font-weight: 800;
+  font-style: italic;
+}
   
-  .barlow-black-italic {
-    font-family: "Barlow", serif;
-    font-weight: 900;
-    font-style: italic;
-  }
+.barlow-black-italic {
+  font-family: "Barlow", serif;
+  font-weight: 900;
+  font-style: italic;
+}
   
-  /* Tyylimääritykset */
+/* Tyylimääritykset */
 
 body {
-    background-color: var(--keltainen);
+  background-color: var(--keltainen);
 }
 
 .headerrow {
-    background-color: var(--vihrea);
+  background-color: var(--vihrea);
+}
+
+nav {
+  display: flex;
+  height: 100%;
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: end;
+  list-style: none;
+  height: 4.5em;
+  padding: 0;
 }
 
-nav li {
-    display: inline-block;
+@media only screen and (max-width: 1200px) {
+  nav ul {
+    height: 100%;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+
+  h1 {
+    margin-top: 0.3em;
+  }
+
+  nav ul {
+    height: 100%;
+    align-items: normal;
+  }
 }
 
 nav a {
-    color: var(--tummanvihrea);
-    text-decoration: none;
-    font-size: 1.5em;
+  color: var(--tummanvihrea);
+  text-decoration: none;
+  font-size: 1.5em;
 }
 
 header h1 {
-    color: var(--tummanvihrea);
+  color: var(--tummanvihrea);
+  font-size: 3.5em;
 }
 
 footer {
-    background-color: var(--vihrea);
-    color: var(--tummanvihrea);
+  background-color: var(--vihrea);
+  color: var(--tummanvihrea);
 }
 
 footer h4 {
-    margin: 0;
-    padding: 0.4em 0 0.4em 0;
+  margin: 0;
+  padding: 0.4em 0 0.4em 0;
 }
