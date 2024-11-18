@@ -1,1 +1,20 @@
 /* Verbiviidakon CSS muotoilut */
+
+main {
+    background-image: url("/images/verbiviidakko/viidakkotausta.jpg");
+    background-color: var(--keltainen);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#gameTitleText {
+    color: var(--tummanvihrea);
+    font-size: 4rem;
+    margin-top: 2rem;
+}
+
+#gameContainer {
+    background-color: var(--keltainen);
+    width: 60%;
+}
