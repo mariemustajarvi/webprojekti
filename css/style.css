@@ -126,10 +126,12 @@
 
 body {
   background-color: var(--keltainen);
+  margin: 0;
 }
 
 .navbar {
   background-color: var(--vihrea);
+  padding: 1em;
 }
 
 .navbar-brand {
@@ -140,6 +142,13 @@ body {
 .nav-link {
   color: var(--tummanvihrea);
   font-size: 1.2rem;
+}
+
+.custom-box {
+  background-color: #ffead0; 
+  border-radius: 15px; 
+  color: #003e27;
+  padding: 1em;
 }
 
 footer {
