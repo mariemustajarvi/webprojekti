@@ -58,9 +58,19 @@ main {
 }
 
 .correctAnsw {
-  color: green;
+    color: green;
 }
 
 .wrongAnsw {
     color: rgb(200, 0, 0);
-  }
+}
+
+@media (max-width: 768px) {
+    #gameTitleText {
+        font-size: 2.8rem;
+    }
+
+    #gamepic {
+        width: 90%;
+    }
+}
