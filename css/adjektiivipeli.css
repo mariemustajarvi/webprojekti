@@ -1,0 +1,94 @@
+/* Asetetaan taustakuva koko ruudulle */
+body {
+    
+  
+}
+
+.tausta {
+    background: url(/images/adjektiivipeli/taustaorg.png);
+    height: 100vh;
+    overflow: hidden;
+    background-size: cover; /* Varmistaa, että kuva peittää koko ruudun */
+    background-position: center; /* Asettaminen keskelle */
+    background-repeat: no-repeat; /* Ei toista kuvaa */
+}
+/* Lisää varmistus, että pääsisältö ei mene headerin ja footerin päälle */
+.container {
+    
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+footer {
+    margin-top: auto; /* Pysäyttää footerin alareunaan */
+}
+
+.sisalto{
+    margin-top: 130px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 30px;
+   }
+  
+p {
+    text-align: center;
+    font-size: 25px;
+   }
+  
+button {
+    display: block; /* Muuttaa painikkeen block-elementiksi */
+    margin: 0 auto; /* Keskittää vaakasuunnassa */
+    border: 2px solid rgb(36, 120, 254);
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 20px;
+    margin-top: 40px;
+  }
+  
+.content {
+    align-items: center;
+    border: 5px dashed black;
+    border-radius: 10px; /* Pyöristää kulmia */
+    margin-left: 170px;
+    margin-right: 170px;
+    padding: 30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+   }
+
+   #question-container {
+    display: flex; /* Asettaa kuvan ja kysymyksen vierekkäin */
+    align-items: center; /* Kohdistaa kuvan ja tekstin ylös */
+    gap: 20px; /* Lisää välin kuvan ja tekstin väliin */
+}
+
+#question-image {
+    width: 150px; /* Kuvan leveys */
+    height: auto; /* Kuvan korkeus säädetään automaattisesti */
+    align-items: center;
+}
+
+#question-text-container {
+    display: flex;
+    flex-direction: column; /* Asettaa kysymyksen ja vastausvaihtoehdot päällekkäin */
+    justify-content: center; /* Kohdistaa kysymyksen ja vaihtoehdot keskelle pystysuunnassa */
+    width: 100%; /* Varmistaa, että oikeanpuoleinen osa vie kaiken jäljellä olevan tilan */
+}
+
+#question-text {
+    font-size: 24px;
+    margin-bottom: 20px; /* Väli kysymyksen ja vastausvaihtoehtojen välillä */
+    align-items: center;
+}
+
+#quiz-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column; /* Vastausvaihtoehdot asettuvat päällekkäin */
+    gap: 5px; /* Väli vastausvaihtoehtojen välillä */
+}
