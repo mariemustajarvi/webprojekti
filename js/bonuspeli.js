@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let timeLeft = 30;
     let timer;
 
-    const verbs = ["juoksee", "syö", "haukkuu", "lentää", "rääkkää", "kiipeää", "uida", "sukeltaa", "mennä", "pyrkii"];
-    const nonVerbs = ["kissa", "koira", "puu", "taivas", "järvi", "merikotka", "hevoset", "kalat", "linna", "taulu"];
+    const verbs = ["juosta", "syödä", "olla", "nukkua", "puhua", "lukea", "kirjoittaa", "pelata", "katsoa", "piirtää"];
+    const nonVerbs = ["iso", "koira", "ensimmäinen", "se", "puussa", "keltainen", "pallo", "iloinen", "hauskasti", "kesä"];
     const allWords = [...verbs, ...nonVerbs];
 
     // Shuffle function for random word placement
@@ -13,18 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
         }
-    }
-
-    // Check if two elements overlap
-    function isOverlapping(element, existingElements) {
-        const rect = element.getBoundingClientRect();
-        for (let otherElement of existingElements) {
-            const otherRect = otherElement.getBoundingClientRect();
-            if (!(rect.right < otherRect.left || rect.left > otherRect.right || rect.bottom < otherRect.top || rect.top > otherRect.bottom)) {
-                return true; // There is an overlap
-            }
-        }
-        return false; // No overlap
     }
 
     // Display words
@@ -38,33 +26,48 @@ document.addEventListener("DOMContentLoaded", () => {
             const wordElement = document.createElement("button");
             wordElement.textContent = word;
             wordElement.classList.add("word-button");
+            wordElement.style.position = "absolute";
 
             let top, left, attempts = 0;
 
+            // Add element to DOM temporarily to measure its size
+            container.appendChild(wordElement);
+
             // Try random placement and ensure no overlap
             do {
-                // Calculate random position with space for the button
-                top = `${Math.random() * 70}%`;  // Reduced height space (80% -> 70%)
-                left = `${Math.random() * 80}%`; // Ensuring space at the right
+                top = Math.random() * (container.offsetHeight - wordElement.offsetHeight);
+                left = Math.random() * (container.offsetWidth - wordElement.offsetWidth);
 
-                wordElement.style.top = top;
-                wordElement.style.left = left;
+                wordElement.style.top = `${top}px`;
+                wordElement.style.left = `${left}px`;
+
                 attempts++;
 
-                // Add a margin between words
-                if (Math.random() < 0.1) { // 10% chance to add more space
-                    wordElement.style.marginTop = `${Math.random() * 10 + 5}px`;  // Extra space between words
-                }
-
-                // Prevent infinite loops if it can't find a good spot
-                if (attempts > 50) {
-                    break; 
+                // Prevent infinite loops if no valid position is found
+                if (attempts > 100) {
+                    console.warn("Unable to place word without overlap.");
+                    break;
                 }
             } while (isOverlapping(wordElement, existingElements));
 
-            existingElements.push(wordElement); // Add the element to the list of placed elements
+            // Add placed word to the list
+            existingElements.push(wordElement);
             wordElement.onclick = () => checkAnswer(wordElement, word);
-            container.appendChild(wordElement);
+        });
+    }
+
+    // Check if two elements overlap
+    function isOverlapping(element, existingElements) {
+        const rect = element.getBoundingClientRect();
+
+        return existingElements.some(otherElement => {
+            const otherRect = otherElement.getBoundingClientRect();
+            return !(
+                rect.right < otherRect.left || 
+                rect.left > otherRect.right || 
+                rect.bottom < otherRect.top || 
+                rect.top > otherRect.bottom
+            );
         });
     }
 
@@ -72,11 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkAnswer(button, word) {
         if (verbs.includes(word)) {
             button.style.backgroundColor = "green";
-            button.style.color = "white"; // Tekstin väri valkoiseksi
+            button.style.color = "white";
             score += 3;
         } else {
             button.style.backgroundColor = "red";
-            button.style.color = "white"; // Tekstin väri valkoiseksi
+            button.style.color = "white";
             score -= 3;
         }
         button.disabled = true;
@@ -88,27 +91,24 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("score").textContent = `Pisteet: ${score}`;
     }
 
+    // Start the timer
     function startTimer() {
         const timeDisplay = document.getElementById("time-left");
-        let bounceTimer;
         timer = setInterval(() => {
             if (timeLeft > 0) {
                 timeLeft--;
                 timeDisplay.textContent = `Aikaa jäljellä: ${timeLeft}`;
-    
-                // Jos aikaa on alle 10 sekuntia, aloitetaan sykkivä efekti
-                if (timeLeft <= 10 && !timeDisplay.classList.contains('sykkiva')) {
-                    timeDisplay.classList.add('sykkiva'); // Lisää sykkivä luokka
+                if (timeLeft <= 10) {
+                    timeDisplay.classList.add('sykkiva');
                 }
             } else {
                 clearInterval(timer);
-                timeDisplay.classList.remove('sykkiva'); // Poistaa sykkivän efektin
+                timeDisplay.classList.remove('sykkiva');
                 alert("Aika loppui! Peli päättyi.");
                 document.getElementById("words-container").style.display = "none";
             }
         }, 1000);
     }
-    
 
     // Start game
     function startGame() {
