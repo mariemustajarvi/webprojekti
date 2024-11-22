@@ -31,12 +31,7 @@
             </div>
         </nav>
 
-        <!-- Bonuspelin viesti -->
-        <div class="bonus-message-box" id="bonus-message-box">
-            <h2>Onnea, olet saavuttanut Sanaseikkailijan bonuspelin!</h2> <br>
-            <p>Sinä selvisit kaikkien sanaluokkatehtävien läpi. Nyt on aika näyttää taitosi viimeisessä haasteessa!</p>
-        </div>
-        <br>
+
 
         <!-- Peli otsikko -->
         <div id="game-title" class="text-center" style="display: none;">
@@ -51,22 +46,16 @@
 
         <!-- Sanat -->
         <div id="words-container" style="position: relative; height: 500px; width: 100%; display: none;">
-            <!-- Sanat lisätään tänne JavaScriptin kautta -->
         </div>
 
-        <!-- Tekstit laatikon alapuolelle -->
-        <div class="bonus-texts">
-            <p>Bonuspelissä pääset testaamaan kaikkia sanaluokkia yhdessä.</p> 
-            <p>Valitse oikeat sanat mahdollisimman nopeasti ja kerää pisteitä.</p>
-            <p>Aikaa on rajoitetusti, joten toimi nopeasti ja tarkasti.</p>
-            <p>Onnea matkaan!</p>
-            <a href="#" class="start-game-link" onclick="startGame()">Aloita peli</a>
-        </div>
+        <div class="row">
+            <div class="col">
+                <footer class="d-flex justify-content-center fixed-bottom">
+                    <h4 class="anton-regular">Ryhmä 4</h4>
+                </footer>
+            </div>
+
     </div>
-
-    <footer class="d-flex justify-content-center">
-        <h4 class="anton-regular">Ryhmä 4</h4>
-    </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-OYinS2S3NxXakJfHfE3y5shNz3sACu/3e3cje2Fh7nRYgmZ64yXvFQ/j9lCw/jVA" crossorigin="anonymous"></script>
     <script src="./js/bonuspeli.js"></script>

@@ -105,8 +105,9 @@ footer h4 {
     box-shadow: 0 8px 15px rgba(255, 182, 193, 0.5); /* Vaaleanpunainen varjo */
     animation: pulse 2s infinite; /* Sykähtelevä animaatio */
     max-width: 80%;
-    width: 750px;
+    width: 800px; /* Leveys kasvatettu 50px:llä */
 }
+
 
 /* Teksti */
 .bonus-message-box h2 {

@@ -1,179 +1,113 @@
-// Muuttujat
-let score = 0;
-let timeLeft = 30;
-let timer;
-let gameStarted = false;
-let currentPhase = 'verbs'; // Pelissä kaksi vaihetta: 'verbs' ja 'nouns'
+document.addEventListener("DOMContentLoaded", () => {
+    let score = 0;
+    let timeLeft = 30;
+    let timer;
 
-// Sanat ja niiden luokittelu
-const verbs = ["juosta", "syödä", "puhua", "nukkua", "pelata", "juoda", "lentää", "herätä", "kävellä", "nauraa"];
+    const verbs = ["juoksee", "syö", "haukkuu", "lentää", "rääkkää", "kiipeää", "uida", "sukeltaa", "mennä", "pyrkii"];
+    const nonVerbs = ["kissa", "koira", "puu", "taivas", "järvi", "merikotka", "hevoset", "kalat", "linna", "taulu"];
+    const allWords = [...verbs, ...nonVerbs];
 
-const nonVerbs = ["kiinteistö", "auto", "taivas", "katto", "musiikki", "koira", "kissa", "talvi", "kesä", "vuori"];
-
-const nouns = ["metsä", "kaupunki", "joki", "lumi", "taivas", "maito", "kukka", "kirja", "pöytä", "ruoka"];
-const nonNouns = ["lentää", "tanssia", "pieni", "kaunis", "kolmas", "tämä", "kaikki", "hyvin", "seitsemäs", "muutama"];
-let words = [];
-
-// Alustetaan peli ja sekoitetaan sanat
-function initializeWords() {
-    if (currentPhase === 'verbs') {
-        words = [...verbs, ...nonVerbs]; // Verbit + väärät (substantiivit)
-        document.getElementById('game-title').textContent = 'Valitse kaikki verbit!';
-    } else if (currentPhase === 'nouns') {
-        words = [...nouns, ...nonNouns]; // Substantiivit + väärät (verbit)
-        document.getElementById('game-title').textContent = 'Valitse kaikki substantiivit!';
+    // Shuffle function for random word placement
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
     }
 
-    words = words.sort(() => Math.random() - 0.5); // Sekoitellaan lista
-    const wordsContainer = document.getElementById('words-container');
-    wordsContainer.innerHTML = ''; // Tyhjennetään lista ennen uusien sanojen näyttämistä
+    // Check if two elements overlap
+    function isOverlapping(element, existingElements) {
+        const rect = element.getBoundingClientRect();
+        for (let otherElement of existingElements) {
+            const otherRect = otherElement.getBoundingClientRect();
+            if (!(rect.right < otherRect.left || rect.left > otherRect.right || rect.bottom < otherRect.top || rect.top > otherRect.bottom)) {
+                return true; // There is an overlap
+            }
+        }
+        return false; // No overlap
+    }
 
-    const usedPositions = []; // Lista käytetyistä sijainneista
+    // Display words
+    function displayWords() {
+        shuffle(allWords);
+        const container = document.getElementById("words-container");
+        container.innerHTML = ""; // Clear previous words
+        const existingElements = []; // Array to store placed elements
 
-    // Näytetään sanat käyttäjälle ympäri sivustoa
-    words.forEach(word => {
-        const wordElement = document.createElement('div');
-        wordElement.textContent = word;
-        wordElement.classList.add('word');
-        wordElement.classList.add(currentPhase === 'verbs' ? 'verb' : 'non-verb');
-        wordElement.addEventListener('click', () => handleWordClick(wordElement));
+        allWords.forEach(word => {
+            const wordElement = document.createElement("button");
+            wordElement.textContent = word;
+            wordElement.classList.add("word-button");
 
-        let randomX, randomY, positionOccupied;
+            let top, left, attempts = 0;
 
-        // Etsitään uusi satunnainen sijainti, jos paikka on jo varattu
-        do {
-            randomX = Math.floor(Math.random() * 90) + '%';
-            randomY = Math.floor(Math.random() * 80) + 20 + '%';  // Muutettu alemmaksi
-            positionOccupied = false;
+            // Try random placement and ensure no overlap
+            do {
+                // Calculate random position with space for the button
+                top = `${Math.random() * (80)}%`;  // Ensuring space at the bottom
+                left = `${Math.random() * (80)}%`; // Ensuring space at the right
 
-            // Tarkistetaan, onko uusi sijainti päällekkäinen
-            for (let i = 0; i < usedPositions.length; i++) {
-                const usedPosition = usedPositions[i];
-                if (Math.abs(parseFloat(usedPosition.x) - parseFloat(randomX)) < 10 && 
-                    Math.abs(parseFloat(usedPosition.y) - parseFloat(randomY)) < 10) {
-                    positionOccupied = true;
-                    break;
+                wordElement.style.top = top;
+                wordElement.style.left = left;
+                attempts++;
+
+                // Prevent infinite loops if it can't find a good spot
+                if (attempts > 50) {
+                    break; 
                 }
-            }
-        } while (positionOccupied);
+            } while (isOverlapping(wordElement, existingElements));
 
-        // Tallennetaan uusi sijainti käytetyksi
-        usedPositions.push({ x: randomX, y: randomY });
-
-        // Asetetaan sana satunnaiseen sijaintiin
-        wordElement.style.left = randomX;
-        wordElement.style.top = randomY;
-
-        wordsContainer.appendChild(wordElement);
-    });
-}
-
-// Pelin aloitus
-function startGame() {
-    console.log("Peli käynnistyi");
-
-    // Poistetaan taustakuva ja asetetaan taustaväriksi keltainen
-    document.body.style.backgroundImage = 'none';  // Poistaa taustakuvan
-    document.body.style.backgroundColor = 'var(--keltainen)';  // Asettaa taustavärin keltaiseksi
-
-    // Piilotetaan bonusviesti ja bonuskuva
-    document.getElementById('bonus-message-box').style.display = 'none';
-    document.querySelector('.bonus-texts').style.display = 'none';
-
-    // Näytetään peli-elementit
-    document.getElementById('game-title').style.display = 'block';
-    document.getElementById('words-container').style.display = 'block';
-    document.getElementById('score-container').style.display = 'flex';
-
-    // Alustetaan peli
-    gameStarted = true;
-    score = 0;
-    timeLeft = 30;
-    document.getElementById('score').textContent = 'Pisteet: 0';
-    document.getElementById('time-left').textContent = 'Aikaa jäljellä: ' + timeLeft;
-
-    // Alustetaan ajanlaskija
-    timer = setInterval(function () {
-        timeLeft--;
-        document.getElementById('time-left').textContent = 'Aikaa jäljellä: ' + timeLeft;
-        if (timeLeft <= 0) {
-            if (currentPhase === 'verbs') {
-                // Verbi-vaihe on ohi, siirrytään substantiivivaiheeseen
-                currentPhase = 'nouns';
-                timeLeft = 30; // Resetoi aika seuraavaa vaihetta varten
-                initializeWords(); // Näytetään substantiivit
-            } else if (currentPhase === 'nouns') {
-                // Substantiivi-vaihe on ohi, peli päättyy
-                endGame("Aika loppui!");
-            }
-        }
-    }, 1000);
-
-    // Alustetaan sanat
-    initializeWords();
-}
-
-// Sanan klikkaaminen
-function handleWordClick(wordElement) {
-    if (!gameStarted) return;
-
-    const word = wordElement.textContent;
-    const isVerb = verbs.includes(word);  // Tarkistetaan, onko sana verbi
-    const isNoun = nouns.includes(word);  // Tarkistetaan, onko sana substantiivi
-
-    // Määritetään väri oikein / väärin
-    if (currentPhase === 'verbs') {
-        if (isVerb) {
-            wordElement.style.backgroundColor = 'lightgreen'; // Oikein (verbi)
-            score += 3; // Oikeasta vastauksesta +3 pistettä
-        } else {
-            wordElement.style.backgroundColor = 'lightcoral'; // Väärin (ei-verbi)
-        }
-    } else if (currentPhase === 'nouns') {
-        if (isNoun) {
-            wordElement.style.backgroundColor = 'lightgreen'; // Oikein (substantiivi)
-            score += 3; // Oikeasta vastauksesta +3 pistettä
-        } else {
-            wordElement.style.backgroundColor = 'lightcoral'; // Väärin (ei-substantiivi)
-        }
+            existingElements.push(wordElement); // Add the element to the list of placed elements
+            wordElement.onclick = () => checkAnswer(wordElement, word);
+            container.appendChild(wordElement);
+        });
     }
 
-    // Poistetaan sana listalta
-    wordElement.style.pointerEvents = 'none'; // Estetään sanaa klikkaamasta uudelleen
-    document.getElementById('score').textContent = 'Pisteet: ' + score;
-
-    // Tarkistetaan, onko kaikki oikeat sanat valittu
-    checkPhaseCompletion();
-}
-
-// Tarkistetaan, onko vaihe valmis
-function checkPhaseCompletion() {
-    const remainingWords = Array.from(document.querySelectorAll('.word')).filter(word => {
-        const text = word.textContent;
-        if (currentPhase === 'verbs') {
-            return verbs.includes(text); // Palauttaa jäljellä olevat verbit
-        } else if (currentPhase === 'nouns') {
-            return nouns.includes(text); // Palauttaa jäljellä olevat substantiivit
+    // Check if the answer is correct
+    function checkAnswer(button, word) {
+        if (verbs.includes(word)) {
+            button.style.backgroundColor = "green";
+            button.style.color = "white"; // Tekstin väri valkoiseksi
+            score += 3;
+        } else {
+            button.style.backgroundColor = "red";
+            button.style.color = "white"; // Tekstin väri valkoiseksi
+            score -= 3;
         }
-        return false;
-    });
-
-    if (remainingWords.length === 0) {
-        if (currentPhase === 'verbs') {
-            // Siirrytään substantiivivaiheeseen
-            currentPhase = 'nouns';
-            timeLeft = 30; // Resetoi aika
-            initializeWords();
-        } else if (currentPhase === 'nouns') {
-            // Peli päättyy
-            endGame('Onneksi olkoon! Suoritit pelin!');
-        }
+        button.disabled = true;
+        updateScore();
     }
-}
+    
 
-// Pelin lopetus
-function endGame(message) {
-    clearInterval(timer); // Lopetetaan ajastin
-    gameStarted = false;
-    alert(message);
-}
+    // Update score
+    function updateScore() {
+        document.getElementById("score").textContent = `Pisteet: ${score}`;
+    }
+
+    // Timer
+    function startTimer() {
+        const timeDisplay = document.getElementById("time-left");
+        timer = setInterval(() => {
+            if (timeLeft > 0) {
+                timeLeft--;
+                timeDisplay.textContent = `Aikaa jäljellä: ${timeLeft}`;
+            } else {
+                clearInterval(timer);
+                alert("Aika loppui! Peli päättyi.");
+                document.getElementById("words-container").style.display = "none";
+            }
+        }, 1000);
+    }
+
+    // Start game
+    function startGame() {
+        document.getElementById("game-title").style.display = "block";
+        document.getElementById("score-container").style.display = "flex";
+        document.getElementById("words-container").style.display = "block";
+        startTimer();
+        displayWords();
+    }
+
+    // Initialize game
+    startGame();
+});
