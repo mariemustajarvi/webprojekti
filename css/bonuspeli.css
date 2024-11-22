@@ -115,23 +115,43 @@ body::after {
 }
 
 /* Oikea ja väärä vastaus */
-#time-left { 
-    font-family: "Anton", sans-serif; /* Sama fontti kuin navissa */
+#time-left {
+    font-family: "Anton", sans-serif;
     font-weight: bold;
     font-size: 1.2rem;
     color: #000000;
     text-align: center;
     margin-top: 20px;
+    margin-left: 30px; /* Lisää tilaa vasemmalle (noin 30px) */
+    margin-right: 30px; /* Lisää tilaa oikealle (noin 30px) */
     padding: 10px 20px; /* Lisää tilaa ympärille */
     background-color: rgba(255, 255, 255); /* Hento vaalea tausta */
     border-radius: 8px; /* Pyöristetyt kulmat */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hento varjo taustan ympärille */
     width: fit-content; /* Taustan koko mukautuu sisällön mukaan */
     border: 5px solid #ff0000; /* Lisää värillinen rajaus */
+    position: relative; /* Tämä mahdollistaa liikkumisen */
+}
+
+/* Sykkivä efekti */
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Alkuperäinen koko */
+    }
+    50% {
+        transform: scale(1.1); /* Suurentaa hieman */
+    }
+    100% {
+        transform: scale(1); /* Palauttaa alkuperäiseen kokoonsa */
+    }
+}
+
+.sykkiva {
+    animation: pulse 1s infinite; /* Sykkivä animaatio, joka toistuu loputtomasti */
 }
 
 #score {
-    font-family: "Anton", sans-serif; /* Sama fontti kuin navissa */
+    font-family: "Anton", sans-serif;
     font-size: 1.2rem;
     font-weight: bold;
     color: #000000;
@@ -140,10 +160,14 @@ body::after {
     border-radius: 8px; /* Pyöristetyt kulmat */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hento varjo taustan ympärille */
     width: fit-content; /* Taustan koko mukautuu sisällön mukaan */
-    position: relative; /* Sijoittaminen ei liiku automaattisesti */
-    margin-top: 20px; /* Varmistaa, että se ei mene päälle */
+    position: relative;
+    margin-top: 20px;
+    margin-left: 30px; /* Lisää tilaa vasemmalle (noin 30px) */
+    margin-right: 30px; /* Lisää tilaa oikealle (noin 30px) */
     border: 5px solid #ff0000; /* Lisää värillinen rajaus */
 }
+
+
 
 /* Pelin otsikko ja footer */
 #game-title h3 {

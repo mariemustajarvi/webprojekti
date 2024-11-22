@@ -44,12 +44,17 @@ document.addEventListener("DOMContentLoaded", () => {
             // Try random placement and ensure no overlap
             do {
                 // Calculate random position with space for the button
-                top = `${Math.random() * (80)}%`;  // Ensuring space at the bottom
-                left = `${Math.random() * (80)}%`; // Ensuring space at the right
+                top = `${Math.random() * 70}%`;  // Reduced height space (80% -> 70%)
+                left = `${Math.random() * 80}%`; // Ensuring space at the right
 
                 wordElement.style.top = top;
                 wordElement.style.left = left;
                 attempts++;
+
+                // Add a margin between words
+                if (Math.random() < 0.1) { // 10% chance to add more space
+                    wordElement.style.marginTop = `${Math.random() * 10 + 5}px`;  // Extra space between words
+                }
 
                 // Prevent infinite loops if it can't find a good spot
                 if (attempts > 50) {
@@ -77,27 +82,33 @@ document.addEventListener("DOMContentLoaded", () => {
         button.disabled = true;
         updateScore();
     }
-    
 
     // Update score
     function updateScore() {
         document.getElementById("score").textContent = `Pisteet: ${score}`;
     }
 
-    // Timer
     function startTimer() {
         const timeDisplay = document.getElementById("time-left");
+        let bounceTimer;
         timer = setInterval(() => {
             if (timeLeft > 0) {
                 timeLeft--;
                 timeDisplay.textContent = `Aikaa jäljellä: ${timeLeft}`;
+    
+                // Jos aikaa on alle 10 sekuntia, aloitetaan sykkivä efekti
+                if (timeLeft <= 10 && !timeDisplay.classList.contains('sykkiva')) {
+                    timeDisplay.classList.add('sykkiva'); // Lisää sykkivä luokka
+                }
             } else {
                 clearInterval(timer);
+                timeDisplay.classList.remove('sykkiva'); // Poistaa sykkivän efektin
                 alert("Aika loppui! Peli päättyi.");
                 document.getElementById("words-container").style.display = "none";
             }
         }, 1000);
     }
+    
 
     // Start game
     function startGame() {
