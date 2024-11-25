@@ -55,6 +55,17 @@
             <!-- Sanat lisätään tänne JavaScriptin kautta -->
         </div>
 
+        <div id="overlay" style="display: none;"></div>
+        
+        <!-- Ponnahdusikkuna pelin päättymiselle -->
+<div id="verbi-popup" class="completion-popup" style="display: none;">
+    <h2>Onnittelut!</h2>
+    <p>Läpäisit verbi-osuuden.</p>
+    <p>Pistetilanteesi: <span id="verbi-score-display">0</span></p>
+    <button id="verbi-next-phase" onclick="startNextPhase()">Seuraavaksi substantiivit, aloita painamalla tästä</button>
+</div>
+
+
         <div class="row">
             <div class="col">
                 <footer class="d-flex justify-content-center fixed-bottom">
@@ -66,7 +77,7 @@
             <div id="overlay" style="display: none;"></div>
 
             <div id="completion-popup" style="display:none;">
-                <p>Hienoa! Läpäisit kaksi ensimmäistä vaihetta.</p> <br>
+                <p>Hienoa! Toinen osio suoritettu.</p> <br>
                 <p>Tämän verran sait pisteitä: <br>
                 <span id="score-display"></span></p> <!-- Tämä on paikka pistetilanteelle --> <br>
                 <p>Oletko valmis seuraavaan vaiheeseen?</p>

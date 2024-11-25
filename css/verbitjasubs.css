@@ -341,27 +341,71 @@ footer h4 {
     }
 }
 
-/* Taustan himmennys completion-popup-ikkunan taustalle */
-#completion-background {
+/* Yleinen popup-tyyli */
+.completion-popup {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--keltainen);
+    border-radius: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
+    font-family: "Barlow", serif;
+    font-size: 1.6rem;
+    color: var(--tummanvihrea);
+    z-index: 1000;
+    display: none;
+    animation: fadeIn 1s ease-out, bounceIn 1s ease-out;
 }
 
+.completion-popup h2 {
+    font-family: "Anton", sans-serif;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--vihrea-positiivinen);
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; /* Peittää koko näytön */
-    background-color: rgba(0, 0, 0, 0.5); /* Läpinäkyvä musta */
-    z-index: 998; /* Vähemmän kuin popupin, jotta popup erottuu päällä */
-    display: none; /* Piilotetaan alkuun */
+.completion-popup p {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 25px;
+    line-height: 1.8;
+    letter-spacing: 1px;
+}
+
+.completion-popup button {
+    padding: 20px 40px;
+    background-color: var(--vihrea-positiivinen);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 30px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.completion-popup button:hover {
+    background-color: var(--tummanvihrea);
+    transform: scale(1.1);
+}
+
+.completion-popup a {
+    color: var(--tummanvihrea);
+    font-size: 1.2rem;
+    text-decoration: underline;
 }
 
 

@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const nouns = ["kissa", "pallo", "kesä", "karkki", "avaruus", "huvipuisto", "taikuri", "auto", "koulu", "peli"];
     const nonNouns = ["hyvä", "nopea", "syödä", "se", "kolmas", "tanssia", "miettiä", "hauskasti", "vihreä", "tämä"]; // Fake nouns
 
-    // Shuffle function for random word placement
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -21,15 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Display words
     function displayWords() {
-        if (gameOver) return; // Prevent interaction if the game is over
+        if (gameOver) return;
 
         const container = document.getElementById("words-container");
-        container.innerHTML = ""; // Clear previous words
-        const existingElements = []; // Array to store placed elements
+        container.innerHTML = ""; 
+        const existingElements = []; 
 
-        const wordsToDisplay = currentPhase === "verbs" ? allWords : nouns.concat(nonNouns); // Include fake nouns in noun phase
+        const wordsToDisplay = currentPhase === "verbs" ? allWords : nouns.concat(nonNouns);
         shuffle(wordsToDisplay);
 
         wordsToDisplay.forEach(word => {
@@ -40,10 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let top, left, attempts = 0;
 
-            // Add element to DOM temporarily to measure its size
             container.appendChild(wordElement);
 
-            // Try random placement and ensure no overlap
             do {
                 top = Math.random() * (container.offsetHeight - wordElement.offsetHeight);
                 left = Math.random() * (container.offsetWidth - wordElement.offsetWidth);
@@ -52,21 +48,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 wordElement.style.left = `${left}px`;
 
                 attempts++;
-
-                // Prevent infinite loops if no valid position is found
                 if (attempts > 100) {
                     console.warn("Unable to place word without overlap.");
                     break;
                 }
             } while (isOverlapping(wordElement, existingElements));
 
-            // Add placed word to the list
             existingElements.push(wordElement);
             wordElement.onclick = () => checkAnswer(wordElement, word);
         });
     }
 
-    // Check if two elements overlap
     function isOverlapping(element, existingElements) {
         const rect = element.getBoundingClientRect();
 
@@ -81,112 +73,101 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function checkAnswer(button, word) {
+        if (gameOver) return;
 
-// Check if the answer is correct
-function checkAnswer(button, word) {
-    if (gameOver) return; // Prevent interaction if the game is over
-
-    if (currentPhase === "verbs") {
-        if (verbs.includes(word)) {
-            button.style.backgroundColor = "green";
-            button.style.color = "white";
-            score += 1;
-            correctVerbs++;
-        } else {
-            button.style.backgroundColor = "red";
-            button.style.color = "white";
-            if (score > 0) {
-                score -= 1; // Deduct 1 point for incorrect answer, but ensure score doesn't go negative
+        if (currentPhase === "verbs") {
+            if (verbs.includes(word)) {
+                button.style.backgroundColor = "green";
+                button.style.color = "white";
+                score += 1;
+                correctVerbs++;
+            } else {
+                button.style.backgroundColor = "red";
+                button.style.color = "white";
+                if (score > 0) score -= 1; // Decrease score by 1 for wrong answers
+            }
+        } else if (currentPhase === "nouns") {
+            if (nouns.includes(word)) {
+                button.style.backgroundColor = "green";
+                button.style.color = "white";
+                score += 1;
+                correctNouns++;
+            } else {
+                button.style.backgroundColor = "red";
+                button.style.color = "white";
+                if (score > 0) score -= 1; // Decrease score by 1 for wrong answers
             }
         }
-    } else if (currentPhase === "nouns") {
-        if (nouns.includes(word)) {
-            button.style.backgroundColor = "green";
-            button.style.color = "white";
-            score += 1;
-            correctNouns++;
-        } else {
-            button.style.backgroundColor = "red";
-            button.style.color = "white";
-            if (score > 0) {
-                score -= 1; // Deduct 1 point for incorrect answer, but ensure score doesn't go negative
-            }
-        }
+        button.disabled = true;
+        updateScore();
+        checkPhaseTransition();
     }
-    button.disabled = true;
-    updateScore();
-    checkPhaseTransition(); // Check if we need to move to the next phase
-}
 
-
-
-    // Check if all verbs or nouns have been selected or time is up, and move to next phase
     function checkPhaseTransition() {
         if (currentPhase === "verbs" && correctVerbs === verbs.length) {
-            clearInterval(timer); // Stop timer when all verbs are selected
-            startNounPhase();
+            clearInterval(timer);
+            showVerbCompletionPopup();
         } else if (currentPhase === "verbs" && timeLeft <= 0) {
             clearInterval(timer);
-            startNounPhase();
+            showVerbCompletionPopup();
         } else if (currentPhase === "nouns" && correctNouns === nouns.length) {
-            clearInterval(timer); // Stop timer when all nouns are selected
+            clearInterval(timer);
             showCompletionPopup();
         } else if (currentPhase === "nouns" && timeLeft <= 0) {
             clearInterval(timer);
-            showCompletionPopup(); // Show completion message when time runs out
+            showCompletionPopup();
         }
     }
 
-// Show the completion popup when the nouns phase ends
-function showCompletionPopup() {
-    gameOver = true; // Set gameOver to true to stop further interaction
-    const popup = document.getElementById("completion-popup");
-    const overlay = document.getElementById("overlay");
-    popup.style.display = "block"; // Show popup
-    overlay.style.display = "block"; // Show overlay (taustan himmennys)
-    document.getElementById("score-display").textContent = `${score} / 20`; // Display score and max score
-}
+    function showVerbCompletionPopup() {
+        const popup = document.getElementById("verbi-popup");
+        popup.style.display = "block";
+        document.getElementById("verbi-score-display").textContent = score;
 
+        document.getElementById("verbi-next-phase").onclick = () => {
+            popup.style.display = "none";
+            startNounPhase();
+        };
+    }
 
-    
-    // Start the timer
+    function showCompletionPopup() {
+        gameOver = true;
+        const popup = document.getElementById("completion-popup");
+        popup.style.display = "block";
+        document.getElementById("score-display").textContent = `${score} / 20`;
+    }
+
     function startTimer() {
         const timeDisplay = document.getElementById("time-left");
         timer = setInterval(() => {
             if (timeLeft > 0) {
                 timeLeft--;
                 timeDisplay.textContent = `Aikaa jäljellä: ${timeLeft}`;
-                if (timeLeft <= 10) {
-                    timeDisplay.classList.add('sykkiva');
-                }
+                if (timeLeft <= 10) timeDisplay.classList.add('sykkiva');
             } else {
                 clearInterval(timer);
                 timeDisplay.classList.remove('sykkiva');
-                checkPhaseTransition(); // Automatically move to next phase when time runs out
+                checkPhaseTransition();
             }
         }, 1000);
     }
 
-    // Start noun phase
     function startNounPhase() {
-        currentPhase = "nouns"; // Change to noun phase
-        correctVerbs = 0; // Reset verb counter
-        timeLeft = 30; // Reset timer
+        currentPhase = "nouns";
+        timeLeft = 30;
 
-        // Hide verb phase title and show noun phase title
         document.getElementById("game-title").style.display = "none";
-        document.getElementById("game-title-substantiivit").style.display = "block"; // Show noun phase title
+        document.getElementById("game-title-substantiivit").style.display = "block";
 
-        displayWords(); // Display nouns
-        startTimer(); // Start new timer for noun phase
+        displayWords();
+        startTimer();
     }
 
-    // Update score
     function updateScore() {
         document.getElementById("score").textContent = `Pisteet: ${score}`;
     }
 
-    // Start game
     function startGame() {
         document.getElementById("game-title").style.display = "block";
         document.getElementById("score-container").style.display = "flex";
@@ -195,6 +176,5 @@ function showCompletionPopup() {
         displayWords();
     }
 
-    // Initialize game
     startGame();
 });
