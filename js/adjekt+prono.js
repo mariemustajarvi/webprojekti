@@ -3,11 +3,16 @@ function loadScore() {
     let score = localStorage.getItem('playerScore');
     if (score !== null) {
         document.getElementById('score').innerText = `Pisteet: ${score}`;
+        return parseInt(score); // Palautetaan ladatut pisteet
     }
+    return 0; // Jos ei ole tallennettu, palauta 0
 }
 
 // Lataa pisteet, kun sivu ladataan
-window.onload = loadScore;
+window.onload = () => {
+    score = loadScore(); // Aseta ladatut pisteet 'score' muuttujaan
+    loadScore(); // Päivitä näkyviin pisteet heti
+};
 
 // Tallenna pistemäärä localStorageen
 function saveScore(score) {
@@ -21,7 +26,7 @@ function updateScore() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    let score = 0;
+    // Aseta ladattu pistemäärä pelissä
     let timeLeft = 30;
     let timer;
     let correctAdjectives = 0; // Track correct adjectives
