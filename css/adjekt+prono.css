@@ -226,8 +226,8 @@ footer h4 {
     }
 }
 
-/* Pelin loppu-ikkuna (completion-popup) */
-#completion-popup {
+/* Completion-popup (pelin loppu-ikkuna) */
+.completion-popup {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -243,35 +243,21 @@ footer h4 {
     font-size: 1.6rem;
     color: var(--tummanvihrea);
     z-index: 1000;
-    display: none; /* Aluksi piilotetaan */
-    animation: fadeIn 1s ease-out, bounceIn 1s ease-out; /* Lisää sekä haalistuva että hyppivä animaatio */
+    display: none; /* Piilotetaan oletuksena */
+    animation: fadeIn 1s ease-out, bounceIn 1s ease-out;
 }
 
-/* Otsikko completion-popup-ikkunassa */
-#completion-popup h2 {
-    font-family: "Anton", sans-serif;
-    font-size: 3.5rem;
-    font-weight: bold;
-    color: var(--vihrea-positiivinen);
-    margin-bottom: 20px;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3); /* Lisää varjostusta, jotta otsikko erottuu */
-    letter-spacing: 1px; /* Lisää tilaa kirjainten väliin */
-    text-transform: uppercase; /* Kirjainkoko on isompi ja enemmän huomiota herättävä */
-}
 
-/* Viesti completion-popup-ikkunassa */
-#completion-popup p {
+.completion-popup p {
     font-size: 1.4rem;
     font-weight: bold;
     color: #000000;
     margin-bottom: 25px;
-    line-height: 1.8;
-    letter-spacing: 1px;
 }
 
-/* Painike completion-popup-ikkunassa */
-#completion-popup button {
-    padding: 20px 40px;
+.completion-popup button,
+.completion-popup a  {
+    padding: 15px 30px;
     background-color: var(--vihrea-positiivinen);
     color: white;
     border: none;
@@ -280,43 +266,30 @@ footer h4 {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 30px;
-    text-transform: uppercase; /* Tekstin muuttaminen isoksi */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    text-decoration: none; /* Poistaa alleviivauksen */
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
 }
 
-/* Hover-efekti painikkeelle */
-#completion-popup button:hover {
+.completion-popup button:hover,
+.completion-popup a:hover {
     background-color: var(--tummanvihrea);
     transform: scale(1.1);
 }
 
-/* Linkin tyyli completion-popup-ikkunassa - parannettu */
-#completion-popup a {
-    color: var(--vihrea-positiivinen);
-    font-weight: bold;
-    font-size: 1.8rem; /* Suuremman fontin koko */
-    text-decoration: none;
-    padding-top: 15px;
-    transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
-    display: inline-block; /* Varmistaa, että linkki käyttäytyy napin tavoin */
-    margin-top: 20px; /* Lisää hieman tilaa yläpuolelle */
-    font-family: "Anton", sans-serif;
-    letter-spacing: 2px; /* Lisää kirjainten väliin tilaa */
-    text-transform: uppercase; /* Tekstin muuttaminen isoksi */
-}
 
-/* Hover-efekti */
-#completion-popup a:hover {
-    color: var(--tummanvihrea); /* Vaihtaa värin tummempaan vihreään */
-    transform: scale(1.1); /* Suurentaa hieman */
-    text-shadow: 0 0 15px var(--vihrea-positiivinen), 0 0 25px var(--vihrea-positiivinen); /* Lisää kiiltävän, hehkuvan varjon */
-}
-
-/* Hover-efekti vielä aktiivisemmalla animaatiolla */
-#completion-popup a:active {
-    transform: scale(1.2); /* Kasvata vielä enemmän painettaessa */
-    color: var(--tummanvihrea);
+/* Overlay-tyyli */
+#overlay {
+    display: none; /* Piilotetaan oletuksena */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Tumma läpinäkyvä tausta */
+    z-index: 999; /* Ylimmälle kerrokselle */
 }
 
 /* Animaatio completion-popup-ikkunalle (fade-in ja bounce) */
@@ -341,71 +314,16 @@ footer h4 {
     }
 }
 
-/* Yleinen popup-tyyli */
-.completion-popup {
+
+
+
+#overlay {
+    display: none; /* Piilotetaan oletuksena */
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--keltainen);
-    border-radius: 20px;
-    padding: 40px;
-    width: 90%;
-    max-width: 700px;
-    text-align: center;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
-    font-family: "Barlow", serif;
-    font-size: 1.6rem;
-    color: var(--tummanvihrea);
-    z-index: 1000;
-    display: none;
-    animation: fadeIn 1s ease-out, bounceIn 1s ease-out;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Läpinäkyvä tumma tausta */
+    z-index: 999; /* Varmistetaan, että se on muiden elementtien päällä */
 }
-
-.completion-popup h2 {
-    font-family: "Anton", sans-serif;
-    font-size: 3.5rem;
-    font-weight: bold;
-    color: var(--vihrea-positiivinen);
-    margin-bottom: 20px;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.completion-popup p {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 25px;
-    line-height: 1.8;
-    letter-spacing: 1px;
-}
-
-.completion-popup button {
-    padding: 20px 40px;
-    background-color: var(--vihrea-positiivinen);
-    color: white;
-    border: none;
-    border-radius: 15px;
-    font-size: 1.6rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 30px;
-    text-transform: uppercase;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-.completion-popup button:hover {
-    background-color: var(--tummanvihrea);
-    transform: scale(1.1);
-}
-
-.completion-popup a {
-    color: var(--tummanvihrea);
-    font-size: 1.2rem;
-    text-decoration: underline;
-}
-
-

@@ -123,10 +123,10 @@ document.addEventListener("DOMContentLoaded", () => {
             showVerbCompletionPopup();
         } else if (currentPhase === "nouns" && correctNouns === nouns.length) {
             clearInterval(timer);
-            showCompletionPopup();
+            showNounsCompletionPopup();
         } else if (currentPhase === "nouns" && timeLeft <= 0) {
             clearInterval(timer);
-            showCompletionPopup();
+            showNounsCompletionPopup();
         }
     }
 
@@ -147,19 +147,17 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
-        function showCompletionPopup() {
-            gameOver = true; // Estää pelin jatkumisen
-            const overlay = document.getElementById("overlay");
-            overlay.style.display = "block"; // Näytä taustakerros
-            const popup = document.getElementById("completion-popup");
-            popup.style.display = "block"; // Näytä ponnahdusikkuna
-            document.getElementById("score-display").textContent = `${score}/${maxScore}`;
-        
-            // Tallennetaan pisteet localStorageen
-            saveScore(score);
-        
-            // Lisää mahdollinen seuraavan vaiheen käsittely tähän, jos peli jatkuu vielä
-        }
+    function showNounsCompletionPopup() {
+        gameOver = true; // Estää pelin jatkumisen
+        const overlay = document.getElementById("overlay");
+        overlay.style.display = "block"; // Näytä taustakerros
+        const popup = document.getElementById("nouns-popup");
+        popup.style.display = "block"; // Näytä ponnahdusikkuna
+        document.getElementById("score-display").textContent = `${score}/${maxScore}`;
+    
+        // Tallennetaan pisteet localStorageen
+        saveScore(score);
+    }
 
     function startTimer() {
         const timeDisplay = document.getElementById("time-left");

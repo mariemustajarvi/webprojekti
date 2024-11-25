@@ -30,6 +30,8 @@
         </div>
     </nav>
 
+    <div id="overlay"></div> <!-- Overlay-elementti -->
+
     <!-- Peli otsikko -->
     <div id="game-title" class="text-center" style="display: none;">
         <h3>Valitse kaikki adjektiivit!</h3>
@@ -53,17 +55,17 @@
 
     <!-- Ponnahdusikkuna pelin päättymiselle -->
     <div id="adjective-popup" class="completion-popup" style="display: none;">
-        <p>Pääsit vaiheesta läpi! Pisteet: <span id="adjective-score-display"></span></p>
+        <p> Jatka samaan malliin – olet ihan huikea!</p>
+        <p>Pistetilanteesi: <span id="adjective-score-display">0/50</span></p>
         <button id="adjective-next-phase">Pronominit</button>
     </div>
     
 
-    <div id="completion-popup" style="display: none;">
-        <p>Hienoa! Toinen osio suoritettu.</p>
-        <p>Tämän verran sait pisteitä:</p>
-        <p><span id="score-display"></span></p>
-        <p>Oletko valmis seuraavaan vaiheeseen?</p>
-        <a href="#" id="start-next-phase">Aloita painamalla tästä</a>
+    <div id="pronoun-popup" class="completion-popup" style="display: none;">
+        <p>Jes, upea suoritus!</p>
+        <p>Pistetilanteesi: <span id="score-display">0/50</span></p>
+        <p>Viimeistä viedään, oletko valmis?</p>
+        <a href="#" id="start-next-phase">Numeraalit</a>
     </div>
 
     <footer class="d-flex justify-content-center fixed-bottom">

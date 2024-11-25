@@ -26,7 +26,8 @@ function updateScore() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Aseta ladattu pistemäärä pelissä
+    let score = 0;
+    const maxScore = 50; // Maksimipisteet pelille
     let timeLeft = 30;
     let timer;
     let correctAdjectives = 0; // Track correct adjectives
@@ -152,22 +153,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     function showAdjectiveCompletionPopup() {
+        gameOver = true; // Estää pelin jatkumisen
+        const overlay = document.getElementById("overlay");
+        overlay.style.display = "block"; // Näytä taustakerros
         const popup = document.getElementById("adjective-popup");
-        popup.style.display = "block";
-        document.getElementById("adjective-score-display").textContent = score;
-
+        popup.style.display = "block"; // Näytä ponnahdusikkuna
+        document.getElementById("adjective-score-display").textContent = `${score}/${maxScore}`;
+    
         document.getElementById("adjective-next-phase").onclick = () => {
-            popup.style.display = "none";
-            startPronounPhase();
+            popup.style.display = "none"; // Piilota ponnahdusikkuna
+            overlay.style.display = "none"; // Piilota taustakerros
+            gameOver = false; // Salli pelin jatkuminen
+            startPronounPhase(); // Siirry pronomini-osioon
         };
     }
 
     function showCompletionPopup() {
-        gameOver = true;
-        const popup = document.getElementById("completion-popup");
-        popup.style.display = "block";
-        document.getElementById("score-display").textContent = `${score} / 20`;
+        gameOver = true; // Estää pelin jatkumisen
+        const overlay = document.getElementById("overlay");
+        overlay.style.display = "block"; // Näytä taustakerros
+        const popup = document.getElementById("pronoun-popup"); // Muutettu id
+        popup.style.display = "block"; // Näytä ponnahdusikkuna
+        document.getElementById("score-display").textContent = `${score}/${maxScore}`;
+    
+        document.getElementById("completion-continue").onclick = () => {
+            popup.style.display = "none"; // Piilota ponnahdusikkuna
+            overlay.style.display = "none"; // Piilota taustakerros
+            gameOver = false; // Salli pelin jatkuminen, jos peliin lisätään jatko-osio
+            // Lisää tarvittaessa seuraavan vaiheen logiikka tähän
+        };
     }
+    
 
     function startTimer() {
         const timeDisplay = document.getElementById("time-left");
