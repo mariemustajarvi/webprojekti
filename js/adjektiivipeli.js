@@ -45,14 +45,20 @@ const questions = [
 ];
 
 let currentQuestionIndex = 0; // Pitää kirjaa nykyisestä kysymyksestä
+let correctAnswers = 0; // Oikeiden vastausten määrä
+let wrongAnswers = 0; // Väärien vastausten määrä
 
 // Näyttää kysymyksen 
 function displayQuestion() {
     const questionElement = document.getElementById("question-text");
     const formElement = document.getElementById("quiz-form");
     const imageElement = document.getElementById("question-image");
+    const progressElement = document.getElementById("question-progress"); 
 
     const currentQuestion = questions[currentQuestionIndex];
+
+    // Päivittää kysymysnumeron
+    progressElement.textContent = `Kysymys ${currentQuestionIndex + 1}/${questions.length}`;
     
     // Päivittää kysymystekstin
     questionElement.textContent = currentQuestion.question;
@@ -91,8 +97,10 @@ function checkAnswer() {
     const currentQuestion = questions[currentQuestionIndex];
     if (selectedOption.value === currentQuestion.correct) {
         resultElement.textContent = "Oikein!";
+        correctAnswers++; // Lisää oikeiden vastausten määrää
     } else {
         resultElement.textContent = `Väärin. Oikea vastaus on: ${currentQuestion.correct}`;
+        wrongAnswers++; // Lisää väärien vastausten määrää
     }
     
     // Siirtyy seuraavaan kysymykseen
@@ -105,10 +113,62 @@ function checkAnswer() {
     } else {
         // Jos kysymykset loppuu
         setTimeout(() => {
-            resultElement.textContent = "Visailu on ohi! Kiitos osallistumisesta.";
-            document.getElementById("quiz").innerHTML = ""; // Tyhjennä visailu
+            displayResults(); // Näyttää loppuarvion
         }, 2000);
     }
 }
 
+// Näyttää tulokset kysymysten lopussa
+function displayResults() {
+    const quizElement = document.getElementById("quiz");
+    const instructionsElement = document.getElementById("instructions"); // Lisätään tämä
+    quizElement.innerHTML = ""; // Tyhjentää visailun sisällön
+
+    const resultMessage = document.createElement("h2");
+    const starContainer = document.createElement("div");
+    starContainer.style.display = "flex";
+    starContainer.style.justifyContent = "center";
+    starContainer.style.gap = "10px";
+
+    // Näytetään tähdet oikeiden vastausten määrän mukaan
+    for (let i = 0; i < correctAnswers; i++) {
+        const star = document.createElement("img");// Käytetään <img> elementtiä
+        star.src = "./images/adjektiivipeli/star.png"
+        star.classList.add("star"); // Lisätään CSS-luokka tähti-kuville
+        starContainer.appendChild(star);
+    }
+
+    // Lisätään viesti tulosten mukaan
+    if (correctAnswers > questions.length / 2) {
+        resultMessage.textContent = `Hyvää työtä! Sait ${correctAnswers}/${questions.length} oikein.`;
+    } else {
+        resultMessage.textContent = `Yritä uudelleen! Sait vain ${correctAnswers}/${questions.length} oikein.`;
+    }
+
+    // Lisätään tulokset DOM:iin
+    quizElement.appendChild(resultMessage);
+    quizElement.appendChild(starContainer);
+
+    // Uudelleenpelaamisen painike
+    const replayButton = document.createElement("button");
+    replayButton.textContent = "Pelaa uudelleen";
+    replayButton.onclick = resetGame; // Liitetään painikkeeseen `resetGame`-funktio
+    quizElement.appendChild(replayButton);
+
+    // Piilotetaan ohjeet tulosten näyttämisen ajaksi
+    instructionsElement.style.display = "none"; // Piilotetaan ohjeet
+}
+
+// Resetoi pelin tilan ja aloittaa alusta
+function resetGame() {
+    correctAnswers = 0; // Nollaa oikeiden vastausten määrä
+    wrongAnswers = 0; // Nollaa väärien vastausten määrä
+    currentQuestionIndex = 0; // Asettaa kysymyksen ensimmäiseen
+    document.getElementById("result").textContent = ""; // Tyhjentää tulosviestin
+    displayQuestion(); // Aloittaa uuden pelin
+
+    // Näytetään ohjeet uudelleen
+    const instructionsElement = document.getElementById("instructions");
+    instructionsElement.style.display = "block"; // Näytetään ohjeet uudelleen
+}
 window.onload = displayQuestion;

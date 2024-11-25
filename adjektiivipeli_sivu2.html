@@ -13,54 +13,55 @@
     <title>Adjektiivit</title>
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <span class="navbar-brand mb-0 h1 anton-regular">SANASEIKKAILIJA</span>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-wrap justify-content-end anton-regular">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Etusivu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Verbit</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Adjektiivit</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pronominit</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Numeraalit</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Substantiivit</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Sanaluokat</a>
-                        </li>
-                    </ul>
-                </div>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1 anton-regular">SANASEIKKAILIJA</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-wrap justify-content-end anton-regular">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Etusivu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Verbit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Adjektiivit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pronominit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Numeraalit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Substantiivit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sanaluokat</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+    
 
     <div class="tausta">
             <div class="sisalto">
                 <h1>Tervetuloa Merenalaiseen maailmaan!</h1>
 
                 <div class="content">
-                    <p>Ohje: Valitse oikea vaihtoehto, joka kuvaa merenalaista asukkia</p>
+                    <p id="instructions">Ohje: Valitse oikea vaihtoehto, joka kuvaa merenalaista asukkia</p>
                     <div id="quiz">
-                        <div id="question-container" style="display: flex; align-items: center; gap: 20px;">
-                            <img id="question-image" src="" alt="Kuva liittyen kysymykseen" style="width: 150px; height: auto;">
-                            <h2 id="question-text"></h2>
+                        <p id="question-progress" class="text-muted" style="font-weight: bold;">Kysymys 1/6</p>
+                        <div id="question-container" class="d-flex gap-3 align-items-center">
+                            <img id="question-image" src="" alt="Kuva liittyen kysymykseen" class="img-fluid" style="width: 150px;">
+                            <h2 id="question-text" class="flex-grow-1"></h2>
                         </div>
-                        <form id="quiz-form">
+                        <form id="quiz-form" class="d-flex flex-column gap-2">
                             <!-- Vastausvaihtoehdot lisätään JavaScriptillä -->
                         </form>
                         <button id="check-button" onclick="checkAnswer()">Tarkista</button>
