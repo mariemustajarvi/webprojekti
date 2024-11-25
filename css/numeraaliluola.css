@@ -125,7 +125,11 @@
 /* Tyylimääritykset */
 
 body {
-  background-color: var(--keltainen);
+  background-color: #003e27;
+  background-image: url(../images/numeraaliluola/cave-tausta.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 110%;
   margin: 0;
 }
 
