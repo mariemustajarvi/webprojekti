@@ -1,3 +1,9 @@
+// Tallentaa pisteet localStorageen
+function saveScore(score) {
+    localStorage.setItem('playerScore', score);
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     let score = 0;
     let timeLeft = 30;
@@ -136,6 +142,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const popup = document.getElementById("completion-popup");
         popup.style.display = "block";
         document.getElementById("score-display").textContent = `${score} / 20`;
+
+            // Tallennetaan pisteet localStorageen
+        saveScore(score);
     }
 
     function startTimer() {
