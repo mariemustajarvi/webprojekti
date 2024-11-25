@@ -3,21 +3,21 @@ function saveScore(score) {
     localStorage.setItem('playerScore', score);
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
     let score = 0;
+    const maxScore = 50; // Maksimipisteet pelille
     let timeLeft = 30;
     let timer;
-    let correctVerbs = 0; // Track correct verbs
-    let correctNouns = 0; // Track correct nouns
-    let currentPhase = "verbs"; // Initial phase is "verbs"
-    let gameOver = false; // Track whether the game is over
+    let correctVerbs = 0; // Oikeiden verbien määrä
+    let correctNouns = 0; // Oikeiden substantiivien määrä
+    let currentPhase = "verbs"; // Alkuvaihe
+    let gameOver = false;
 
     const verbs = ["juosta", "syödä", "olla", "nukkua", "puhua", "lukea", "kirjoittaa", "pelata", "katsoa", "piirtää"];
     const nonVerbs = ["iso", "koira", "ensimmäinen", "se", "puussa", "keltainen", "pallo", "iloinen", "hauskasti", "kesä"];
     const allWords = [...verbs, ...nonVerbs];
     const nouns = ["kissa", "pallo", "kesä", "karkki", "avaruus", "huvipuisto", "taikuri", "auto", "koulu", "peli"];
-    const nonNouns = ["hyvä", "nopea", "syödä", "se", "kolmas", "tanssia", "miettiä", "hauskasti", "vihreä", "tämä"]; // Fake nouns
+    const nonNouns = ["hyvä", "nopea", "syödä", "se", "kolmas", "tanssia", "miettiä", "hauskasti", "vihreä", "tämä"];
 
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (gameOver) return;
 
         const container = document.getElementById("words-container");
-        container.innerHTML = ""; 
-        const existingElements = []; 
+        container.innerHTML = "";
+        const existingElements = [];
 
         const wordsToDisplay = currentPhase === "verbs" ? allWords : nouns.concat(nonNouns);
         shuffle(wordsToDisplay);
@@ -71,9 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return existingElements.some(otherElement => {
             const otherRect = otherElement.getBoundingClientRect();
             return !(
-                rect.right < otherRect.left || 
-                rect.left > otherRect.right || 
-                rect.bottom < otherRect.top || 
+                rect.right < otherRect.left ||
+                rect.left > otherRect.right ||
+                rect.bottom < otherRect.top ||
                 rect.top > otherRect.bottom
             );
         });
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 button.style.backgroundColor = "red";
                 button.style.color = "white";
-                if (score > 0) score -= 1; // Decrease score by 1 for wrong answers
+                if (score > 0) score -= 1;
             }
         } else if (currentPhase === "nouns") {
             if (nouns.includes(word)) {
@@ -102,12 +102,16 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 button.style.backgroundColor = "red";
                 button.style.color = "white";
-                if (score > 0) score -= 1; // Decrease score by 1 for wrong answers
+                if (score > 0) score -= 1;
             }
         }
         button.disabled = true;
         updateScore();
         checkPhaseTransition();
+    }
+
+    function updateScore() {
+        document.getElementById("score").textContent = `Pisteet: ${score}/${maxScore}`;
     }
 
     function checkPhaseTransition() {
@@ -127,25 +131,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showVerbCompletionPopup() {
+        gameOver = true; // Estää pelin jatkumisen
+        const overlay = document.getElementById("overlay");
+        overlay.style.display = "block"; // Näytä taustakerros
         const popup = document.getElementById("verbi-popup");
-        popup.style.display = "block";
-        document.getElementById("verbi-score-display").textContent = score;
-
+        popup.style.display = "block"; // Näytä ponnahdusikkuna
+        document.getElementById("verbi-score-display").textContent = `${score}/${maxScore}`;
+    
+        // Kun siirrytään seuraavaan vaiheeseen
         document.getElementById("verbi-next-phase").onclick = () => {
-            popup.style.display = "none";
-            startNounPhase();
+            popup.style.display = "none"; // Piilota ponnahdusikkuna
+            overlay.style.display = "none"; // Piilota taustakerros
+            gameOver = false; // Palauta pelin tilanne normaaliksi
+            startNounPhase(); // Aloita seuraava osio
         };
     }
 
-    function showCompletionPopup() {
-        gameOver = true;
-        const popup = document.getElementById("completion-popup");
-        popup.style.display = "block";
-        document.getElementById("score-display").textContent = `${score} / 20`;
-
+        function showCompletionPopup() {
+            gameOver = true; // Estää pelin jatkumisen
+            const overlay = document.getElementById("overlay");
+            overlay.style.display = "block"; // Näytä taustakerros
+            const popup = document.getElementById("completion-popup");
+            popup.style.display = "block"; // Näytä ponnahdusikkuna
+            document.getElementById("score-display").textContent = `${score}/${maxScore}`;
+        
             // Tallennetaan pisteet localStorageen
-        saveScore(score);
-    }
+            saveScore(score);
+        
+            // Lisää mahdollinen seuraavan vaiheen käsittely tähän, jos peli jatkuu vielä
+        }
 
     function startTimer() {
         const timeDisplay = document.getElementById("time-left");
@@ -171,10 +185,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         displayWords();
         startTimer();
-    }
-
-    function updateScore() {
-        document.getElementById("score").textContent = `Pisteet: ${score}`;
     }
 
     function startGame() {

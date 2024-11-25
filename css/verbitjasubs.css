@@ -409,3 +409,13 @@ footer h4 {
 }
 
 
+#overlay {
+    display: none; /* Piilotetaan oletuksena */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Läpinäkyvä tumma tausta */
+    z-index: 999; /* Varmistetaan, että se on muiden elementtien päällä */
+}
