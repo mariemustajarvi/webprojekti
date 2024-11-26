@@ -22,10 +22,10 @@ const questions = [
         
     },
     {
-        question: "Minkä värinen meduusa on?",
-        options: ["Musta", "Valkoinen", "Sininen"],
-        correct: "Sininen",
-        image: "./images/adjektiivipeli/jellyfish.png"
+        question: "Minkä värinen valas on?",
+        options: ["Musta", "Valkoinen", "Harmaa"],
+        correct: "Harmaa",
+        image: "./images/adjektiivipeli/wale.png"
        
     },
     {
@@ -165,10 +165,15 @@ function resetGame() {
     wrongAnswers = 0; // Nollaa väärien vastausten määrä
     currentQuestionIndex = 0; // Asettaa kysymyksen ensimmäiseen
     document.getElementById("result").textContent = ""; // Tyhjentää tulosviestin
-    displayQuestion(); // Aloittaa uuden pelin
-
-    // Näytetään ohjeet uudelleen
+    
+    // Näytetään ohjeet ja tulokset aluksi
+    const quizElement = document.getElementById("quiz");
     const instructionsElement = document.getElementById("instructions");
     instructionsElement.style.display = "block"; // Näytetään ohjeet uudelleen
+    quizElement.innerHTML = ""; // Tyhjentää mahdolliset tulokset ja painikkeet
+   
+
+    // Näytetään ensimmäinen kysymys
+    displayQuestion();
 }
 window.onload = displayQuestion;
