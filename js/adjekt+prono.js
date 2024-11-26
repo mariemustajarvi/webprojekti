@@ -26,7 +26,7 @@ function updateScore() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    let score = 0;
+    let score = loadScore(); // Käytä aiemmin tallennettuja pisteitä
     const maxScore = 50; // Maksimipisteet pelille
     let timeLeft = 30;
     let timer;

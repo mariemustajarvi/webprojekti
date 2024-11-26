@@ -28,7 +28,7 @@
 
 /* Taustakuva ja sen säilyttäminen täysikokoisena */
 body {
-    background-image: url('../img/elukat2.jpeg'); /* Taustakuva */
+    background-image: url('../img/elukat3.jpeg'); /* Taustakuva */
     background-color: var(--keltainen);
     margin: 0;
     font-family: "Barlow", serif;

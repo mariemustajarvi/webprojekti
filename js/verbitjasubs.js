@@ -165,14 +165,21 @@ document.addEventListener("DOMContentLoaded", () => {
             if (timeLeft > 0) {
                 timeLeft--;
                 timeDisplay.textContent = `Aikaa jäljellä: ${timeLeft}`;
-                if (timeLeft <= 10) timeDisplay.classList.add('sykkiva');
+                
+                // Lisää sykkivä-efekti vain viimeisen 10 sekunnin ajaksi
+                if (timeLeft <= 10) {
+                    timeDisplay.classList.add('sykkiva');
+                } else {
+                    timeDisplay.classList.remove('sykkiva');
+                }
             } else {
                 clearInterval(timer);
-                timeDisplay.classList.remove('sykkiva');
+                timeDisplay.classList.remove('sykkiva'); // Poista sykkivä-efekti ajan loputtua
                 checkPhaseTransition();
             }
         }, 1000);
     }
+    
 
     function startNounPhase() {
         currentPhase = "nouns";
