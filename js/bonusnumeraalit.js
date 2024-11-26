@@ -1,11 +1,16 @@
+let score = 0; // Globaalisti määritelty score-muuttuja
+
 // Lataa tallennetut pisteet localStoragesta
 function loadScore() {
-    let score = localStorage.getItem('playerScore');
-    if (score !== null) {
-        document.getElementById('score').innerText = `Pisteet: ${score}`;
-        return parseInt(score); // Palautetaan ladatut pisteet
+    let storedScore = localStorage.getItem('playerScore');
+    if (storedScore !== null) {
+        score = parseInt(storedScore, 10); // Päivitä globaali score tallennetulla arvolla
+        if (!isNaN(score)) {
+            document.getElementById('score').innerText = `Pisteet: ${score}`;
+            return score;
+        }
     }
-    return 0; // Jos ei ole tallennettu, palauta 0
+    return 0; // Jos tallennettu arvo ei ole kelvollinen, palauta 0
 }
 
 // Tallenna pistemäärä localStorageen
@@ -20,7 +25,7 @@ function updateScore() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    let score = loadScore(); // Käytä aiemmin tallennettuja pisteitä
+    score = loadScore(); // Lataa tallennetut pisteet globaaliin muuttujaan
     const maxScore = 50; // Maksimipisteet pelille
     let timeLeft = 30;
     let timer;
@@ -96,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (numerals.includes(word)) {
             button.style.backgroundColor = "green";
             button.style.color = "white";
-            score += 1;
+            score += 1; // Lisää piste globaaliin muuttujaan
             correctNumerals++;
         } else {
             button.style.backgroundColor = "red";
@@ -119,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showCompletionPopup() {
-        gameOver = true; // Estää pelin jatkumisen
+        gameOver = true; // Estetään pelin jatkuminen
         const overlay = document.getElementById("overlay");
         overlay.style.display = "block"; // Näytä taustakerros
         const popup = document.getElementById("numeral-popup"); // Numeralit popup
