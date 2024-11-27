@@ -129,6 +129,10 @@ button {
     margin-top: 20px;
 }
 
+#names {
+    font-size: 20px;
+}
+
 footer {
     margin-top: auto; /* Pysäyttää footerin alareunaan */
 }
