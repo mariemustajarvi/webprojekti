@@ -161,10 +161,17 @@ function displayResults() {
 
 // Resetoi pelin tilan ja aloittaa alusta
 function resetGame() {
+    console.log("Resetointi käynnistetty!");
     correctAnswers = 0; // Nollaa oikeiden vastausten määrä
     wrongAnswers = 0; // Nollaa väärien vastausten määrä
     currentQuestionIndex = 0; // Asettaa kysymyksen ensimmäiseen
-    document.getElementById("result").textContent = ""; // Tyhjentää tulosviestin
+    
+       // Tarkistetaan, että elementti on olemassa ennen kuin asetetaan sen sisältöä
+    const resultElement = document.getElementById("result");
+    if (resultElement) {
+        resultElement.textContent = ""; // Tyhjennetään tulosviesti
+    }
+    
     
     // Näytetään ohjeet ja tulokset aluksi
     const quizElement = document.getElementById("quiz");
@@ -176,4 +183,6 @@ function resetGame() {
     // Näytetään ensimmäinen kysymys
     displayQuestion();
 }
-window.onload = displayQuestion;
+window.onload = function() {
+    displayQuestion(); // Tämä varmistaa, että peli käynnistyy vasta, kun kaikki elementit ovat ladattuja
+};
