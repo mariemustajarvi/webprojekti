@@ -49,7 +49,9 @@
                     </ul>
                 </div>
         </nav>
-        <div class="row m-5 p-4 gap-1 justify-content-center align-items-center">
+    </div>
+    <div id="startgame-container"> <!--alkuun näkyvät elementit-->
+        <div class="row m-5 p-4 gap-1 justify-content-center align-items-center"> 
             <div class="col-md-4 mt-3">
                 <div class="container m-2">
                     <div class="d-flex justify-content-center align-items-center">
@@ -61,7 +63,7 @@
                                 <div>
                                     <p class="card-text text-center anton-regular"><br>Numeraaliluolassa pääset harjoittelemaan tietämystäsi numeraaleista. Pelissä on numeraaleja ja numeroita sisältäviä laatikoita, ja sinun tehtäväsi on yhdistää oikeat parit keskenään. Astu sisään!</p>
                                     <div class="d-flex justify-content-center">
-                                        <img src="./images/numeraaliluola/aloita_peli_nappi.png" class="w-50 h-auto" alt="Aloita-peli-nappi">
+                                        <img src="./images/numeraaliluola/aloita_peli_nappi.png" id="start-button" class="w-50 h-auto" alt="Aloita-peli-nappi">
                                     </div>
                                 </div>
                             </div>
@@ -73,6 +75,36 @@
                 <img src="./images/numeraaliluola/lepakko.png">
             </div>
         </div>
+    </div>
+    <div id="game-container" style="display: none;">
+        <div id="upper-parts" class="row justify-content-center"> <!--nämä esiin start-painikkeesta-->
+            <div id="box-3" class="col-md-2">
+                <img src="./images/numeraaliluola/pelilaatikko_3.png">
+            </div>
+            <div id="box-1" class="col-md-2">
+                <img src="./images/numeraaliluola/pelilaatikko_1.png">
+            </div>
+            <div id="box-1000" class="col-md-2">
+                <img src="./images/numeraaliluola/pelilaatikko_1000.png">
+            </div>
+            <div id="box-0" class="col-md-2">
+                <img src="./images/numeraaliluola/pelilaatikko_0.png">
+            </div>
+        </div>
+        <div id="bottom-parts" class="row justify-content-center"> <!--samaa-->
+            <div id="box-kolme" class="col-md-2">
+                <img src="./images/numeraaliluola/pelilaatikko_kolme.png">
+            </div>
+            <div id="box-yksi" class="col-md-2">
+                <img src="./images/numeraaliluola/pelilaatikko_yksi.png">
+            </div>
+            <div id="box-tuhat" class="col-md-2">
+                <img src="./images/numeraaliluola/pelilaatikko_tuhat.png">
+            </div>
+            <div id="box-nolla" class="col-md-2">
+                <img src="./images/numeraaliluola/pelilaatikko_nolla.png">
+            </div>
+    </div>
     </div>
     <div>  
         <div class="row">

@@ -155,6 +155,11 @@ body {
   padding: 1em;
 }
 
+#start-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3)
+}
+
 footer {
   background-color: var(--vihrea);
   color: var(--tummanvihrea);
