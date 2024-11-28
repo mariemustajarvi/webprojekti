@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateScore() {
-        document.getElementById("score").textContent = `Pisteet: ${score}/${maxScore}`;
+        document.getElementById("score").textContent = `Pisteet: ${score}`;
     }
 
     function checkPhaseTransition() {

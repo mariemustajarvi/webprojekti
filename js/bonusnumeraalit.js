@@ -1,5 +1,3 @@
-let score = 0; // Globaalisti määritelty score-muuttuja
-
 // Lataa tallennetut pisteet localStoragesta
 function loadScore() {
     let score = localStorage.getItem('playerScore');
@@ -21,14 +19,13 @@ function saveScore(score) {
     localStorage.setItem('playerScore', score);
 }
 
-// Päivittää pisteet ja tallentaa ne localStorageen
 function updateScore() {
     document.getElementById("score").textContent = `Pisteet: ${score}`;
-    saveScore(score); // Tallenna pisteet joka kerta, kun niitä päivitetään
+    saveScore(score); // Tallenna päivitetyt pisteet localStorageen
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    score = loadScore(); // Lataa tallennetut pisteet globaaliin muuttujaan
+    let score = loadScore(); // Käytä aiemmin tallennettuja pisteitä
     const maxScore = 50; // Maksimipisteet pelille
     let timeLeft = 30;
     let timer;
@@ -100,21 +97,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function checkAnswer(button, word) {
         if (gameOver) return;
-
+    
         if (numerals.includes(word)) {
             button.style.backgroundColor = "green";
             button.style.color = "white";
-            score += 1; // Lisää piste globaaliin muuttujaan
+            score += 1; // Lisää piste
             correctNumerals++;
         } else {
             button.style.backgroundColor = "red";
             button.style.color = "white";
             if (score > 0) score -= 1; // Vähennä piste, jos vastaus on väärin
         }
-        button.disabled = true;
-        updateScore();
-        checkCompletion();
+        button.disabled = true; // Estä painikkeen käyttö uudelleen
+        updateScore(); // Päivitä käyttöliittymä ja localStorage
+        checkCompletion(); // Tarkista, onko peli päättynyt
     }
+    
 
     function checkCompletion() {
         if (correctNumerals === numerals.length) {
