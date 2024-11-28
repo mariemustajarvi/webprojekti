@@ -226,58 +226,100 @@ footer h4 {
     }
 }
 
-/* Completion-popup (pelin loppu-ikkuna) */
-.completion-popup {
+/* Lopetusikkuna */
+#end-popup {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--keltainen);
-    border-radius: 20px;
-    padding: 40px;
+    border: 15px solid var(--tummanvihrea); /* Paksumpi kehys */
+    border-radius: 40px; /* Pyöreämmät kulmat */
+    padding: 50px; /* Lisää tilaa sisältöön */
     width: 90%;
-    max-width: 700px;
+    max-width: 700px; /* Suurempi leveys */
     text-align: center;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
-    font-family: "Barlow", serif;
-    font-size: 1.6rem;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4); /* Syvempi varjo */
+    font-family: "Anton", sans-serif;
+    font-size: 1.8rem; /* Suurempi teksti */
     color: var(--tummanvihrea);
     z-index: 1000;
     display: none; /* Piilotetaan oletuksena */
-    animation: fadeIn 1s ease-out, bounceIn 1s ease-out;
+    animation: popUp 0.8s ease-out;
+}
+
+/* Animaatio pop-up-ikkunalle */
+@keyframes popUp {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Teksti asettelu ja väli */
+#end-popup p {
+    font-size: 1.6rem; /* Suurempi tekstikoko */
+    font-weight: bold;
+    color: var(--tummanvihrea);
+    margin-bottom: 25px; /* Lisää tilaa tekstien väliin */
+    line-height: 1.6; /* Lisää riviväliä */
+}
+
+/* Tsemppiviesti */
+#final-message {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--vihrea-positiivinen);
+    margin-bottom: 35px;
 }
 
 
-.completion-popup p {
-    font-size: 1.4rem;
-    font-weight: bold;
+/* Pelaa uudelleen -painike */
+.play-again-button {
+    padding: 20px 50px;
+    background: linear-gradient(135deg, var(--vihrea) 0%, var(--keltainen) 100%);
     color: #000000;
-    margin-bottom: 25px;
-}
-
-.completion-popup button,
-.completion-popup a  {
-    padding: 15px 30px;
-    background-color: var(--vihrea-positiivinen);
-    color: white;
     border: none;
-    border-radius: 15px;
-    font-size: 1.6rem;
+    border-radius: 60px; /* Täysin pyöreät reunat */
+    font-size: 1.6rem; /* Isompi fonttikoko */
     font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
     text-transform: uppercase;
-    text-decoration: none; /* Poistaa alleviivauksen */
-    display: inline-block;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Syvempi varjo */
+    transition: transform 0.3s, background 0.3s;
 }
 
-.completion-popup button:hover,
-.completion-popup a:hover {
-    background-color: var(--tummanvihrea);
-    transform: scale(1.1);
+.play-again-button:hover {
+    transform: scale(1.15); /* Suurempi hover-efekti */
+    background: linear-gradient(135deg, var(--tummanvihrea) 0%, var(--vihrea) 100%);
 }
+
+/* Koriste-elementit */
+#end-popup::before {
+    content: "🌟"; /* Vaihdettu koristeena oleva symboli */
+    font-size: 3.5rem;
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: rotate 1.5s infinite linear; /* Pyörivä koriste-elementti */
+}
+
+/* Pyörimisanimaatio koristeelle */
+@keyframes rotate {
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    100% {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
 
 
 /* Overlay-tyyli */
@@ -292,38 +334,3 @@ footer h4 {
     z-index: 999; /* Ylimmälle kerrokselle */
 }
 
-/* Animaatio completion-popup-ikkunalle (fade-in ja bounce) */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes bounceIn {
-    0% {
-        transform: translate(-50%, -40%) scale(0.8);
-    }
-    60% {
-        transform: translate(-50%, -50%) scale(1.05);
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-}
-
-
-
-
-#overlay {
-    display: none; /* Piilotetaan oletuksena */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Läpinäkyvä tumma tausta */
-    z-index: 999; /* Varmistetaan, että se on muiden elementtien päällä */
-}
