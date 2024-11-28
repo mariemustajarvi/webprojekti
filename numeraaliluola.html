@@ -62,8 +62,8 @@
                                 </div>
                                 <div>
                                     <p class="card-text text-center anton-regular"><br>Numeraaliluolassa pääset harjoittelemaan tietämystäsi numeraaleista. Pelissä on numeraaleja ja numeroita sisältäviä laatikoita, ja sinun tehtäväsi on yhdistää oikeat parit keskenään. Astu sisään!</p>
-                                    <div class="d-flex justify-content-center">
-                                        <img src="./images/numeraaliluola/aloita_peli_nappi.png" id="start-button" class="w-50 h-auto" alt="Aloita-peli-nappi">
+                                    <div class="d-flex p-2 justify-content-center">
+                                        <img src="./images/numeraaliluola/nappi.svg" id="start-button" class="w-50 h-auto" alt="Aloita-peli-nappi">
                                     </div>
                                 </div>
                             </div>
@@ -76,45 +76,51 @@
             </div>
         </div>
     </div>
-    <div id="game-container" style="display: none;">
-        <div id="upper-parts" class="row justify-content-center"> <!--nämä esiin start-painikkeesta-->
-            <div id="box-3" class="col-md-2">
+    <!--nämä esiin start-painikkeesta-->
+    <div id="game-container" style="display: none;"> 
+        <div id="score-container" class=" col-md-1 p-3 m-4 text-center">
+            <h5>Pisteet: <span id="score">0</span>/5</h5>
+        </div>
+        <!-- yläosan laatikot -->
+        <div id="upper-parts" class="row justify-content-center"> 
+            <div id="box-kolme" class="col-md-1">
+                <img src="./images/numeraaliluola/pelilaatikko_kolme.png" class="draggable" data-value="3" id="draggable-3">
+            </div>
+            <div id="box-yksi" class="col-md-1">
+                <img src="./images/numeraaliluola/pelilaatikko_yksi.png" class="draggable" data-value="1" id="draggable-1">
+            </div>
+            <div id="box-tuhat" class="col-md-1">
+                <img src="./images/numeraaliluola/pelilaatikko_tuhat.png" class="draggable" data-value="1000" id="draggable-1000">
+            </div>
+            <div id="box-nolla" class="col-md-1">
+                <img src="./images/numeraaliluola/pelilaatikko_nolla.png" class="draggable" data-value="0" id="draggable-0">
+            </div>
+            <div id="box-kolmekymmenta" class="col-md-1">
+                <img src="./images/numeraaliluola/pelilaatikko_kolmekymmenta.png" class="draggable" data-value="30" id="draggable-30">
+            </div>
+        </div>   
+        <!-- alarivin pudotuskohteet -->
+        <div id="bottom-parts" class="row justify-content-center"> 
+            <div id="box-3" class="col-md-2" data-value="3">
                 <img src="./images/numeraaliluola/pelilaatikko_3.png">
             </div>
-            <div id="box-1" class="col-md-2">
+            <div id="box-1" class="col-md-2" data-value="1">
                 <img src="./images/numeraaliluola/pelilaatikko_1.png">
             </div>
-            <div id="box-1000" class="col-md-2">
+            <div id="box-1000" class="col-md-2" data-value="1000">
                 <img src="./images/numeraaliluola/pelilaatikko_1000.png">
             </div>
-            <div id="box-0" class="col-md-2">
+            <div id="box-0" class="col-md-2" data-value="0">
                 <img src="./images/numeraaliluola/pelilaatikko_0.png">
             </div>
-        </div>
-        <div id="bottom-parts" class="row justify-content-center"> <!--samaa-->
-            <div id="box-kolme" class="col-md-2">
-                <img src="./images/numeraaliluola/pelilaatikko_kolme.png">
-            </div>
-            <div id="box-yksi" class="col-md-2">
-                <img src="./images/numeraaliluola/pelilaatikko_yksi.png">
-            </div>
-            <div id="box-tuhat" class="col-md-2">
-                <img src="./images/numeraaliluola/pelilaatikko_tuhat.png">
-            </div>
-            <div id="box-nolla" class="col-md-2">
-                <img src="./images/numeraaliluola/pelilaatikko_nolla.png">
-            </div>
-    </div>
-    </div>
-    <div>  
-        <div class="row">
-            <div class="col">
-                <footer class="d-flex justify-content-center fixed-bottom">
-                    <h4 class="anton-regular">Ryhmä 4</h4>
-                </footer>
+            <div id="box-30" class="col-md-2" data-value="30">
+                <img src="./images/numeraaliluola/pelilaatikko_30.png">
             </div>
         </div>
-    </div>
+    </div>  
+    <footer class="d-flex justify-content-center fixed-bottom">
+        <h4 class="anton-regular">Ryhmä 4</h4>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="./js/numeraaliluola.js"></script>
 </body>

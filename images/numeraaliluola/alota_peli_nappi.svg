@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 275.14 95.72">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #e8dca4;
+        font-family: Anton-Regular, Anton;
+        font-size: 30.9px;
+      }
+
+      .cls-3 {
+        fill: #003e28;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="275.14" height="95.72"/>
+    </clipPath>
+  </defs>
+  <g class="cls-4">
+    <path class="cls-3" d="M137.57,95.72c75.98,0,137.57-21.43,137.57-47.86S213.55,0,137.57,0,0,21.43,0,47.86s61.59,47.86,137.57,47.86"/>
+  </g>
+  <text class="cls-2" transform="translate(76.17 63.31)"><tspan x="0" y="0">Aloita peli</tspan></text>
+</svg>
