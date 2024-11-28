@@ -35,6 +35,10 @@ main {
     flex-direction: column;
 }
 
+#symboldiv {
+    min-height: 2rem;
+}
+
 .answerBtn {
     padding: 0.5rem 5rem;
     border-radius: 8px;
