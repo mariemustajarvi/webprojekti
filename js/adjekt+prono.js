@@ -176,12 +176,13 @@ document.addEventListener("DOMContentLoaded", () => {
         popup.style.display = "block"; // Näytä ponnahdusikkuna
         document.getElementById("score-display").textContent = `${score}/${maxScore}`;
     
-        document.getElementById("completion-continue").onclick = () => {
-            popup.style.display = "none"; // Piilota ponnahdusikkuna
-            overlay.style.display = "none"; // Piilota taustakerros
-            gameOver = false; // Salli pelin jatkuminen, jos peliin lisätään jatko-osio
-            // Lisää tarvittaessa seuraavan vaiheen logiikka tähän
-        };
+        const nextPhaseLink = document.getElementById("start-next-phase");
+        if (nextPhaseLink) {
+            nextPhaseLink.onclick = () => {
+                popup.style.display = "none";
+                overlay.style.display = "none";
+            };
+        }
     }
     
 
