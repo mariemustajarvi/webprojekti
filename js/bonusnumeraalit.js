@@ -3,10 +3,10 @@ let score = 0; // Globaali pisteiden muuttuja
 // Lataa tallennetut pisteet localStoragesta
 function loadScore() {
     const savedScore = localStorage.getItem('playerScore');
-    return savedScore ? parseInt(savedScore) : 0; // Palautetaan tallennetut pisteet tai 0
+    return savedScore ? parseInt(savedScore, 10) : 0; // Palautetaan tallennetut pisteet tai 0
 }
 
-// Päivittää pisteet UI:hin
+// Päivittää pisteet käyttöliittymässä
 function updateScoreUI() {
     const scoreElement = document.getElementById("score");
     if (scoreElement) {
@@ -19,15 +19,16 @@ function saveScore() {
     localStorage.setItem('playerScore', score);
 }
 
-// Päivittää pisteet sekä tallentaa ne
+// Päivittää pisteet ja tallentaa ne
 function updateScore() {
-    saveScore(); // Tallentaa pisteet localStorageen
-    updateScoreUI(); // Päivittää UI
+    saveScore();
+    updateScoreUI();
 }
 
+// Kutsutaan, kun sivu ladataan
 document.addEventListener("DOMContentLoaded", () => {
-    score = loadScore(); // Lataa tallennetut pisteet
-    updateScoreUI(); // Näytä pisteet heti alussa
+    score = loadScore(); // Lataa tallennetut pisteet ja aseta ne globaaliin muuttujaan
+    updateScoreUI(); // Päivitä pisteet käyttöliittymässä aloituksessa
 
     const maxScore = 50; // Maksimipisteet pelille
     let timeLeft = 30;
@@ -50,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (gameOver) return;
 
         const container = document.getElementById("words-container");
-        container.innerHTML = ""; 
+        container.innerHTML = ""; // Tyhjennetään aiemmat sanat
         const existingElements = [];
 
         shuffle(allWords);
@@ -112,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (score > 0) score -= 1; // Vähennä piste, jos vastaus on väärin
         }
         button.disabled = true; // Estä painikkeen käyttö uudelleen
-        updateScore(); // Päivitä käyttöliittymä ja localStorage
+        updateScore(); // Päivitä käyttöliittymä ja tallennetaan pisteet
         checkCompletion(); // Tarkista, onko peli päättynyt
     }
 

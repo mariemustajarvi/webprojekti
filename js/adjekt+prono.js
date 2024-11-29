@@ -26,20 +26,20 @@ function updateScore() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    let score = loadScore(); // Käytä aiemmin tallennettuja pisteitä
-    const maxScore = 50; // Maksimipisteet pelille
+    let score = loadScore(); 
+    const maxScore = 50; 
     let timeLeft = 30;
     let timer;
-    let correctAdjectives = 0; // Track correct adjectives
-    let correctPronouns = 0; // Track correct pronouns
-    let currentPhase = "adjectives"; // Initial phase is "adjectives"
-    let gameOver = false; // Track whether the game is over
+    let correctAdjectives = 0; 
+    let correctPronouns = 0; 
+    let currentPhase = "adjectives"; 
+    let gameOver = false; 
 
     const adjectives = ["iso", "pieni", "kaunis", "nopea", "hiljainen", "punainen", "ystävällinen", "älykäs", "mukava", "vihreä"];
     const nonAdjectives = ["kissa", "hän", "me", "talo", "yksi", "tämä", "juosta", "pallo", "puu", "nukkua"];
     const allWords = [...adjectives, ...nonAdjectives];
     const pronouns = ["hän", "me", "te", "se", "tämä", "tuo", "nämä", "joka", "kuka", "mikä"];
-    const nonPronouns = ["hyvä", "nopea", "kaunis", "iso", "keltainen", "talo", "auto", "kirja", "kesä", "peli"]; // Fake pronouns
+    const nonPronouns = ["hyvä", "nopea", "kaunis", "iso", "keltainen", "talo", "auto", "kirja", "kesä", "peli"]; 
 
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
