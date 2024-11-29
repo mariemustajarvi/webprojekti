@@ -136,3 +136,12 @@ button {
 footer {
     margin-top: auto; /* Pysäyttää footerin alareunaan */
 }
+#team-box {
+    background-color: #f9f8e9; /* Vaalea harmaa tausta */
+    border: 1px solid #dee2e6; /* Hienovarainen reunus */
+    border-radius: 40px; /* Pyöristetyt kulmat */
+    padding: 20px; /* Sisämarginaalit */
+    margin: 10px; /* Ulkomarginaalit */
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1); /* Hieno varjo */
+    text-align: center; /* Kohdista teksti keskelle */
+}
