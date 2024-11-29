@@ -145,3 +145,25 @@ footer {
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1); /* Hieno varjo */
     text-align: center; /* Kohdista teksti keskelle */
 }
+
+
+/* Mobiilinäkymä: kortit allekkain */
+@media (max-width: 768px) {
+    #team-container {
+        flex-direction: column; /* Asettaa kaikki kortit päällekkäin */
+    }
+
+    #team-container > div {
+        flex: 1 1 100%; /* Kortit vievät 100% tilasta mobiilissa */
+        max-width: 100%;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+/*@media only screen and (max-width: 600px) {...}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/*@media only screen and (min-width: 600px) {...}
+
+/* Medium devices (landscape tablets, 768px and up) */
+/*@media only screen and (min-width: 768px) {...}
