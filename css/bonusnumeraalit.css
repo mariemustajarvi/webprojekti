@@ -334,3 +334,50 @@ footer h4 {
     z-index: 999; /* Ylimmälle kerrokselle */
 }
 
+/* Responsiivisuus */
+@media (min-width: 576px) {
+    .navbar-brand {
+        font-size: 2rem;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+    }
+
+    #game-title h3 {
+        font-size: 2.2rem;
+    }
+
+    .completion-popup {
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-brand {
+        font-size: 2.5rem;
+    }
+
+    #score, #time-left {
+        font-size: 1.2rem;
+    }
+
+    .completion-popup {
+        max-width: 600px;
+    }
+
+    #game-title h3 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    #words-container {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+    }
+}
