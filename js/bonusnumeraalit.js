@@ -1,37 +1,34 @@
+let score = 0; // Globaali pisteiden muuttuja
+
+// Lataa tallennetut pisteet localStoragesta
 function loadScore() {
-    let savedScore = localStorage.getItem('playerScore');
-    if (savedScore !== null) {
-        score = parseInt(savedScore); // Päivitä globaali muuttuja
-        const scoreElement = document.getElementById('score');
-        if (scoreElement) {
-            scoreElement.innerText = `Pisteet: ${score}`;
-        }
-    }
+    const savedScore = localStorage.getItem('playerScore');
+    return savedScore ? parseInt(savedScore) : 0; // Palautetaan tallennetut pisteet tai 0
 }
 
-
-// Lataa pisteet, kun sivu ladataan
-window.onload = () => {
-    score = loadScore(); // Aseta ladatut pisteet 'score' muuttujaan
-    loadScore(); // Päivitä näkyviin pisteet heti
-};
-
-// Tallenna pistemäärä localStorageen
-function saveScore(score) {
-    localStorage.setItem('playerScore', score);
-}
-
-function updateScore() {
+// Päivittää pisteet UI:hin
+function updateScoreUI() {
     const scoreElement = document.getElementById("score");
     if (scoreElement) {
         scoreElement.textContent = `Pisteet: ${score}`;
     }
-    saveScore(); // Tallenna päivitetyt pisteet
 }
 
+// Tallentaa pisteet localStorageen
+function saveScore() {
+    localStorage.setItem('playerScore', score);
+}
+
+// Päivittää pisteet sekä tallentaa ne
+function updateScore() {
+    saveScore(); // Tallentaa pisteet localStorageen
+    updateScoreUI(); // Päivittää UI
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-    let score = loadScore(); // Käytä aiemmin tallennettuja pisteitä
+    score = loadScore(); // Lataa tallennetut pisteet
+    updateScoreUI(); // Näytä pisteet heti alussa
+
     const maxScore = 50; // Maksimipisteet pelille
     let timeLeft = 30;
     let timer;
@@ -103,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function checkAnswer(button, word) {
         if (gameOver) return;
-    
+
         if (numerals.includes(word)) {
             button.style.backgroundColor = "green";
             button.style.color = "white";
@@ -118,50 +115,42 @@ document.addEventListener("DOMContentLoaded", () => {
         updateScore(); // Päivitä käyttöliittymä ja localStorage
         checkCompletion(); // Tarkista, onko peli päättynyt
     }
-    
 
     function checkCompletion() {
-        if (correctNumerals === numerals.length) {
+        if (correctNumerals === numerals.length || timeLeft <= 0) {
             clearInterval(timer);
-            showCompletionPopup();
-        } else if (timeLeft <= 0) {
-            clearInterval(timer);
+            saveScore(); // Tallennetaan pisteet pelin lopussa
             showCompletionPopup();
         }
     }
 
-    function showEndPopup() {
+    function showCompletionPopup() {
         gameOver = true; // Lopetetaan peli
         const overlay = document.getElementById("overlay");
-        overlay.style.display = "block"; // Näytä taustakerros
-    
-        const popup = document.getElementById("end-popup"); // Lopetusikkuna
-        popup.style.display = "block"; // Näytä lopetusikkuna
-    
-        // Näytä pisteet
-        document.getElementById("final-score-display").textContent = `${score}/50`;
-    
-        // Määritä tsemppiviesti pistemäärän mukaan
-        let tsemppiviesti = "";
-        if (score === 50) {
-            tsemppiviesti = "Uskomaton suoritus! Olet mestari!";
-        } else if (score >= 40) {
-            tsemppiviesti = "Mahtavaa! Olet todella taitava!";
-        } else if (score >= 30) {
-            tsemppiviesti = "Hyvin meni! Vielä hieman treeniä!";
-        } else {
-            tsemppiviesti = "Ei hätää, harjoitus tekee mestarin!";
+        if (overlay) overlay.style.display = "block";
+
+        const popup = document.getElementById("end-popup");
+        if (popup) {
+            popup.style.display = "block";
+            document.getElementById("final-score-display").textContent = `${score}/${maxScore}`;
+
+            // Lisätään tsemppiviesti
+            const messageElement = document.getElementById("final-message");
+            if (messageElement) {
+                let message = "";
+                if (score === maxScore) {
+                    message = "Uskomaton suoritus! Olet mestari!";
+                } else if (score >= 40) {
+                    message = "Mahtavaa! Olet todella taitava!";
+                } else if (score >= 30) {
+                    message = "Hyvin meni! Vielä hieman treeniä!";
+                } else {
+                    message = "Ei hätää, harjoitus tekee mestarin!";
+                }
+                messageElement.textContent = message;
+            }
         }
-    
-        document.getElementById("final-message").textContent = tsemppiviesti;
     }
-    
-    // Päivitä numeraalien lopetuspopup viittaamaan showEndPopup-funktioon
-    function showCompletionPopup() {
-        clearInterval(timer);
-        showEndPopup();
-    }
-    
 
     function startTimer() {
         const timeDisplay = document.getElementById("time-left");

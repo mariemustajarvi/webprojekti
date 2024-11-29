@@ -185,7 +185,7 @@ body::after {
 
 
 /* Pelin otsikko ja footer */
-#game-title h3, #game-title-pronominit h3 {
+#game-title h3 {
     font-family: "Anton", sans-serif; /* Sama fontti kuin navissa */
     font-size: 2.5rem;
     font-weight: bold;
