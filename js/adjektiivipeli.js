@@ -165,24 +165,27 @@ function resetGame() {
     correctAnswers = 0; // Nollaa oikeiden vastausten määrä
     wrongAnswers = 0; // Nollaa väärien vastausten määrä
     currentQuestionIndex = 0; // Asettaa kysymyksen ensimmäiseen
-    
-       // Tarkistetaan, että elementti on olemassa ennen kuin asetetaan sen sisältöä
+
+    // Tarkistetaan, että elementti on olemassa ennen kuin asetetaan sen sisältöä
     const resultElement = document.getElementById("result");
     if (resultElement) {
         resultElement.textContent = ""; // Tyhjennetään tulosviesti
     }
-    
-    
+
     // Näytetään ohjeet ja tulokset aluksi
-    const quizElement = document.getElementById("quiz");
+    const quizElement = document.getElementById("quiz-form");
     const instructionsElement = document.getElementById("instructions");
-    instructionsElement.style.display = "block"; // Näytetään ohjeet uudelleen
-    quizElement.innerHTML = ""; // Tyhjentää mahdolliset tulokset ja painikkeet
-   
+    if (instructionsElement) {
+        instructionsElement.style.display = "block"; // Näytetään ohjeet uudelleen
+    }
+    if (quizElement) {
+        quizElement.innerHTML = ""; // Tyhjentää mahdolliset tulokset ja painikkeet
+    }
 
     // Näytetään ensimmäinen kysymys
     displayQuestion();
 }
+
 window.onload = function() {
     displayQuestion(); // Tämä varmistaa, että peli käynnistyy vasta, kun kaikki elementit ovat ladattuja
 };

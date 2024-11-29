@@ -133,9 +133,7 @@ button {
     font-size: 20px;
 }
 
-footer {
-    margin-top: auto; /* Pysäyttää footerin alareunaan */
-}
+
 #team-box {
     background-color: #f9f8e9; /* Vaalea harmaa tausta */
     border: 1px solid #dee2e6; /* Hienovarainen reunus */
