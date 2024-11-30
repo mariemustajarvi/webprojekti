@@ -70,27 +70,13 @@
                     </div>
                     <div id="gameContainer">
                         <div id="popup">
-                            <h2 class="anton-regular">Oikein!</h2>
+                            <h2 id="popupTitle" class="anton-regular"></h2>
                             <img src="" id="popupPic">
-                            <p class="barlow-medium">Leijona <b>juo</b> vettä</p>
+                            <p id="verbText" class="barlow-medium"></p>
                             <div id="conjContainer" class="barlow-regular">
-                                <ul>
-                                    <li>Minä juon</li>
-                                    <li>Minä juon</li>
-                                    <li>Minä juon</li>
-                                    <li>Minä juon</li>
-                                    <li>Minä juon</li>
-                                    <li>Minä juon</li>
-                                    <li>Minä juon</li>
+                                <ul id="posConjs">
                                 </ul>
-                                <ul>
-                                    <li>Minä juon</li>
-                                    <li>Minä juon</li>
-                                    <li>Minä juon</li>
-                                    <li>Minä juon</li>
-                                    <li>Minä juon</li>
-                                    <li>Minä juon</li>
-                                    <li>Minä juon</li>
+                                <ul id="negConjs">
                                 </ul>
                             </div>
                             <button id="nextVerbBtn">Seuraava</button>
@@ -112,6 +98,21 @@
                                 <div id="answerBtnContainer">
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div id="scoreContainer">
+                        <div class="row">
+                            <div class="col d-flex justify-content-center">
+                                <h1><h1 id="gameTitleText" class="anton-regular">VERBIVIIDAKKO</h1></h1>
+                            </div>
+                        </div>
+                        <div class="row">   
+                            <div class="col d-flex justify-content-center">
+                                <p id="scoreCount"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button id="restartBtn">Pelaa uudestaan</button>
                         </div>
                     </div>
                 </div>

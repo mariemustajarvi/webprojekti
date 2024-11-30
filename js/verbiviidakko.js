@@ -12,12 +12,21 @@ const popup = document.querySelector('#popup')
 const popupPic = document.querySelector('#popupPic')
 const overlay = document.querySelector('#overlay')
 const nextBtn = document.querySelector('#nextVerbBtn')
+const posConjs = document.querySelector('#posConjs')
+const negConjs = document.querySelector('#negConjs')
+const verbText = document.querySelector('#verbText')
+const popupTitle = document.querySelector('#popupTitle')
+
+const scoreContainer = document.querySelector('#scoreContainer')
+const scoreCount = document.querySelector('#scoreCount')
+const restartBtn = document.querySelector('#restartBtn')
 
 const maxRounds = 10
 
 let askedVerb = ''
 let corrAnswers = 0;
 let gameRound = 0;
+let question = ''
 
 const showElement = (element) => {
     element.style.display = 'block'
@@ -56,12 +65,41 @@ startBtn.addEventListener('click', () => {
 })
 
 nextBtn.addEventListener('click', () => {
+    if (gameRound === maxRounds) {
+        hideElement(overlay)
+        hideElement(popup)
+        hideElement(gameContainer)
+
+        scoreCount.innerHTML = 'Pisteesi: ' + corrAnswers + '/10.'
+        showElement(scoreContainer)
+    } else {
+        buildGame()
+        hideElement(overlay)
+        hideElement(popup)
+    }
+})
+
+restartBtn.addEventListener('click', () => {
+    hideElement(scoreContainer)
+    gameRound = 0
+    symbolDiv.innerHTML = ''
     buildGame()
-    hideElement(overlay)
-    hideElement(popup)
+    showElement(gameContainer)
 })
 
 const showVerbInfo = () => {
+    posConjs.innerHTML = ''
+    negConjs.innerHTML = ''
+    verbText.innerHTML = question.sentence
+
+    for (let i = 0; i < question.conjsPos.length; i++) {
+        posConjs.innerHTML += '<li>'+ question.conjsPos[i] + '</li>'
+    }
+
+    for (let i = 0; i < question.conjsNeg.length; i++) {
+        negConjs.innerHTML += '<li>'+ question.conjsNeg[i] + '</li>'
+    }
+
     showElement(overlay)
     showFlexElement(popup)
     if (gameRound === maxRounds) {
@@ -74,10 +112,13 @@ verbButtons.addEventListener('click', (e) => {
         gameRound++
 
         if (e.target.nodeName === 'BUTTON') {
+            // Katso onko napin teksti kysytty verbi, eli vastattiinko oikein.
             if (e.target.innerHTML == askedVerb) {
+                popupTitle.innerHTML = 'Oikein!'
                 updateSymbols('correct')
                 corrAnswers += 1
             } else {
+                popupTitle.innerHTML = 'Väärin!'
                 updateSymbols('wrong')
             }
         }
@@ -89,10 +130,13 @@ verbButtons.addEventListener('click', (e) => {
 const buildGame = () => {
     // Arvo mitä verbiä kysytään
     const questenNo = Math.floor(Math.random() * questions.length)
-    const question = questions[questenNo]
+    question = questions[questenNo]
+    // Tallenna haettu verbi eli oikea vastaus muuttujaan.
     askedVerb = question.verb
     setGamePic(question.img)
+    // Tehdään array johon lisätään näytettävien nappien verbit.
     let questionVerbs = []
+    // Lisätään kysytty verbi listaan.
     questionVerbs.push(question.verb)
     // Arvo muut verbit. Jos arvottu verbi on jo listassa, arvo uusi verbi kunnes on kysytty verbi ja 3 satunnaista verbiä.
     while (questionVerbs.length < 4) {

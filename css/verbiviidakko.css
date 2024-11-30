@@ -23,7 +23,8 @@ body {
 #startupContainer {
     background-color: var(--keltainen);
     border: 2px solid black;
-    width: 60%;
+    width: 80%;
+    max-width: 1000px;
     margin-top: 3rem;
     padding: 1rem;
 }
@@ -42,7 +43,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 40%;
-    max-width: 900px;
+    max-width: 1000px;
     padding: 1rem 2rem;
     flex-direction: column;
     border: 1px solid black;
@@ -84,7 +85,7 @@ body {
     background-color: var(--keltainen);
     border: 2px solid black;
     width: 80%;
-    max-width: 900px;
+    max-width: 1000px;
     margin-top: 3rem;
     padding: 1rem;
     margin-bottom: 5rem;
@@ -141,6 +142,16 @@ body {
 
 .wrongAnsw {
     color: rgb(200, 0, 0);
+}
+
+#scoreContainer {
+    display: none;
+    background-color: var(--keltainen);
+    border: 2px solid black;
+    width: 80%;
+    max-width: 1000px;
+    margin-top: 3rem;
+    padding: 1rem;
 }
 
 @media (max-width: 992px) {
