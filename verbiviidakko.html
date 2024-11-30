@@ -13,6 +13,7 @@
     <title>Sanaseikkailija</title>
 </head>
 <body>
+    <div id="overlay"></div>
     <div id="mainContainer" class="container-fluid">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
@@ -68,22 +69,46 @@
                         </div>
                     </div>
                     <div id="gameContainer">
+                        <div id="popup">
+                            <h2 class="anton-regular">Oikein!</h2>
+                            <img src="" id="popupPic">
+                            <p class="barlow-medium">Leijona <b>juo</b> vettä</p>
+                            <div id="conjContainer" class="barlow-regular">
+                                <ul>
+                                    <li>Minä juon</li>
+                                    <li>Minä juon</li>
+                                    <li>Minä juon</li>
+                                    <li>Minä juon</li>
+                                    <li>Minä juon</li>
+                                    <li>Minä juon</li>
+                                    <li>Minä juon</li>
+                                </ul>
+                                <ul>
+                                    <li>Minä juon</li>
+                                    <li>Minä juon</li>
+                                    <li>Minä juon</li>
+                                    <li>Minä juon</li>
+                                    <li>Minä juon</li>
+                                    <li>Minä juon</li>
+                                    <li>Minä juon</li>
+                                </ul>
+                            </div>
+                            <button id="nextVerbBtn">Seuraava</button>
+                        </div>
                         <div class="row">
-                            <div class="col d-flex justify-content-center">
+                            <div class="col-12 d-flex justify-content-center">
                                 <h1 id="gameTitleText" class="anton-regular">VERBIVIIDAKKO</h1>
                             </div>
                         </div>
                         <div class="row">
-                            <div id="symboldiv" class="col d-flex justify-content-center flex-wrap">
+                            <div id="symboldiv" class="col d-flex justify-content-center align-items-center">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col d-flex justify-content-center">
+                            <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
                                 <img src="./images/verbiviidakko/gamepics/1.png" alt="" id="gamepic">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col d-flex justify-content-center">
+                            <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
                                 <div id="answerBtnContainer">
                                 </div>
                             </div>

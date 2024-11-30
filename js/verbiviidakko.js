@@ -8,11 +8,28 @@ const symbolDiv = document.querySelector('#symboldiv')
 const gamepic = document.querySelector('#gamepic')
 const verbButtons = document.querySelector('#answerBtnContainer')
 
+const popup = document.querySelector('#popup')
+const popupPic = document.querySelector('#popupPic')
+const overlay = document.querySelector('#overlay')
+const nextBtn = document.querySelector('#nextVerbBtn')
+
 const maxRounds = 10
 
 let askedVerb = ''
 let corrAnswers = 0;
 let gameRound = 0;
+
+const showElement = (element) => {
+    element.style.display = 'block'
+}
+
+const showFlexElement = (element) => {
+    element.style.display = 'flex'
+}
+
+const hideElement = (element) => {
+    element.style.display = 'none'
+}
 
 const verbs = ['Maata', 'Juoda', 'Karjua', 'Kiivetä', 'Roikkua', 'Nukkua', 'Haukotella', 'Lentää', 'Syödä', 'Nuolla', 'Kävellä', 'Kaivaa', 'Juosta', 'Lyödä', 'Hypätä']
 
@@ -34,21 +51,28 @@ const questions = [
 ]
 
 startBtn.addEventListener('click', () => {
-    startupContainer.style.display = 'none'
-    gameContainer.style.display = 'block'
+    hideElement(startupContainer)
+    showElement(gameContainer)
+})
+
+nextBtn.addEventListener('click', () => {
+    buildGame()
+    hideElement(overlay)
+    hideElement(popup)
 })
 
 const showVerbInfo = () => {
-    if (gameRound < maxRounds) {
-        buildGame()
-    } else {
-        console.log('peli loppu');
+    showElement(overlay)
+    showFlexElement(popup)
+    if (gameRound === maxRounds) {
+        nextBtn.innerHTML = 'Pisteet'
     }
 }
 
 verbButtons.addEventListener('click', (e) => {
     if (gameRound < maxRounds) {
         gameRound++
+
         if (e.target.nodeName === 'BUTTON') {
             if (e.target.innerHTML == askedVerb) {
                 updateSymbols('correct')
@@ -87,6 +111,7 @@ const buildGame = () => {
 
 const setGamePic = (img) => {
     gamepic.src = './images/verbiviidakko/gamepics/' + img
+    popupPic.src = './images/verbiviidakko/gamepics/' + img
 }
 
 const buildButtons = (v) => {
