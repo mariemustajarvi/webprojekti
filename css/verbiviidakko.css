@@ -1,6 +1,6 @@
 /* Verbiviidakon CSS muotoilut */
 
-main {
+body {
     background-image: url("/images/verbiviidakko/viidakkotausta.jpg");
     background-color: var(--keltainen);
     background-position: center;
@@ -14,7 +14,17 @@ main {
     text-shadow: 0px 0px 5px var(--vihrea);
 }
 
+#startupContainer {
+    background-color: var(--keltainen);
+    width: 60%;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
 #gameContainer {
+    display: none;
     background-color: var(--keltainen);
     width: 60%;
     padding-top: 1rem;
