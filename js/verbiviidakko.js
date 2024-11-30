@@ -1,11 +1,18 @@
 'use strict'
 
+const startupContainer = document.querySelector('#startupContainer')
+const gameContainer = document.querySelector('#gameContainer')
+
+const startBtn = document.querySelector('#startBtn')
 const symbolDiv = document.querySelector('#symboldiv')
 const gamepic = document.querySelector('#gamepic')
 const verbButtons = document.querySelector('#answerBtnContainer')
 
+const maxRounds = 10
+
 let askedVerb = ''
 let corrAnswers = 0;
+let gameRound = 0;
 
 const verbs = ['Maata', 'Juoda', 'Karjua', 'Kiivetä', 'Roikkua', 'Nukkua', 'Haukotella', 'Lentää', 'Syödä', 'Nuolla', 'Kävellä', 'Kaivaa', 'Juosta', 'Lyödä', 'Hypätä']
 
@@ -26,16 +33,33 @@ const questions = [
     }
 ]
 
-verbButtons.addEventListener('click', (e) => {
-    if (e.target.nodeName === 'BUTTON') {
-        if (e.target.innerHTML == askedVerb) {
-            updateSymbols('correct')
-            corrAnswers += 1
-        } else {
-            updateSymbols('wrong')
-        }
+startBtn.addEventListener('click', () => {
+    startupContainer.style.display = 'none'
+    gameContainer.style.display = 'block'
+})
+
+const showVerbInfo = () => {
+    if (gameRound < maxRounds) {
+        buildGame()
+    } else {
+        console.log('peli loppu');
     }
-    buildGame()
+}
+
+verbButtons.addEventListener('click', (e) => {
+    if (gameRound < maxRounds) {
+        gameRound++
+        if (e.target.nodeName === 'BUTTON') {
+            if (e.target.innerHTML == askedVerb) {
+                updateSymbols('correct')
+                corrAnswers += 1
+            } else {
+                updateSymbols('wrong')
+            }
+        }
+
+        showVerbInfo()
+    }
 })
 
 const buildGame = () => {
