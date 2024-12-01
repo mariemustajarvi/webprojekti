@@ -73,7 +73,7 @@ footer h4 {
 /* etusivu */ 
 .etusivu {
     background-color: var(--vihrea);
-    background-image: url(images/substantiivisavanni/tervetuloa.png);
+    background-image: url(/images/substantiivisavanni/tervetuloa.png);
     background-size: contain;
     background-position: center;
     background-attachment: fixed;
