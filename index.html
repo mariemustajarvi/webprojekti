@@ -20,25 +20,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-wrap justify-content-end anton-regular">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Etusivu</a>
+                            <a class="nav-link" href="./index.html">Etusivu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Verbit</a>
+                            <a class="nav-link" href="./verbiviidakko.html">Verbit</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Adjektiivit</a>
+                            <a class="nav-link" href="./adjektiivipeli.html">Adjektiivit</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pronominit</a>
+                            <a class="nav-link" href="./pronominit.html">Pronominit</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Numeraalit</a>
+                            <a class="nav-link" href="./numeraaliluola.html">Numeraalit</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Substantiivit</a>
+                            <a class="nav-link" href="./substantiivi.html">Substantiivit</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sanaluokat</a>
+                            <a class="nav-link" href="./bonuspeli.html">Sanaluokat</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Pisteet</a>
@@ -49,36 +49,49 @@
                     </ul>
                 </div>
         </nav>
-        <div class="row m-5">
-            <div class="col-md-7 mt-5 d-flex justify-content-start">
+        <div id="pag-container" class="row m-5">
+            <div class="col-md-6 mt-1 gap-3 d-flex justify-content-start">
                 <div class="circle-layout">
-                    <img src="./images/etusivu/verbiviidakko_kuvake.png" alt="Verbiviidakko" class="icon-img">
-                    <img src="./images/etusivu/adjektiivimaailma_kuvake.png" alt="Adjektiivimaailma" class="icon-img">
-                    <img src="./images/etusivu/pronominiseikkailu_kuvake.png" alt="Pronominiseikkailu" class="icon-img">
-                    <img src="./images/etusivu/numeraaliluola_kuvake.png" alt="Numeraaliluola" class="icon-img">
-                    <img src="./images/etusivu/substantiivisavanni_kuvake.png" alt="Substantiivisavanni" class="icon-img">
-                    <img src="./images/etusivu/sanaluokkasaari_kuvake.png" alt="Sanaluokkasaari" class="icon-img">
+                    <div class="center-icon">
+                        <div class="overlay">
+                            <a href="./bonuspeli.html">
+                                <img src="./images/etusivu/sanaluokkasaari_kuvake.png" alt="Sanaluokkasaari" class="center-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="outer-icons">
+                        <a href="./verbiviidakko.html">
+                            <img src="./images/etusivu/verbiviidakko_kuvake.png" alt="Verbiviidakko" class="icon-img">
+                        </a>
+                        <a href="./adjektiivipeli.html">
+                            <img src="./images/etusivu/adjektiivimaailma_kuvake.png" alt="Adjektiivimaailma" class="icon-img">
+                        </a>
+                        <a href="./pronominit.html">
+                            <img src="./images/etusivu/pronominiseikkailu_kuvake.png" alt="Pronominiseikkailu" class="icon-img">
+                        </a>
+                        <a href="./numeraaliluola.html">
+                            <img src="./images/etusivu/numeraaliluola_kuvake.png" alt="Numeraaliluola" class="icon-img">
+                        </a>
+                        <a href="./substantiivi.html">
+                            <img src="./images/etusivu/substantiivisavanni_kuvake.png" alt="Substantiivisavanni" class="icon-img">
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-5 d-flex justify-content-end align-items-center">
                 <div class="card custom-box">
                     <div class="card-body">
-                        <h1 class="card-title anton-regular text-center">Tervetuloa Sanaseikkailuun!</h2>
+                        <h1 class="card-title anton-regular text-center">Tervetuloa Sanaseikkailuun!</h1>
                         <p class="card-text text-center anton-regular">
-                            <br>Tällä sivustolla voit seikkailla viidakossa verbien parissa, ratkoa adjektiivien arvoituksia, kohdata pronominihaasteet, tutkia numeraaliluolaa, selvittää tietämyksesi substantiiveista ja oppia tunnistamaan eri sanaluokat! 
-                            <br><br> Klikkaa haluamaasi aihetta ja aloita pelaaminen!
-                        </p>
+                            <br>Seikkaile viidakossa verbien parissa, ratko adjektiivien arvoituksia, kohtaa pronominihaasteita, tutki numeraaliluolaa ja selvitä tietämyksesi substantiiveista</p>
+                        <p class="card-text text-center anton-regular">Voit seurata pistesaldoasi pisteet-sivulta, ja kun olet saavuttanut xx pisteen tason, pääset testaamaan tietosi Sanaluokkasaarella.</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <footer class="d-flex justify-content-center fixed-bottom">
-                    <h4 class="anton-regular">Ryhmä 4</h4>
-                </footer>
-            </div>
-        </div>
+        <footer class="footer fixed-bottom">
+            <h4 class="anton-regular">Ryhmä 4</h4>
+        </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="./js/functions.js"></script>
