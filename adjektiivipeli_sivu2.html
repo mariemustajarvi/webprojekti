@@ -49,37 +49,34 @@
     </nav>
     
 
-    <div class="tausta">
-            <div class="sisalto">
-                <h1>Tervetuloa Merenalaiseen maailmaan!</h1>
-
-                <div class="content">
-                    <p id="instructions">Ohje: Valitse oikea vaihtoehto, joka kuvaa merenalaista asukkia</p>
-                    <div id="quiz">
-                        <p id="question-progress" class="text-muted" style="font-weight: bold;">Kysymys 1/6</p>
-                        <div id="question-container" class="d-flex gap-3 align-items-center">
-                            <img id="question-image" src="" alt="Kuva liittyen kysymykseen" class="img-fluid" style="width: 150px;">
-                            <h2 id="question-text" class="flex-grow-1"></h2>
-                        </div>
-                        <form id="quiz-form" class="d-flex flex-column gap-2">
-                            <!-- Vastausvaihtoehdot lisätään JavaScriptillä -->
-                        </form>
-                        <button id="check-button" onclick="checkAnswer()">Tarkista</button>
-                        <div id="result"></div>
-                    </div>
-                    
-                   
+    
+    <div class="sisalto">
+        <div class="content">
+            <h1>Tervetuloa Merenalaiseen maailmaan!</h1>
+            <p id="instructions">Ohje: Valitse oikea vaihtoehto, joka kuvaa merenalaista asukkia</p>
+            <div id="quiz">
+                <p id="question-progress" class="text-muted" style="font-weight: bold;">Kysymys 1/6</p>
+                <div id="question-container" class="d-flex gap-3 align-items-center">
+                    <img id="question-image" src="" alt="Kuva liittyen kysymykseen" class="img-fluid" style="width: 150px;">
+                    <h2 id="question-text" class="flex-grow-1"></h2>
                 </div>
-            </div>
-    </div>
-
-        <div class="row">
-            <div class="col">
-                <footer class="d-flex justify-content-center">
-                    <h4 class="anton-regular">Ryhmä 4</h4>
-                </footer>
+                <form id="quiz-form" class="d-flex flex-column gap-2">
+                    <!-- Vastausvaihtoehdot lisätään JavaScriptillä -->
+                </form>
+                <button id="check-button" onclick="checkAnswer()">Tarkista</button>
+                <div id="result"></div>
             </div>
         </div>
+    </div>
+    
+
+    <div class="row">
+        <div class="col">
+            <footer class="d-flex justify-content-center fixed-bottom">
+                <h4 class="anton-regular">Ryhmä 4</h4>
+            </footer>
+        </div>
+    </div>
     
 </body>
 <script src="./js/adjektiivipeli.js"></script>

@@ -7,24 +7,6 @@ body, html {
     overflow: auto; /* Lisää vierityspalkin, jos sisältö menee yli ruudun */
 }
 
-.tausta {
-    background: url(/images/adjektiivipeli/taustaorg.png);
-    height: 100%; /* Poistetaan min-height ja asetetaan korkeudeksi 100% */
-    
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Joustava tila ylhäältä ja alhaalta */
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    
-    
-}
 
 .star {
     width: 60px; /* Määrittele tähti-kuvan leveys */
@@ -34,28 +16,38 @@ body, html {
 }
 
 .sisalto {
-    padding-top: 50px; /* Lisätään tilaa ylhäältä */
-    padding-bottom: 30px; /* Lisätään tilaa alhaalta */
-    margin-left: 20px;
-    margin-right: 20px;
+    background: url(/images/adjektiivipeli/taustakuva.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    padding-top: 20px; 
+    padding-bottom: 30px; 
+    margin-left: 40px;
+    margin-right: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Varataan tilaa sisällölle ylhäältä */
-    align-items: center;
     
+    align-items: center;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Joustava tila ylhäältä ja alhaalta */
+    overflow: auto; /* Lisää vierityspalkin, jos sisältö menee yli ruudun */
 }
 
 
 h1 {
-    margin-top: 90px;
+    margin-top: 0px;
     text-align: center;
-    font-size: 30px; /* Pienennetään fonttikokoa */
-    margin-bottom: 20px;
+    font-size: 40px; 
+    margin-bottom: 40px;
 }
 
 p {
     text-align: center;
-    font-size: 30px; /* Pienennetään fonttikokoa */
+    font-size: 30px;
 }
 
 a {
@@ -65,10 +57,12 @@ a {
 button {
     display: block;
     margin: 20px auto; /* Keskittää painikkeen */
-    border: 2px solid rgb(36, 120, 254);
+    border: 2px solid rgb(7, 7, 7);
     border-radius: 50px;
-    font-size: 18px; /* Pienennetään fonttikokoa */
+    font-size: 20px; 
     padding: 15px 30px;
+    font-weight: bold;
+    
 }
 
 .content {
@@ -94,8 +88,9 @@ button {
 }
 
 #question-image {
-    width: 100px; /* Pienennetään kuvan kokoa */
+   
     height: auto;
+    margin-bottom: 50px;
 }
 
 #question-text-container {
@@ -106,8 +101,8 @@ button {
 }
 
 #question-text {
-    font-size: 20px; /* Pienennetään fonttikokoa */
-    margin: 0;
+    font-size: 30px; 
+    margin: 0px;
 }
 
 #quiz-form {
@@ -118,9 +113,13 @@ button {
 }
 
 #quiz-form label {
-    font-size: 18px; /* Pienennetään fonttikokoa */
+    font-size: 25px; 
     margin-bottom: 5px;
     display: block;
+}
+
+#quiz-form input[type="radio"] {
+    margin-right: 10px; /* Väli radionapin ja tekstin välillä */
 }
 
 #result {

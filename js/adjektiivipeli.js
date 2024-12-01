@@ -48,6 +48,8 @@ let currentQuestionIndex = 0; // Pitää kirjaa nykyisestä kysymyksestä
 let correctAnswers = 0; // Oikeiden vastausten määrä
 let wrongAnswers = 0; // Väärien vastausten määrä
 
+const quizCopy = document.getElementById("quiz").innerHTML
+
 // Näyttää kysymyksen 
 function displayQuestion() {
     const questionElement = document.getElementById("question-text");
@@ -161,6 +163,8 @@ function displayResults() {
 
 // Resetoi pelin tilan ja aloittaa alusta
 function resetGame() {
+    document.getElementById("quiz").innerHTML = quizCopy
+
     console.log("Resetointi käynnistetty!");
     correctAnswers = 0; // Nollaa oikeiden vastausten määrä
     wrongAnswers = 0; // Nollaa väärien vastausten määrä
