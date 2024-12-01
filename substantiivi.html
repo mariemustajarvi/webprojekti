@@ -3,44 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@100;400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/substantiivi.css">
     <title>Sanaseikkailija</title>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../webprojekti/css/substantiivi.css">
+
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <span class="navbar-brand">SANASEIKKAILIJA</span>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarMenu">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Etusivu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Verbit</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Adjektiivit</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Substantiivit</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Pronominit</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Numeraalit</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Sanaluokat</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <main class="etusivu mt-0">
-            <div class="text-overlay">
-                <h1>Tervetuloa Substantiivi Savannille!</h1><br>
-                <p>asjdklashdkshkdjhaskjdhasdhasd</p>
-                <a href="peli1.html" class="aloitusnappi">Aloita</a>
-            </div>
-        </main>
-        <footer class="text-center mt-0">
-            <p>Ryhmä 4</p>
-        </footer>
+    <nav class="navbar">
+        <span class="navbar-brand">SANASEIKKAILIJA</span>
+        <div class="navbar-links">
+            <a class="nav-link" href="#">Etusivu</a>
+            <a class="nav-link" href="#">Verbit</a>
+            <a class="nav-link" href="#">Adjektiivit</a>
+            <a class="nav-link" href="#">Pronominit</a>
+            <a class="nav-link" href="#">Numeraalit</a>
+            <a class="nav-link" href="#">Substantiivit</a>
+            <a class="nav-link" href="#">Sanaluokat</a>
+            <a class="nav-link" href="#">Pisteet</a>
+            <a class="nav-link" href="#">Info</a>
+        </div>
+    </nav>
+
+    <main class="etusivu">
+        <div class="tervetuloa-boksi">
+            <h1 class="tervetuloa-title">Tervetuloa Substantiivi Savanille!</h1>
+            <p class="tervetuloa-text">
+                Lähde unohtumattomalle seikkailulle, jossa pääset tapaamaan savannin asukkaita! 
+                Tunnistatko kaikki savannin eläimet?
+            </p>
+            <button id="aloita-btn" class="aloitusnappi">Aloita</button>
+        </div>
+    </main>
+
+    <div id="game-container" class="d-none">
+        <div class="game-content">
+            <h2 id="question" class="game-question">Kysymys tulee tähän</h2>
+            <div id="answers" class="answer-buttons"></div>
+        </div>
     </div>
-    <script src="../webprojekti/js/substantiivi.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ponnarit-->
+    <div id="feedback" class="feedback d-none">
+        <div id="feedback-box">
+            <p id="feedback-message"></p>
+            <button id="close-feedback" class="aloitusnappi">Jatka</button>
+        </div>
+    </div>
+
+    <footer>
+        <h4>Ryhmä 4</h4>
+    </footer>
+    <script src="js/substantiivi.js"></script>
 </body>
 </html>

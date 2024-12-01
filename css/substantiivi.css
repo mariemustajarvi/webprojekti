@@ -1,139 +1,255 @@
-/* Värimääritykset */
+/* basic värit */
 :root {
     --vihrea: #9ddca5;
     --tummanvihrea: #003e27;
     --keltainen: #e8dba4;
 }
 
-/* Fontit */
-body {
-    font-family: 'Anton', sans-serif;
+/* main tyylit*/
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Barlow", sans-serif;
     background-color: var(--keltainen);
-}
-
-/* Navigaatio */
-.navbar {
-    background-color: var(--vihrea);
-    height: 120px;
+    height: 100%;
     display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0;
 }
 
-.nav-link {
-    color: var(--tummanvihrea);
-    font-size: 28px;
-}
-
-.nav-link:hover {
-    color: var(--vihrea);
-    background-color: var(--tummanvihrea);
-}
-
-.navbar-brand {
-    font-size: 50px;
-    color: var(--tummanvihrea);
-}
-
-.navbar-brand-link {
-    color: var(--tummanvihrea);
-    font-size: 50px;
-    text-decoration: none;
-}
-
-/* Footer */
+/* footeri */
 footer {
     background-color: var(--vihrea);
     color: var(--tummanvihrea);
     text-align: center;
-    padding: 10px 0;
-    margin-top: 0;
+    padding: 5px 0;
+    font-family: "Anton", sans-serif;
+    font-size: 1.5rem;
+    margin-top: auto;
 }
 
-.etusivu {
-    background-image: url(./images/tervetuloa.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 700px;
+footer h4 {
     margin: 0;
-    padding: 0;
 }
 
-.text-overlay {
+/* navarit */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--vihrea);
+    padding: 1em;
+    font-family: "Anton", sans-serif;
+}
+
+.navbar-brand {
+    font-family: "Anton", sans-serif;
+    font-size: 3rem;
+    color: var(--tummanvihrea);
+}
+
+.navbar-links {
+    display: flex;
+    gap: 1em;
+}
+
+.nav-link {
+    font-size: 1.5rem;
+    color: var(--tummanvihrea);
+    text-decoration: none;
+    display: flex;
+}
+
+.nav-link:hover {
+    color: black;
+}
+
+/* etusivu */ 
+.etusivu {
+    background-color: var(--vihrea);
+    background-image: url(images/substantiivisavanni/tervetuloa.png);
+    background-size: contain;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    flex-grow: 1;
+    margin: 0;
+  }
+
+/* tervetuloa boksi */
+.tervetuloa-boksi {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: black;
-    font-size: 24px;
-    font-weight: bold;
+    background: linear-gradient(to bottom right, #9ddca5, #e8dba4);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.6);
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
 }
 
-.quiz-container {
-    text-align: center;
-    padding: 20px;
-}
-
-.quiz-image {
-    max-width: 100%;
-    height: auto;
-    border: 2px solid var(--vihrea);
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.options {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.option-btn {
-    background-color: var(--vihrea);
+.tervetuloa-title {
+    font-size: 2.5rem;
+    font-weight: 700;
     color: var(--tummanvihrea);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.option-btn:hover {
-    background-color: var(--tummanvihrea);
-    color: white;
+.tervetuloa-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 30px;
 }
 
-#feedback {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
+/* aloita */ 
 .aloitusnappi {
     display: inline-block;
     font-size: 1.25rem;
     font-weight: bold;
-    padding: 10px 20px;
-    background-color: #9ddca5;
-    color: #003e27;
+    padding: 15px 30px;
+    background-color: var(--vihrea);
+    color: var(--tummanvihrea);
     border: none;
-    border-radius: 5px;
-    text-align: center;
-    margin-top: 1.5rem;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease-in-out;
     text-decoration: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .aloitusnappi:hover {
-    background-color: #003e27;
+    background-color: var(--tummanvihrea);
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* peli kontti */
+
+.game-content {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.game-question {
+    font-size: 2rem; 
+    font-weight: bold;
+    color: var(--tummanvihrea);
+    margin-bottom: 20px;
+}
+
+.answer-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+}
+
+.answer-buttons button {
+    display: inline-block;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 15px 30px;
+    background-color: var(--vihrea);
+    color: var(--tummanvihrea);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    text-align: center;
+}
+
+.answer-buttons button:hover {
+    background-color: var(--tummanvihrea);
     color: white;
+    transform: scale(1.1); 
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); 
+}
+
+/* ponnarit */
+.feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to bottom right, #9ddca5, #e8dba4);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    z-index: 1000; 
+    display: none; 
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback.active {
+    display: block; 
+}
+
+.feedback-box {
+    background: linear-gradient(to bottom right, #9ddca5, #e8dba4);
+    color: var(--tummanvihrea);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+}
+
+.feedback-message {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.close-feedback {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: var(--vihrea);
+    color: var(--tummanvihrea);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.close-feedback:hover {
+    background-color: var(--tummanvihrea);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* piilotettu ellu*/
+
+.d-none {
+    display: none;
 }
