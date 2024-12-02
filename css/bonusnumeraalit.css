@@ -277,27 +277,45 @@ footer h4 {
     margin-bottom: 35px;
 }
 
-
 /* Pelaa uudelleen -painike */
 .play-again-button {
-    padding: 20px 50px;
-    background: linear-gradient(135deg, var(--vihrea) 0%, var(--keltainen) 100%);
+    font-family: "Anton", sans-serif;
+    font-size: 1.8rem;
     color: #000000;
-    border: none;
-    border-radius: 60px; /* Täysin pyöreät reunat */
-    font-size: 1.6rem; /* Isompi fonttikoko */
-    font-weight: bold;
-    text-transform: uppercase;
+    background-color: #f0935d;
+    padding: 1em 0; /* Poistetaan sivupadding */
+    border-radius: 10px;
     text-decoration: none;
-    cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Syvempi varjo */
-    transition: transform 0.3s, background 0.3s;
+    border: 3px solid #ff5722;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(255, 87, 34, 0.3);
+    margin: 20px auto;
+    max-width: 400px;
+    width: 95%;
+    text-align: center;
+    white-space: nowrap; /* Estää tekstin rivittymisen */
+    text-align: center; /* Varmistaa tekstin keskityksen */
+    line-height: 1; /* Tasapainottaa tekstin pystysuunnassa */
+    display: flex; /* Varmistaa täydellisen keskityksen */
+    justify-content: center; /* Keskittää sisällön vaakasuunnassa */
+    align-items: center; /* Keskittää sisällön pystysuunnassa */
 }
 
+/* Hover-tila: kun painike on aktiivinen */
 .play-again-button:hover {
-    transform: scale(1.15); /* Suurempi hover-efekti */
-    background: linear-gradient(135deg, var(--tummanvihrea) 0%, var(--vihrea) 100%);
+    background-color: #ff5722;
+    color: #ffffff;
+    transform: scale(1.15);
+    box-shadow: 0 8px 15px rgba(255, 87, 34, 0.5);
 }
+
+
+
+
+
 
 /* Koriste-elementit */
 #end-popup::before {
