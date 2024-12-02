@@ -73,7 +73,7 @@ footer h4 {
 /* etusivu */ 
 .etusivu {
     background-color: var(--vihrea);
-    background-image: url(/images/substantiivisavanni/tervetuloa.png);
+    background-image: url(../images/substantiivisavanni/tervetuloa.png);
     background-size: contain;
     background-position: center;
     background-attachment: fixed;
@@ -136,7 +136,6 @@ footer h4 {
 }
 
 /* peli kontti */
-
 .game-content {
     position: absolute;
     top: 80%;
@@ -149,7 +148,7 @@ footer h4 {
     gap: 20px;
     padding: 30px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.8);
+    background: linear-gradient(to bottom right, #9ddca5, #e8dba4); 
     border-radius: 15px; 
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
 }
@@ -191,7 +190,7 @@ footer h4 {
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); 
 }
 
-/* ponnarit */
+/* ponnari*/
 .feedback {
     position: fixed;
     top: 50%;
@@ -204,17 +203,17 @@ footer h4 {
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
     max-width: 400px;
     width: 90%;
-    z-index: 1000; 
+    z-index: 1000;
     display: none; 
     align-items: center;
     justify-content: center;
 }
 
 .feedback.active {
-    display: block; 
+    display: block;
 }
 
-.feedback-box {
+.feedback-box, .end-box {
     background: linear-gradient(to bottom right, #9ddca5, #e8dba4);
     color: var(--tummanvihrea);
     padding: 20px;
@@ -225,10 +224,12 @@ footer h4 {
     width: 90%;
 }
 
-.feedback-message {
+.feedback-message, .end-message {
     font-size: 1.5rem;
     font-weight: bold;
+    color: var(--tummanvihrea);
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .close-feedback {
@@ -248,7 +249,42 @@ footer h4 {
     transform: scale(1.1);
 }
 
-/* piilotettu ellu*/
+/* lopputulos */
+.end-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: calc(100vh - 100px); 
+    text-align: center;
+    background-color: var(--vihrea); 
+    background-image: url(../images/substantiivisavanni/loppu.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative; 
+}
+
+.restart-btn, .home-btn {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px 30px;
+    background-color: var(--vihrea);
+    color: var(--tummanvihrea);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.restart-btn:hover, .home-btn:hover {
+    background-color: var(--tummanvihrea);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* piilotettu elementti */
 
 .d-none {
     display: none;

@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@100;400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/substantiivi.css">
     <title>Sanaseikkailija</title>
-
 </head>
 <body>
     <nav class="navbar">
@@ -44,11 +43,20 @@
         </div>
     </div>
 
-    <!-- ponnarit-->
+    <!-- Mukautettu ilmoitus -->
     <div id="feedback" class="feedback d-none">
         <div id="feedback-box">
-            <p id="feedback-message"></p>
+            <p id="feedback-message" class="feedback-message"></p>
             <button id="close-feedback" class="aloitusnappi">Jatka</button>
+        </div>
+    </div>
+
+    <!-- loparit -->
+    <div id="end-screen" class="end-screen d-none">
+        <div class="end-box">
+            <p id="end-message" class="end-message"></p>
+            <button id="restart-btn" class="restart-btn">Pelaa uudelleen</button>
+            <button id="home-btn" class="home-btn">Etusivulle</button>
         </div>
     </div>
 
@@ -58,3 +66,4 @@
     <script src="js/substantiivi.js"></script>
 </body>
 </html>
+
