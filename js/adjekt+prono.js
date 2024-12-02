@@ -170,6 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showCompletionPopup() {
         gameOver = true; // Estää pelin jatkumisen
+        saveScore(score);
         const overlay = document.getElementById("overlay");
         overlay.style.display = "block"; // Näytä taustakerros
         const popup = document.getElementById("pronoun-popup"); // Muutettu id

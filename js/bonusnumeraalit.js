@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const messageElement = document.getElementById("final-message");
             if (messageElement) {
                 let message = "";
-                if (score === maxScore) {
+                if (score >= 45) {
                     message = "Uskomaton suoritus! Olet mestari!";
                 } else if (score >= 40) {
                     message = "Mahtavaa! Olet todella taitava!";
