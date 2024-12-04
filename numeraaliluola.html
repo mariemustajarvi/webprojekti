@@ -51,7 +51,7 @@
         </nav>
     </div>
     <div id="startgame-container"> <!--alkuun näkyvät elementit-->
-        <div class="row m-5 p-4 gap-1 justify-content-center align-items-center"> 
+        <div class="row m-5 p-5 gap-1 justify-content-center align-items-center"> 
             <div class="col-md-4 mt-3">
                 <div class="container m-2">
                     <div class="d-flex justify-content-center align-items-center">
@@ -78,44 +78,45 @@
     </div>
     <!--nämä esiin start-painikkeesta-->
     <div id="game-container" style="display: none;"> 
-        <div id="score-container" class=" col-md-1 p-3 m-4 text-center">
-            <h5>Pisteet: <span id="score">0</span>/5</h5>
+        <div id="score-container" class="anton-regular col-md-2 m-4 text-center">
+            <p>Pisteet: <span id="score">0</span> / <span id="total-pairs">0</span></p>
+            <p>Virheelliset pudotukset: <span id="errors">0</span></p>
+            <div id="notification" class="anton-regular"></div> <!-- ilmoitukset -->
         </div>
         <!-- yläosan laatikot -->
-        <div id="upper-parts" class="row justify-content-center"> 
-            <div id="box-kolme" class="col-md-1">
-                <img src="./images/numeraaliluola/pelilaatikko_kolme.png" class="draggable" data-value="3" id="draggable-3">
-            </div>
-            <div id="box-yksi" class="col-md-1">
-                <img src="./images/numeraaliluola/pelilaatikko_yksi.png" class="draggable" data-value="1" id="draggable-1">
-            </div>
-            <div id="box-tuhat" class="col-md-1">
-                <img src="./images/numeraaliluola/pelilaatikko_tuhat.png" class="draggable" data-value="1000" id="draggable-1000">
-            </div>
-            <div id="box-nolla" class="col-md-1">
-                <img src="./images/numeraaliluola/pelilaatikko_nolla.png" class="draggable" data-value="0" id="draggable-0">
-            </div>
-            <div id="box-kolmekymmenta" class="col-md-1">
-                <img src="./images/numeraaliluola/pelilaatikko_kolmekymmenta.png" class="draggable" data-value="30" id="draggable-30">
-            </div>
+        <div id="upper-parts" class="row justify-content-center align-items-center text-center p-3">
         </div>   
         <!-- alarivin pudotuskohteet -->
-        <div id="bottom-parts" class="row justify-content-center"> 
-            <div id="box-3" class="col-md-2" data-value="3">
-                <img src="./images/numeraaliluola/pelilaatikko_3.png">
+        <div id="bottom-parts" class="row justify-content-center align-items-center gap-3 p-3"> 
+            <div class="target-box" data-value="1000">
+                <p class="anton-regular">1000</p>
             </div>
-            <div id="box-1" class="col-md-2" data-value="1">
-                <img src="./images/numeraaliluola/pelilaatikko_1.png">
+            <div class="target-box" data-value="3">
+                <p class="anton-regular">3</p>
             </div>
-            <div id="box-1000" class="col-md-2" data-value="1000">
-                <img src="./images/numeraaliluola/pelilaatikko_1000.png">
+            <div class="target-box" data-value="0">
+                <p class="anton-regular">0</p>
             </div>
-            <div id="box-0" class="col-md-2" data-value="0">
-                <img src="./images/numeraaliluola/pelilaatikko_0.png">
+            <div class="target-box" data-value="30">
+                <p class="anton-regular">30</p>
             </div>
-            <div id="box-30" class="col-md-2" data-value="30">
-                <img src="./images/numeraaliluola/pelilaatikko_30.png">
+            <div class="target-box" data-value="100">
+                <p class="anton-regular">100</p>
             </div>
+            <div class="target-box" data-value="22">
+                <p class="anton-regular">22</p>
+            </div>
+            <div class="target-box" data-value="15">
+                <p class="anton-regular">15</p>
+            </div>
+            <div class="target-box" data-value="2">
+                <p class="anton-regular">2</p>
+            </div>
+        </div>
+        <div id="final-box" class="final-box col-md-5 anton-regular justify-content-center align-items-center text-center" style="display: none;">
+            <h2>Onneksi olkoon!</h2>
+            <p>Olet suorittanut pelin!</p>
+            <p>Kokonaispisteet: <span id="final-score"></span>/16</p>
         </div>
     </div>  
     <footer class="d-flex justify-content-center fixed-bottom">

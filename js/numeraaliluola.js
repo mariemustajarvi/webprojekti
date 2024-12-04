@@ -8,73 +8,191 @@ startButton.addEventListener("click", () => {
     game.style.display = "block"
 })
 
-// drag-and-drop
 document.addEventListener("DOMContentLoaded", () => {
-    const upperParts = document.querySelectorAll("#upper-parts .draggable")
-    const bottomParts = document.getElementById("bottom-parts")
-    const scoreDisplay = document.getElementById("score")
-    let score = 0
-    const totalPairs = 5
+    const upperParts = document.getElementById("upper-parts");
+    const bottomParts = document.getElementById("bottom-parts");
+    const scoreDisplay = document.getElementById("score");
+    const errorsDisplay = document.getElementById("errors");
+    const notification = document.getElementById("notification");
+    const totalPairsDisplay = document.getElementById("total-pairs");
+    const finalBox = document.getElementById("final-box"); // lopputuloslaatikko
+    const finalScore = document.getElementById("final-score"); // kokonaispisteet
 
-    // raahattavat laatikot yläosaan
-    upperParts.forEach((item) => {
-        const randomX = Math.random() * (window.innerWidth - 100)
-        const randomY = Math.random() * (window.innerHeight / 2)
-        item.style.left = `${randomX}px`
-        item.style.top = `${randomY}px`
-        item.style.position = "absolute"
-        item.setAttribute("draggable", true)
-    })
+    let score = 0;
+    let errors = 0;
+    let currentRound = 1;
 
-    // raahauslogiikka
-    upperParts.forEach((item) => {
-        item.addEventListener("dragstart", (e) => {
-            e.dataTransfer.setData("text", e.target.id)
-        })
-    })
+    // ensimmäisen ja toisen pelin laatikot
+    const rounds = [
+        {
+            correctBoxes: [
+                { text: "Tuhat", value: "1000" },
+                { text: "Kolme", value: "3" },
+                { text: "Nolla", value: "0" },
+                { text: "Kolmekymmentä", value: "30" },
+                { text: "Sata", value: "100" },
+                { text: "Kaksikymmentäkaksi", value: "22" },
+                { text: "Viisitoista", value: "15" },
+                { text: "Kaksi", value: "2" },
+            ],
+            extraBoxes: [
+                { text: "Kolmetoista", value: "13" },
+                { text: "Neljäkymmentä", value: "40" },
+                { text: "Yhdeksän", value: "9" },
+                { text: "Viisi", value: "5" },
+            ],
+        },
+        {
+            correctBoxes: [
+                { text: "Miljoona", value: "1000000" },
+                { text: "Seitsemän", value: "7" },
+                { text: "Viisikymmentä", value: "50" },
+                { text: "Satatuhatta", value: "100000" },
+                { text: "Kymmenen", value: "10" },
+                { text: "Kaksikymmentä", value: "20" },
+                { text: "Sata", value: "100" },
+                { text: "Kolmekymmentäkolme", value: "33" },
+            ],
+            extraBoxes: [
+                { text: "Kaksisataa", value: "200" },
+                { text: "Kahdeksan", value: "8" },
+                { text: "Viisituhatta", value: "5000" },
+                { text: "Neljäkymmentäkaksi", value: "42" },
+            ],
+        },
+    ];
 
-    
-    bottomParts.addEventListener("dragover", (e) => {
-        e.preventDefault()
-    })
+    // näytetään pelin tulokset ja piilotetaan pelinäkymä
+    function showFinalResults() {
+        finalScore.textContent = score; // asetetaan kokonaispisteet lopputuloslaatikkoon
+        finalBox.style.display = "block"; // näytetään lopputuloslaatikko
+        upperParts.style.display = "none"; // piilotetaan pelialue
+        bottomParts.style.display = "none";
+    }
 
-    bottomParts.addEventListener("drop", (e) => {
-        e.preventDefault()
+    // uusi kerros
+    function startRound(roundIndex) {
+        const round = rounds[roundIndex];
+        upperParts.innerHTML = "";
+        bottomParts.innerHTML = "";
 
+        // lisätään staattiset kohdelaatikot
+        round.correctBoxes.forEach((box) => {
+            const targetBox = document.createElement("div");
+            targetBox.classList.add("target-box");
+            targetBox.setAttribute("data-value", box.value);
+            targetBox.innerHTML = `<p class="anton-regular">${box.value}</p>`;
+            bottomParts.appendChild(targetBox);
+        });
 
-        const draggedItemId = e.dataTransfer.getData("text")
-        const draggedItem = document.getElementById(draggedItemId)
+        // luodaan raahattavat laatikot
+        const allBoxes = [...round.correctBoxes];
 
+        // lisätään ylimääräiset laatikot ja järjestetään satunnaisesti
+        round.extraBoxes.forEach((box) => allBoxes.push(box));
+        allBoxes.sort(() => Math.random() - 0.5);
 
-        let targetBox = e.target.closest(".col-md-2")
-        if (!targetBox && e.target.tagName === "IMG") {
-            targetBox = e.target.parentElement.closest(".col-md-2")
-        }
+        // lisätään raahattavat laatikot yläosaan
+        allBoxes.forEach((box) => {
+            const draggableBox = document.createElement("div");
+            draggableBox.classList.add("draggable-box");
+            draggableBox.setAttribute("data-value", box.value);
+            draggableBox.setAttribute("draggable", "true");
+            draggableBox.innerHTML = `<p class="anton-regular">${box.text}</p>`;
+            draggableBox.style.position = "absolute";
+            draggableBox.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
+            draggableBox.style.top = `${Math.random() * (window.innerHeight / 2 - 100)}px`;
+            upperParts.appendChild(draggableBox);
+        });
 
-        if (targetBox) {
-            const targetValue = targetBox.getAttribute("data-value")
-            const draggedValue = draggedItem.getAttribute("data-value")
+        // päivitetään laskuri
+        totalPairsDisplay.textContent = round.correctBoxes.length;
 
-            if (targetValue === draggedValue) {
+        // lisätään drag-and-drop tapahtumat
+        addDragAndDropEvents();
+    }
 
-                targetBox.style.position = "relative"
-                draggedItem.style.position = "absolute"
-                draggedItem.style.left = "50%"
-                draggedItem.style.top = "50%"
-                draggedItem.style.transform = "translate(-50%, -50%)"
-                targetBox.appendChild(draggedItem)
+    // drag-and-drop-tapahtumafunktio
+    function addDragAndDropEvents() {
+        const draggableBoxes = document.querySelectorAll(".draggable-box");
+        const targetBoxes = document.querySelectorAll(".target-box");
 
-                score++
-                scoreDisplay.textContent = score
+        draggableBoxes.forEach((item) => {
+            item.addEventListener("dragstart", (e) => {
+                e.dataTransfer.setData("text", e.target.dataset.value);
+            });
+        });
 
-                if (score === totalPairs) {
-                    setTimeout(() => {
-                        alert("Kaikki parit yhdistetty! Hyvä työ!")
-                    }, 500); 
+        targetBoxes.forEach((box) => {
+            box.addEventListener("dragover", (e) => {
+                e.preventDefault();
+            });
+        
+            box.addEventListener("drop", (e) => {
+                e.preventDefault();
+        
+                const draggedValue = e.dataTransfer.getData("text");
+                const targetValue = box.getAttribute("data-value");
+        
+                if (draggedValue === targetValue) {
+                    const draggedItem = document.querySelector(`.draggable-box[data-value="${draggedValue}"]`);
+        
+                    if (draggedItem) {
+                        // varmistaa että elementti siirtyy oikeaan paikkaan
+                        draggedItem.style.position = "absolute";
+                        draggedItem.style.left = "50%";
+                        draggedItem.style.top = "50%";
+                        draggedItem.style.transform = "translate(-50%, -50%)";
+                        draggedItem.setAttribute("draggable", "false");
+        
+                        // siirretään pudotuskohteeseen
+                        box.appendChild(draggedItem);
+        
+                        // päivitetään pisteet
+                        score++;
+                        scoreDisplay.textContent = score;
+        
+                        // ilmoitus
+                        showNotification("Oikein!", "success");
+        
+                        // tarkistetaan, onko kierros päättynyt
+                        if (score % 8 === 0 && score !== 0) {
+                            if (currentRound < rounds.length) {
+                                currentRound++;
+                                setTimeout(() => {
+                                    startRound(currentRound - 1);
+                                }, 1000);
+                            } else {
+                                setTimeout(showFinalResults, 1000);
+                            }
+                        }
+                    } else {
+                        console.error("Dragged item not found:", draggedValue);
+                    }
+                } else {
+                    // lisätään virheellinen pudotus
+                    errors++;
+                    errorsDisplay.textContent = errors;
+        
+                    // ilmoitus
+                    showNotification("Väärä pari, yritä uudelleen!", "error");
                 }
-            } else {
-                alert("Väärä pari, yritä uudelleen!")
-            }
-        }
-    })
-})
+            });
+        });
+        
+    }
+
+    // ilmoitusten hallinta
+    function showNotification(message, type) {
+        notification.textContent = message;
+        notification.className = type === "success" ? "notification success" : "notification error";
+        notification.style.opacity = 1;
+
+        setTimeout(() => {
+            notification.style.opacity = 0;
+        }, 2000);
+    }
+
+    // aloitetaan ensimmäinen kierros
+    startRound(0);
+});

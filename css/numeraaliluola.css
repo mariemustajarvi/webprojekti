@@ -124,22 +124,23 @@
   
 /* Tyylimääritykset */
 
+/* yleiset body- ja html-tyylit */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   background-color: #003e27;
   background-image: url(../images/numeraaliluola/cave-tausta.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 110%;
-  margin: 0;
 }
 
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%; 
-  overflow: hidden; 
-}
-
+/* navi */
 .navbar {
   background-color: var(--vihrea);
   padding: 1em;
@@ -162,79 +163,149 @@ body, html {
   padding: 1em;
 }
 
+@media (min-width: 992px) {
+  .nav-link {
+      font-size: 1.5rem;
+  }
+}
+
+/* aloituspainike */
 #start-button {
-  border-radius: 50%; 
-  overflow: hidden; 
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #start-button:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3)
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+/* pelialueen container */
 #game-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
-  height: 100vh; 
-  overflow: hidden; 
-  padding: 0; 
-  margin: 0; 
-  flex: 1; 
+  justify-content: space-between;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
+/* pisteet-container */
 #score-container {
   background-color: #003e27;
   color: #ffead0;
   border-radius: 15px;
-  flex-shrink: 0; 
-  max-height: 20%; 
-  overflow: hidden; 
-
-}
-
-#upper-parts {
-  position: relative; 
-  height: 50%; 
-}
-
-#upper-parts .draggable {
-  position: absolute; 
-  cursor: grab;
+  padding: 1em;
+  max-height: 20%;
+  overflow: hidden;
 }
 
 #upper-parts,
 #bottom-parts {
-    flex: 1; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#bottom-parts {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40%; 
+}
+
+#upper-parts {
+  position: relative;
+  height: 50%;
+}
+
+#bottom-parts {
+  height: 10%;
   margin-bottom: 60px;
+}
+
+/* raahattavat laatikot */
+#upper-parts .draggable {
+  position: absolute;
+  cursor: grab;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.draggable-box {
+  width: 200px;
+  height: 80px;
+  border-radius: 8px;
+  background-color: #ffead0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #003e27;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: grab;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.draggable-box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+.draggable-box:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* paikallaan olevat laatikot */
+.target-box {
+  width: 200px;
+  height: 80px;
+  border: 3px dashed #003e27;
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #003e27;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#notification {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1em 2em;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 1000;
+}
+
+.notification.success {
+  background-color: #003e27; 
+}
+
+.notification.error {
+  background-color: #dc3545; 
+}
+
+#final-box {
+  background-color: #ffead0; 
+  border-radius: 15px; 
+  color: #003e27;
+  padding: 1em;
 }
 
 footer {
   background-color: var(--vihrea);
   color: var(--tummanvihrea);
-  flex-shrink: 0; 
   text-align: center;
-  padding: 10px;
+  padding: 0.7em;
 }
-
 
 footer h4 {
   margin: 0;
   padding: 0.4em 0 0.4em 0;
-}
-
-@media (min-width: 992px) {
-  .nav-link {
-    font-size: 1.5rem;
-  }
 }
