@@ -1,0 +1,222 @@
+body {
+    background-image: url('../img/elukat.jpeg'); /* Taustakuva */
+    background-size: cover; /* Kuva peittää koko ruudun */
+    background-position: center center; /* Keskittää kuvan */
+    background-attachment: fixed; /* Pitää kuvan paikoillaan skrollatessa */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Varmistaa, että body vie koko ruudun korkeuden */
+}
+
+/* Kuvan päälle lisättävä himmeä kerros */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Vaalea kerros */
+    z-index: -1; /* Asetetaan kerros taustalle */
+}
+
+/* Värimääritykset */
+:root {
+    --vihrea: #9ddca5;
+    --tummanvihrea: #003e27;
+    --keltainen: #e8dba4;
+    --cream: #ffead0; /* Lisätty puuttuva cream-väri */
+}
+
+/* Fonttimääritykset */
+
+.anton-regular {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.barlow-thin {
+    font-family: "Barlow", serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.barlow-light {
+    font-family: "Barlow", serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.barlow-regular {
+    font-family: "Barlow", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.barlow-bold {
+    font-family: "Barlow", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Tyylimääritykset */
+
+body {
+    background-color: var(--keltainen);
+    margin: 0;
+}
+
+.navbar {
+    background-color: var(--vihrea);
+    padding: 1em;
+}
+
+.navbar-brand {
+    color: var(--tummanvihrea);
+    font-size: 3rem;
+}
+
+.nav-link {
+    color: var(--tummanvihrea);
+    font-size: 1.2rem;
+}
+
+.custom-box {
+    background-color: var(--cream);
+    border-radius: 15px;
+    color: var(--tummanvihrea);
+    padding: 1em;
+}
+
+footer {
+    background-color: var(--vihrea);
+    color: var(--tummanvihrea);
+}
+
+footer h4 {
+    margin: 0;
+    padding: 0.4em 0;
+}
+
+@media (min-width: 992px) {
+    .nav-link {
+        font-size: 1.5rem;
+    }
+}
+
+.bonus-message-box {
+    background-color: #ffefd5; /* Pastellinen, lapsille mieluisa taustaväri */
+    padding: 2em;
+    border-radius: 20px; /* Korostetusti pyöristetyt kulmat */
+    margin: 20px auto;
+    text-align: center;
+    border: 5px dashed #f7000091; /* Hauska, lapsille sopiva "leikattu" reunus */
+    box-shadow: 0 8px 15px rgba(255, 182, 193, 0.5); /* Vaaleanpunainen varjo */
+    animation: pulse 2s infinite; /* Sykähtelevä animaatio */
+    max-width: 80%;
+    width: 800px; /* Leveys kasvatettu 50px:llä */
+}
+
+
+/* Teksti */
+.bonus-message-box h2 {
+    font-family: "Anton", sans-serif;
+    color: #000000; /* Musta teksti, selkeä ja kontrastikas */
+    font-size: 2rem;
+    font-weight: bold; /* Tekstistä tulee tukeva ja helppolukuinen */
+}
+
+.bonus-message-box p {
+    font-family: "Barlow", sans-serif;
+    color: #000000; /* Musta teksti, selkeä ja kontrastikas */
+    font-size: 1.2rem;
+    margin: 0.5em 0;
+}
+
+/* Animaatio: sykähtelevä laatikko */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05); /* Hieman isompi keskellä sykettä */
+    }
+}
+
+
+/* Bonusviestit */
+.bonus-texts p {
+    font-family: "Anton", sans-serif; /* Sama fontti kuin muissa */
+    color: #000000; /* Musta teksti */
+    font-weight: 400; /* Regular-paino */
+    text-align: center; /* Keskitetty teksti */
+    margin: 1em auto 0.5em auto; /* Keskittää laatikon ja lisää tilaa ylhäältä ja alhaalta */
+    background-color: rgba(255, 255, 255, 0.8); /* Vaalea tausta, jossa läpinäkyvyyttä */
+    padding: 1em; /* Lisää tilaa taustan ympärille */
+    border-radius: 10px; /* Pyöristetyt kulmat */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Kevyt varjo taustan ympärille */
+    max-width: 600px; /* Aseta enimmäisleveys, että laatikko ei vie koko sivua */
+    width: 90%; /* Laatikon leveys suhteessa vanhempaan elementtiin */
+}
+
+
+
+
+/* Aloita peli -linkki */
+.start-game-link {
+    font-family: "Anton", sans-serif;
+    font-size: 1.8rem;
+    color: #000000;
+    background-color: #f0935d;
+    padding: 1em 2em;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 3px solid #ff5722;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(255, 87, 34, 0.3);
+    margin: 20px auto; /* Lisää marginaalia ylhäältä ja alhaalta */
+    display: block; /* Varmistaa, että linkki vie oman rivinsä */
+    max-width: 350px; /* Rajoittaa linkin leveyttä */
+    width: 90%; /* 90% leveydestä suhteessa kontaineriin */
+    text-align: center; /* Keskittää linkin */
+}
+
+/* Hover-tila: kun linkki on aktiivinen */
+.start-game-link:hover {
+    background-color: #ff5722; /* Hoverilla vaihtuu kirkkaanpunaiseksi */
+    color: #ffffff; /* Tekstin väri pysyy valkoisena */
+    transform: scale(1.15); /* Linkki kasvaa hieman hoverilla, tekee siitä houkuttelevamman */
+    box-shadow: 0 8px 15px rgba(255, 87, 34, 0.5); /* Vahvempi varjo hoverilla */
+}
+
+/* Responsiiviset muutokset mobiilissa */
+@media (max-width: 576px) {
+    .start-game-link {
+        font-size: 1.5rem;
+        padding: 0.8em 1.5em;
+        width: 90%; /* Laajentaa linkkiä mobiilissa */
+    }
+}
+
+/* Mobiili (alle 576px) */
+@media (max-width: 576px) {
+    body {
+        padding-bottom: 100px; /* Lisää tilaa alareunaan, ettei linkki mene footerin alle */
+    }
+}
+
+/* Tabletti (576px - 992px) */
+@media (min-width: 576px) and (max-width: 992px) {
+    .start-game-link {
+        font-size: 1.7rem; /* Keskikokoinen fontti tabletille */
+        padding: 1em 2em;
+        width: 90%; /* Laajentaa linkkiä tabletissa */
+    }
+}
+
