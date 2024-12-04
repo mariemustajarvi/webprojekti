@@ -30,9 +30,16 @@ body {
 }
 
 #startBtn {
-    padding: 1rem;
-    border: 2px solid black;
-    border-radius: 20px;
+    padding: 0.5rem 5rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    background-color: var(--vihrea);
+    color: var(--tummanvihrea);
+    border-color: black;
+}
+
+#startBtn:hover {
+    background-color: rgb(180, 240, 205);
 }
 
 #popup {
@@ -123,6 +130,32 @@ body {
 
 .answerBtn + .answerBtn {
     margin-top: 1.5rem;
+}
+
+#nextVerbBtn {
+    padding: 0.2rem 2rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    background-color: var(--vihrea);
+    color: var(--tummanvihrea);
+    border-color: black;
+}
+
+#nextVerbBtn:hover {
+    background-color: rgb(180, 240, 205);
+}
+
+#restartBtn {
+    padding: 0.2rem 2rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    background-color: var(--vihrea);
+    color: var(--tummanvihrea);
+    border-color: black;
+}
+
+#restartBtn:hover {
+    background-color: rgb(180, 240, 205);
 }
 
 .material-symbols-outlined {

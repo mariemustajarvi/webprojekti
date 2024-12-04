@@ -27,6 +27,7 @@ let askedVerb = ''
 let corrAnswers = 0;
 let gameRound = 0;
 let question = ''
+let alreadyAsked = []
 
 const showElement = (element) => {
     element.style.display = 'block'
@@ -56,6 +57,62 @@ const questions = [
         sentence: 'Tiikeri <strong>juo</strong> vettä.',
         conjsPos: ['minä juon', 'sinä juot', 'hän juo', 'me juomme', 'te juotte', 'he juovat', 'passiivi: juodaan'],
         conjsNeg: ['en juo', 'et juo', 'ei juo', 'emme juo', 'ette juo', 'eivät juo', 'passiivi: ei juoda']
+    },
+    {
+        img: '2.png',
+        verb: 'Karjua',
+        sentence: 'Tiikeri <strong>karjuu</strong>.',
+        conjsPos: ['minä karjun', 'sinä karjut', 'hän karjuu', 'me karjumme', 'te karjutte', 'he karjuvat', 'passiivi: karjutaan'],
+        conjsNeg: ['en karju', 'et karju', 'ei karju', 'emme karju', 'ette karju', 'eivät karju', 'passiivi: ei karjuta']
+    },
+    {
+        img: '3.png',
+        verb: 'Kiivetä',
+        sentence: 'Laiskiainen <strong>kiipeää</strong>.',
+        conjsPos: ['minä kiipeän', 'sinä kiipeät', 'hän kiipeää', 'me kiipeämme', 'te kiipeätte', 'he kiipeävät', 'passiivi: kiivetään'],
+        conjsNeg: ['en kiipeä', 'et kiipeä', 'ei kiipeä', 'emme kiipeä', 'ette kiipeä', 'eivät kiipeä', 'passiivi: ei kiivetä']
+    },
+    {
+        img: '4.png',
+        verb: 'Roikkua',
+        sentence: 'Laiskiainen <strong>roikkuu</strong> oksasta.',
+        conjsPos: ['minä roikun', 'sinä roikut', 'hän roikkuu', 'me roikumme', 'te roikutte', 'he roikkuvat', 'passiivi: roikutaan'],
+        conjsNeg: ['en roiku', 'et roiku', 'ei roiku', 'emme roiku', 'ette roiku', 'eivät roiku', 'passiivi: ei roikuta']
+    },
+    {
+        img: '5.png',
+        verb: 'Nukkua',
+        sentence: 'Leopardi <strong>nukkuu</strong>.',
+        conjsPos: ['minä nukun', 'sinä nukut', 'hän nukkuu', 'me nukumme', 'te nukutte', 'he nukkuvat', 'passiivi: nukutaan'],
+        conjsNeg: ['en nuku', 'et nuku', 'ei nuku', 'emme nuku', 'ette nuku', 'eivät nuku', 'passiivi: ei nukuta']
+    },
+    {
+        img: '6.png',
+        verb: 'Haukotella',
+        sentence: 'Leopardi <strong>haukottelee</strong>.',
+        conjsPos: ['minä haukottelen', 'sinä haukottet', 'hän haukottelee', 'me haukottelemme', 'te haukottelette', 'he haukottelevat', 'passiivi: haukotellaan'],
+        conjsNeg: ['en haukottele', 'et haukottele', 'ei haukottele', 'emme haukottele', 'ette haukottele', 'eivät haukottele', 'passiivi: ei haukotella']
+    },
+    {
+        img: '7.png',
+        verb: 'Lentää',
+        sentence: 'Papukaija <strong>lentää</strong> taivaalla.',
+        conjsPos: ['minä lennän', 'sinä lennät', 'hän lentää', 'me lennämme', 'te lennätte', 'he lentävät', 'passiivi: lennetään'],
+        conjsNeg: ['en lennä', 'et lennä', 'ei lennä', 'emme lennä', 'ette lennä', 'eivät lennä', 'passiivi: ei lennetä']
+    },
+    {
+        img: '8.png',
+        verb: 'Syödä',
+        sentence: 'Gorilla <strong>syö</strong> kasvia.',
+        conjsPos: ['minä juon', 'sinä juot', 'hän juo', 'me juomme', 'te juotte', 'he juovat', 'passiivi: juodaan'],
+        conjsNeg: ['en juo', 'et juo', 'ei juo', 'emme juo', 'ette juo', 'eivät juo', 'passiivi: ei juoda']
+    },
+    {
+        img: '9.png',
+        verb: 'Nuolla',
+        sentence: 'Tiikeri <strong>nuolee</strong> käpälää.',
+        conjsPos: ['minä nuolen', 'sinä nuolet', 'hän nuolee', 'me nuolemme', 'te nuolette', 'he nuolevat', 'passiivi: nuollaan'],
+        conjsNeg: ['en nuole', 'et nuole', 'ei nuole', 'emme nuole', 'ette nuole', 'eivät nuole', 'passiivi: ei nuolla']
     }
 ]
 
@@ -70,7 +127,13 @@ nextBtn.addEventListener('click', () => {
         hideElement(popup)
         hideElement(gameContainer)
 
-        scoreCount.innerHTML = 'Pisteesi: ' + corrAnswers + '/10.'
+        let afterGameMsg = ''
+        if (corrAnswers > 5) {
+            afterGameMsg = 'Tiesit todella hyvin! Pääsit Verbiviidakon läpi!'
+        } else {
+            afterGameMsg = 'Et selvinnyt viidakosta, mutta ei hätää sillä harjoitus tekee mestarin! Kokeile uudestaan!'
+        }
+        scoreCount.innerHTML = '<b>Pisteesi: ' + corrAnswers + '/10.</b> ' + afterGameMsg
         showElement(scoreContainer)
     } else {
         buildGame()
@@ -82,7 +145,10 @@ nextBtn.addEventListener('click', () => {
 restartBtn.addEventListener('click', () => {
     hideElement(scoreContainer)
     gameRound = 0
+    corrAnswers = 0
+    alreadyAsked = []
     symbolDiv.innerHTML = ''
+    nextBtn.innerHTML = 'Seuraava'
     buildGame()
     showElement(gameContainer)
 })
@@ -114,9 +180,9 @@ verbButtons.addEventListener('click', (e) => {
         if (e.target.nodeName === 'BUTTON') {
             // Katso onko napin teksti kysytty verbi, eli vastattiinko oikein.
             if (e.target.innerHTML == askedVerb) {
+                corrAnswers += 1
                 popupTitle.innerHTML = 'Oikein!'
                 updateSymbols('correct')
-                corrAnswers += 1
             } else {
                 popupTitle.innerHTML = 'Väärin!'
                 updateSymbols('wrong')
@@ -129,8 +195,12 @@ verbButtons.addEventListener('click', (e) => {
 
 const buildGame = () => {
     // Arvo mitä verbiä kysytään
-    const questenNo = Math.floor(Math.random() * questions.length)
-    question = questions[questenNo]
+    question = ''
+    do {
+        question = questions[Math.floor(Math.random() * questions.length)]
+    }
+    while (alreadyAsked.includes(question) === true)
+    alreadyAsked.push(question)
     // Tallenna haettu verbi eli oikea vastaus muuttujaan.
     askedVerb = question.verb
     setGamePic(question.img)
