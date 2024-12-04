@@ -352,6 +352,10 @@ footer h4 {
     z-index: 999; /* Ylimmälle kerrokselle */
 }
 
+.fixed-bottom {
+    z-index: 10;
+}
+
 /* Responsiivisuus */
 @media (min-width: 576px) {
     .navbar-brand {

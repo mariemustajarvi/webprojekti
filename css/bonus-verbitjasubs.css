@@ -295,6 +295,10 @@ footer h4 {
     z-index: 999; /* Ylimmälle kerrokselle */
 }
 
+.fixed-bottom {
+    z-index: 10;
+}
+
 /* Popup-efektit */
 @keyframes fadeIn {
     0% {

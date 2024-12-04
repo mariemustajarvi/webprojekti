@@ -292,6 +292,10 @@ footer h4 {
     z-index: 999; /* Ylimmälle kerrokselle */
 }
 
+.fixed-bottom {
+    z-index: 10;
+}
+
 /* Animaatio completion-popup-ikkunalle (fade-in ja bounce) */
 @keyframes fadeIn {
     0% {
