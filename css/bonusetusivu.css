@@ -1,5 +1,5 @@
 body {
-    background-image: url('../img/elukat.jpeg'); /* Taustakuva */
+    background-image: url('../images/bonuspeli/elukat.jpeg'); /* Taustakuva */
     background-size: cover; /* Kuva peittää koko ruudun */
     background-position: center center; /* Keskittää kuvan */
     background-attachment: fixed; /* Pitää kuvan paikoillaan skrollatessa */
