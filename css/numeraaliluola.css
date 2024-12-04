@@ -133,11 +133,12 @@ body, html {
 }
 
 body {
-  background-color: #003e27;
+  background-color: #0f2e23;
   background-image: url(../images/numeraaliluola/cave-tausta.png);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 110%;
+  background-size: cover;
+
 }
 
 /* navi */
@@ -292,10 +293,30 @@ body {
 }
 
 #final-box {
+  display: none; 
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  z-index: 1000;
+  color: var(--tummanvihrea);
   background-color: #ffead0; 
-  border-radius: 15px; 
-  color: #003e27;
-  padding: 1em;
+  padding: 5em;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); 
+  border-radius: 10px; 
+  width: 50%; 
+  max-width: 600px; 
+  font-size: 1.5rem; 
+  text-align: center; 
+}
+
+#final-box h2 {
+  font-size: 2rem; 
+  margin-bottom: 15px; 
+}
+
+#final-box p {
+  margin: 10px 0; 
 }
 
 footer {
@@ -308,4 +329,13 @@ footer {
 footer h4 {
   margin: 0;
   padding: 0.4em 0 0.4em 0;
+}
+
+@media (max-width: 768px) {
+
+  #startgame-container {
+      flex-direction: column; 
+      align-items: center; 
+      font-size: 0.8rem;
+  }
 }

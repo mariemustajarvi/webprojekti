@@ -52,7 +52,7 @@
     </div>
     <div id="startgame-container"> <!--alkuun näkyvät elementit-->
         <div class="row m-5 p-5 gap-1 justify-content-center align-items-center"> 
-            <div class="col-md-4 mt-3">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 mt-3">
                 <div class="container m-2">
                     <div class="d-flex justify-content-center align-items-center">
                         <div class="card custom-box">
@@ -61,7 +61,7 @@
                                     <img src="./images/numeraaliluola/numeraaliluola_otsikko.png" class="w-100" alt="Numeraaliluola-otsikko">
                                 </div>
                                 <div>
-                                    <p class="card-text text-center anton-regular"><br>Numeraaliluolassa pääset harjoittelemaan tietämystäsi numeraaleista. Pelissä on numeraaleja ja numeroita sisältäviä laatikoita, ja sinun tehtäväsi on yhdistää oikeat parit keskenään. Astu sisään!</p>
+                                    <p class="card-text text-center anton-regular"><br>Numeraaliluolassa pääset harjoittelemaan tietämystäsi numeraaleista. Pelissä on numeraaleja ja numeroita sisältäviä laatikoita, ja sinun tehtäväsi on yhdistää oikeat parit keskenään. <br>Astu sisään!</p>
                                     <div class="d-flex p-2 justify-content-center">
                                         <img src="./images/numeraaliluola/nappi.svg" id="start-button" class="w-50 h-auto" alt="Aloita-peli-nappi">
                                     </div>
@@ -78,9 +78,9 @@
     </div>
     <!--nämä esiin start-painikkeesta-->
     <div id="game-container" style="display: none;"> 
-        <div id="score-container" class="anton-regular col-md-2 m-4 text-center">
+        <div id="score-container" class="anton-regular col-5 col-sm-5 col-md-3 col-lg-1 m-4 text-center">
             <p>Pisteet: <span id="score">0</span> / <span id="total-pairs">0</span></p>
-            <p>Virheelliset pudotukset: <span id="errors">0</span></p>
+            <p>Virheet: <span id="errors">0</span></p>
             <div id="notification" class="anton-regular"></div> <!-- ilmoitukset -->
         </div>
         <!-- yläosan laatikot -->
@@ -113,10 +113,11 @@
                 <p class="anton-regular">2</p>
             </div>
         </div>
-        <div id="final-box" class="final-box col-md-5 anton-regular justify-content-center align-items-center text-center" style="display: none;">
+        <div id="final-box" class="final-box anton-regular text-center">
             <h2>Onneksi olkoon!</h2>
-            <p>Olet suorittanut pelin!</p>
-            <p>Kokonaispisteet: <span id="final-score"></span>/16</p>
+            <p>Suoritit pelin läpi onnistuneesti.</p>
+            <p>Kokonaispisteet:</p>
+            <p><span id="final-score"></span>/16</p>
         </div>
     </div>  
     <footer class="d-flex justify-content-center fixed-bottom">
