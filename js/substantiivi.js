@@ -1,4 +1,5 @@
-/*kyssärit*/
+/* pelin tiedot */
+
 const questions = [
     {
         question: "Tämä eläin rakastaa kiipeillä puissa, mikä se on?",
@@ -8,19 +9,19 @@ const questions = [
     },
     {
         question: "Tällä eläimellä on pitkä kärsä, mikä se on?",
-        answers: ["Elefantti", "Leijona", "Krokotiili"],
+        answers: ["Elefantti", "Virtahepo", "Krokotiili"],
         correct: "Elefantti",
         background: "images/elefantti.png"
     },
     {
         question: "Tämä eläin nauraa usein ja kovaa, mikä se on?",
-        answers: ["Hyeena", "Apina", "Virtahepo"],
+        answers: ["Hyeena", "Apina", "Leijona"],
         correct: "Hyeena",
         background: "images/hyeena.png"
     },
     {
         question: "Tällä eläimellä on erittäin pitkä kaula, mikä se on?",
-        answers: ["Kirahvi", "Seepra", "Sarvikuono"],
+        answers: ["Kirahvi", "Strutsi", "Krokotiili"],
         correct: "Kirahvi",
         background: "images/kirahvi.png"
     },
@@ -50,7 +51,7 @@ const questions = [
     },
     {
         question: "Tämä eläin ei lennä, mutta juoksee todella nopeasti, mikä se on?",
-        answers: ["Strutsi", "Leijona", "Hyeena"],
+        answers: ["Strutsi", "Apina", "Hyeena"],
         correct: "Strutsi",
         background: "images/strutsi.png"
     },
@@ -62,7 +63,7 @@ const questions = [
     }
 ];
 
-/*dom elementit*/
+/* dom elementit */
 const startButton = document.getElementById("aloita-btn");
 const gameContainer = document.getElementById("game-container");
 const questionElement = document.getElementById("question");
@@ -73,13 +74,12 @@ const closeFeedbackButton = document.getElementById("close-feedback");
 const endScreen = document.getElementById("end-screen");
 const endMessage = document.getElementById("end-message");
 const restartButton = document.getElementById("restart-btn");
-const homeButton = document.getElementById("home-btn");
 
-/*Pisteet ja nykyinen kysymys*/
+/* pisteet ja kyssärit */
 let score = 0;
 let currentQuestionIndex = 0;
 
-/*sekoitus*/
+/* shuffelit */
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -88,16 +88,16 @@ function shuffleArray(array) {
     return array;
 }
 
-/*aloitus*/
+/* pelin aloitus */
 startButton.addEventListener("click", () => {
-    resetGameStyles();
-    shuffleArray(questions);
-    showQuestion();
     document.querySelector(".etusivu").classList.add("d-none");
     gameContainer.classList.remove("d-none");
+
+    shuffleArray(questions);
+    showQuestion();
 });
 
-/*kysymykset*/
+/* näytä kyssärit */
 function showQuestion() {
     const questionData = questions[currentQuestionIndex];
 
@@ -105,12 +105,14 @@ function showQuestion() {
     document.body.style.backgroundSize = "contain";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundPosition = "center";
-    document.body.style.backgroundColor = "var(--vihrea)"; // Asetetaan varmistus vihreälle taustalle
+    document.body.style.backgroundColor = "#9ddca5";
 
     questionElement.textContent = questionData.question;
+
     answersContainer.innerHTML = "";
 
     const shuffledAnswers = shuffleArray([...questionData.answers]);
+
     shuffledAnswers.forEach((answer) => {
         const button = document.createElement("button");
         button.textContent = answer;
@@ -120,7 +122,7 @@ function showQuestion() {
     });
 }
 
-/*vastaukset*/
+/* vastaukset */
 function handleAnswer(selected) {
     const buttons = document.querySelectorAll(".answer-button");
     buttons.forEach((button) => (button.disabled = true));
@@ -137,60 +139,76 @@ function handleAnswer(selected) {
     currentQuestionIndex++;
 }
 
-/*ponnarit*/
+/* ponnarit */
 function showFeedbackMessage(message) {
     feedbackMessage.textContent = message;
-    feedbackContainer.classList.remove("d-none");
     feedbackContainer.classList.add("active");
 }
 
 closeFeedbackButton.addEventListener("click", () => {
     feedbackContainer.classList.remove("active");
-    feedbackContainer.classList.add("d-none");
 
     if (currentQuestionIndex < questions.length) {
-        showQuestion();
+        showQuestion(); 
     } else {
-        showEndScreen();
+        showEndScreen(); 
     }
 });
 
-/*lopari*/
+/* loppari*/
 function showEndScreen() {
-    gameContainer.classList.add("d-none");
-    endScreen.classList.remove("d-none");
-    document.body.style.background = "linear-gradient(to bottom right, #9ddca5, #e8dba4)";
+    gameContainer.classList.add("d-none"); 
+    endScreen.classList.remove("d-none"); 
+    document.body.style.background = "linear-gradient(to bottom right, #9ddca5, #e8dba4)"; 
+
     endMessage.textContent = `Peli ohi! Sait ${score}/${questions.length} pistettä! 🎉`;
+
+    // pisteiden tallennus
+    tallennaPisteet("Substantiivit", score);
 }
 
-/*uusi peli*/
-restartButton.addEventListener("click", () => {
-    resetGame();
+/* aloita peli uudelleen */
+document.getElementById("restart-btn").addEventListener("click", () => {
+    //tyhjennä substantiivin pisteet
+    tyhjennaPisteet("Substantiivit");
+
+    // palauttaa peli alkuasetuksiin
+    score = 0;
+    currentQuestionIndex = 0;
+
+    // palauttaa alkuperäinen näkymä
+    endScreen.classList.add("d-none");
+    gameContainer.classList.remove("d-none");
+    document.body.style.background = "";
     shuffleArray(questions);
     showQuestion();
 });
 
-/*etusivulle*/
-homeButton.addEventListener("click", () => {
-    resetGame();
-    document.querySelector(".etusivu").classList.remove("d-none");
-    endScreen.classList.add("d-none");
+document.getElementById("home-btn").addEventListener("click", () => {
+    // Tallenna pisteet ennen siirtymistä
+    tallennaPisteet("Substantiivit", score);
+    // etusivulle
+    window.location.href = "etusivu.html";
 });
 
-
-function resetGame() {
-    score = 0;
-    currentQuestionIndex = 0;
-    gameContainer.classList.remove("d-none");
-    endScreen.classList.add("d-none");
-    resetGameStyles();
+/* pisteiden tallennus */
+function tallennaPisteet(kategoria, pisteet) {
+    let pisteetData = JSON.parse(localStorage.getItem("pisteet")) || {}; 
+    pisteetData[kategoria] = pisteet; 
+    localStorage.setItem("pisteet", JSON.stringify(pisteetData)); 
 }
 
-function resetGameStyles() {
-    document.body.style.background = "";
-    const gameContent = document.querySelector(".game-content");
-    gameContent.style.bottom = "5%"; // Varmistaa alareunan sijoituksen
-    gameContent.style.transform = "translateX(-50%)";
-    feedbackContainer.classList.add("d-none");
-    feedbackContainer.classList.remove("active");
+function tyhjennaPisteet(kategoria) {
+    let pisteetData = JSON.parse(localStorage.getItem("pisteet")) || {}; 
+    delete pisteetData[kategoria]; 
+    localStorage.setItem("pisteet", JSON.stringify(pisteetData)); 
 }
+
+/*responsiivisuus tableteille ja mobiileille ehkä*/
+/*tässä on käytetty apua tekoälyltä*/
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const navbarLinks = document.querySelector('.navbar-links');
+
+hamburgerMenu.addEventListener('click', () => {
+    navbarLinks.classList.toggle('active');
+});

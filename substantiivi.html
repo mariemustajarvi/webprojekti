@@ -6,22 +6,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@100;400;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/substantiivi.css">
     <title>Sanaseikkailija</title>
 </head>
 <body>
     <nav class="navbar">
-        <span class="navbar-brand">SANASEIKKAILIJA</span>
+        <a class="navbar-brand" href="etusivu.html">SANASEIKKAILIJA</a>
+        <button class="hamburger-menu" aria-label="Toggle-navigation">&#9776;</button>
         <div class="navbar-links">
-            <a class="nav-link" href="#">Etusivu</a>
-            <a class="nav-link" href="#">Verbit</a>
-            <a class="nav-link" href="#">Adjektiivit</a>
+            <a class="nav-link" href="etusivu.html">Etusivu</a>
+            <a class="nav-link" href="verbiviidakko.html">Verbit</a>
+            <a class="nav-link" href="adjektiivipeli.html">Adjektiivit</a>
             <a class="nav-link" href="#">Pronominit</a>
             <a class="nav-link" href="#">Numeraalit</a>
-            <a class="nav-link" href="#">Substantiivit</a>
-            <a class="nav-link" href="#">Sanaluokat</a>
+            <a class="nav-link" href="substantiivisavanni.html">Substantiivit</a>
+            <a class="nav-link" href="bonusetusivu.html">Sanaluokat</a>
             <a class="nav-link" href="#">Pisteet</a>
-            <a class="nav-link" href="#">Info</a>
+            <a class="nav-link" href="info.html">Info</a>
         </div>
     </nav>
 
@@ -29,8 +30,9 @@
         <div class="tervetuloa-boksi">
             <h1 class="tervetuloa-title">Tervetuloa Substantiivi Savanille!</h1>
             <p class="tervetuloa-text">
-                Lähde jännittävälle tutkimusmatkalle, jossa kohtaat savannin villit eläimet ja selvität, kuka on savannin todellinen kuningas!🌟
-                Tunnistatko kaikki asukkaat ja ansaiset eläinasiantuntijan arvonimen? 🐾 Seikkailu odottaa - uskallatko aloittaa?
+                Lähde jännittävälle tutkimusmatkalle, jossa kohtaat savannin villit eläimet ja selvität, kuka on savannin todellinen kuningas!🌟<br>
+                Tunnistatko kaikki asukkaat ja ansaiset eläinasiantuntijan arvonimen?
+                Seikkailu odottaa - uskallatko aloittaa?🐾
             </p>
             <button id="aloita-btn" class="aloitusnappi">Aloita</button>
         </div>
@@ -43,7 +45,7 @@
         </div>
     </div>
 
-    <!-- Mukautettu ilmoitus -->
+    <!-- ponnarit -->
     <div id="feedback" class="feedback d-none">
         <div id="feedback-box">
             <p id="feedback-message" class="feedback-message"></p>
@@ -63,6 +65,6 @@
     <footer>
         <h4>Ryhmä 4</h4>
     </footer>
-    <script src="script.js"></script>
+    <script src="/js/substantiivi.js"></script>
 </body>
 </html>
