@@ -1,0 +1,492 @@
+/* basic värit */
+:root {
+  --vihrea: #9ddca5;
+  --tummanvihrea: #003e27;
+  --keltainen: #e8dba4;
+}
+
+/* main tyylit*/
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: "Barlow", sans-serif;
+  background-color: var(--keltainen);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* navarit */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--vihrea);
+  padding: 1em;
+  font-family: "Anton", sans-serif;
+}
+
+.navbar-brand {
+  font-family: "Anton", sans-serif;
+  font-size: 3rem;
+  color: var(--tummanvihrea);
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 1.5rem;
+  color: var(--tummanvihrea);
+  text-decoration: none;
+  display: flex;
+}
+
+.nav-link:hover {
+  color: black;
+}
+
+/* etusivu */ 
+.etusivu {
+  background-color: var(--vihrea);
+  background-image: url(/images/substantiivisavanni/tervetuloa.png);
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  flex-grow: 1;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* tervetuloa boksi */
+.tervetuloa-boksi {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to bottom right, #9ddca5, #e8dba4);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  text-align: center;
+  padding: 20px;
+  max-width: 600px;
+  width: 80%;
+  font-size: 1rem;
+  border: 4px solid transparent;
+  animation: glow-border 1.5s infinite;
+}
+
+.tervetuloa-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--tummanvihrea);
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.tervetuloa-text {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* aloita */ 
+.aloitusnappi {
+  display: inline-block;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 15px 30px;
+  background-color: var(--vihrea);
+  color: var(--tummanvihrea);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.aloitusnappi:hover {
+  background-color: var(--tummanvihrea);
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* footeri */
+footer {
+  background-color: var(--vihrea);
+  color: var(--tummanvihrea);
+  text-align: center;
+  padding: 5px 0;
+  font-family: "Anton", sans-serif;
+  font-size: 1.5rem;
+  margin-top: auto;
+}
+
+footer h4 {
+  margin: 0;
+}
+
+/* peli kontti */
+.game-content {
+  position: absolute;
+  top: 78%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(to bottom right, #9ddca5, #e8dba4);
+  border-radius: 15px; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.game-question {
+  font-size: 1.5rem; 
+  font-weight: bold;
+  color: var(--tummanvihrea);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.answer-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.answer-buttons button {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: var(--vihrea);
+  color: var(--tummanvihrea);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+  text-align: center;
+}
+
+.answer-buttons button:hover {
+  background-color: var(--tummanvihrea);
+  color: white;
+  transform: scale(1.1); 
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); 
+}
+
+/* ponnari*/
+.feedback {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to bottom right, #9ddca5, #e8dba4);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  z-index: 1000;
+  display: none; 
+  align-items: center;
+  justify-content: center;
+}
+
+.feedback.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  border: 4px solid transparent;
+  animation: glow-border 1.5s infinite;
+}
+
+.feedback-box {
+  border: 4px solid transparent;
+  background: linear-gradient(to bottom right, #9ddca5, #e8dba4);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+
+.feedback-message {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--tummanvihrea);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.close-feedback {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: var(--vihrea);
+  color: var(--tummanvihrea);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.close-feedback:hover {
+  background-color: var(--tummanvihrea);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* lopputulos */
+.end-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  height: calc(100vh - 100px); 
+  text-align: center;
+  background-color: var(--vihrea); 
+  background-image: url(/images/substantiivisavanni/loppu.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative; 
+}
+.end-box {
+  background: linear-gradient(to bottom right, #9ddca5, #e8dba4);
+  color: var(--tummanvihrea);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  align-items: center;
+  gap: 15px;
+  border: 4px solid transparent;
+  animation: glow-border 1.5s infinite;
+}
+
+.end-box.active {
+  animation: glow-border 1.5s infinite;
+}
+
+.end-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--tummanvihrea);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.restart-btn, .home-btn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 15px 30px;
+  background-color: var(--vihrea);
+  color: var(--tummanvihrea);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  display: inline-block;
+}
+
+.restart-btn:hover, .home-btn:hover {
+  background-color: var(--tummanvihrea);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* piilotettu elementti */
+.d-none {
+  display: none;
+}
+
+.hamburger-menu {
+  display: none; 
+}
+
+/*efektit*/
+@keyframes glow-border {
+  0% {
+      box-shadow: 0 0 10px #ffecb3, 0 0 20px #ffecb3, 0 0 30px #ffecb3;
+  }
+  50% {
+      box-shadow: 0 0 15px #ffca28, 0 0 30px #ffca28, 0 0 40px #ffca28;
+  }
+  100% {
+      box-shadow: 0 0 10px #ffecb3, 0 0 20px #ffecb3, 0 0 30px #ffecb3;
+  }
+}
+
+/*responsiivisuudet*/
+/* tabletit */
+@media (max-width: 768px) {
+  .hamburger-menu {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--tummanvihrea);
+      cursor: pointer;
+  }
+
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0.5em 1em;
+  }
+
+  .navbar-brand {
+      font-size: 2rem;
+  }
+
+  .navbar-links {
+      display: none;
+      flex-direction: column;
+      gap: 0.5em;
+      width: 100%;
+      background-color: var(--vihrea);
+      padding: 1em;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar-links.active {
+      display: flex;
+  }
+
+  .nav-link {
+      font-size: 1.2rem;
+      text-align: left;
+      padding: 0.5em 0;
+  }
+
+  .game-content {
+      width: 95%;
+      padding: 15px;
+  }
+
+  .tervetuloa-boksi {
+      width: 90%;
+      padding: 15px;
+  }
+
+  .answer-buttons button {
+      font-size: 1rem;
+      padding: 10px 15px;
+  }
+
+  .end-box {
+      width: 90%;
+  }
+
+  .tervetuloa-boksi {
+      width: 90%; 
+      padding: 15px; 
+      font-size: 0.9rem; 
+  }
+
+  .tervetuloa-title {
+      font-size: 2rem; 
+      margin-bottom: 20px;
+  }
+
+  .tervetuloa-text {
+      font-size: 1.2rem; 
+      line-height: 1.4; 
+      margin-bottom: 20px;
+  }
+
+  .aloitusnappi {
+      padding: 10px 20px; 
+      font-size: 1rem; 
+  }
+}
+
+/* mobiilit */
+@media (max-width: 480px) {
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0.5em;
+  }
+
+  .navbar-brand {
+      font-size: 1.8rem;
+  }
+
+  .navbar-links {
+      display: none;
+      flex-direction: column;
+      gap: 0.3em;
+      width: 100%;
+      background-color: var(--vihrea);
+      padding: 0.5em;
+      border-radius: 10px;
+  }
+
+  .navbar-links.active {
+      display: flex;
+  }
+
+  .nav-link {
+      font-size: 1rem;
+      text-align: left;
+      padding: 0.4em 0;
+  }
+
+  .tervetuloa-boksi {
+      font-size: 1rem;
+      padding: 10px;
+  }
+
+  .game-content {
+      width: 100%;
+      padding: 10px;
+  }
+
+  .answer-buttons button {
+      font-size: 0.9rem;
+      padding: 8px 10px;
+  }
+
+  .feedback-message {
+      font-size: 1.2rem;
+  }
+
+  .end-box {
+      font-size: 1rem;
+      width: 95%;
+      padding: 10px;
+  }
+}
