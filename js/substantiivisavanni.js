@@ -5,61 +5,61 @@ const questions = [
         question: "Tämä vipeltäjä viihtyy puiden latvoissa ja heiluu oksalta toiselle. Arvaa kuka se on?",
         answers: ["Apina", "Kirahvi", "Seepra"],
         correct: "Apina",
-        background: "/images/substantiivisavanni/apina.png"
+        background: "./images/substantiivisavanni/apina.png"
     },
     {
         question: "Tällä mahtavalla jättiläisellä on kärsä, jolla se voi napata ruokaa ja suihkuttaa vettä. Mikä eläin on kyseessä?",
         answers: ["Elefantti", "Virtahepo", "Krokotiili"],
         correct: "Elefantti",
-        background: "/images/substantiivisavanni/elefantti.png"
+        background: "./images/substantiivisavanni/elefantti.png"
     },
     {
         question: "Kukahan se nauraja on? Tämä kaveri hekottaa niin, että savanni raikaa!",
         answers: ["Hyeena", "Apina", "Leijona"],
         correct: "Hyeena",
-        background: "/images/substantiivisavanni/hyeena.png"
+        background: "./images/substantiivisavanni/hyeena.png"
     },
     {
         question: "Pystyisitkö kurkottamaan tämän eläimen kanssa samaan korkeuteen? Sen kaula yltää pilviin asti!",
         answers: ["Kirahvi", "Strutsi", "Krokotiili"],
         correct: "Kirahvi",
-        background: "/images/substantiivisavanni/kirahvi.png"
+        background: "./images/substantiivisavanni/kirahvi.png"
     },
     {
         question: "Tässä veden valtias: terävät hampaat ja iso hymy! Mikä eläin tämä voisi olla?",
         answers: ["Krokotiili", "Elefantti", "Strutsi"],
         correct: "Krokotiili",
-        background: "/images/substantiivisavanni/krokotiili.png"
+        background: "./images/substantiivisavanni/krokotiili.png"
     },
     {
         question: "Kuka se savannin hallitsija on, jolla on muhkea harja ja kova karjaisu?",
         answers: ["Leijona", "Kirahvi", "Seepra"],
         correct: "Leijona",
-        background: "/images/substantiivisavanni/leijona.png"
+        background: "./images/substantiivisavanni/leijona.png"
     },
     {
         question: "Tässä eläimessä on jotain erityistä päässään – iso sarvi! Mikä eläin on kyseessä?",
         answers: ["Sarvikuono", "Krokotiili", "Elefantti"],
         correct: "Sarvikuono",
-        background: "/images/substantiivisavanni/sarvikuono.png"
+        background: "./images/substantiivisavanni/sarvikuono.png"
     },
     {
         question: "Tämä eläin pukeutuu aina tyylikkäästi mustavalkoisiin raitoihin. Tiedätkö, kuka se on?",
         answers: ["Seepra", "Strutsi", "Apina"],
         correct: "Seepra",
-        background: "/images/substantiivisavanni/seepra.png"
+        background: "./images/substantiivisavanni/seepra.png"
     },
     {
         question: "Vaikka tämä lintu ei lennä, se pinkoo nopeammin kuin moni auto. Kuka se voisi olla?",
         answers: ["Strutsi", "Apina", "Hyeena"],
         correct: "Strutsi",
-        background: "/images/substantiivisavanni/strutsi.png"
+        background: "./images/substantiivisavanni/strutsi.png"
     },
     {
         question: "Tämä jättiläinen viihtyy vedessä, mutta on myös melkoinen mahtipontinen maalla. Mikä eläin se on?",
         answers: ["Virtahepo", "Krokotiili", "Elefantti"],
         correct: "Virtahepo",
-        background: "/images/substantiivisavanni/virtahepo.png"
+        background: "./images/substantiivisavanni/virtahepo.png"
     }
 ];
 
