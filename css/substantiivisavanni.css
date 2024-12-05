@@ -61,7 +61,7 @@ main {
 /* etusivu */ 
 .etusivu {
   background-color: var(--vihrea);
-  background-image: url(images/tervetuloa.png);
+  background-image: url(/images/substantiivisavanni/tervetuloa.png);
   background-size: contain;
   background-position: center;
   background-attachment: fixed;
@@ -87,6 +87,8 @@ main {
   max-width: 600px;
   width: 80%;
   font-size: 1rem;
+  border: 4px solid transparent;
+  animation: glow-border 1.5s infinite;
 }
 
 .tervetuloa-title {
@@ -178,7 +180,7 @@ footer h4 {
 
 .answer-buttons button {
   display: inline-block;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: bold;
   padding: 10px 20px;
   background-color: var(--vihrea);
@@ -219,22 +221,24 @@ footer h4 {
 }
 
 .feedback.active {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  border: 4px solid transparent;
+  animation: glow-border 1.5s infinite;
 }
 
 .feedback-box {
+  border: 4px solid transparent;
   background: linear-gradient(to bottom right, #9ddca5, #e8dba4);
-  color: var(--tummanvihrea);
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
-  width: 90%;
+  transition: all 0.3s ease-in-out;
 }
 
+
 .feedback-message {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: var(--tummanvihrea);
   margin-bottom: 10px;
@@ -268,7 +272,7 @@ footer h4 {
   height: calc(100vh - 100px); 
   text-align: center;
   background-color: var(--vihrea); 
-  background-image: url(images/loppu.png);
+  background-image: url(/images/substantiivisavanni/loppu.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -286,6 +290,12 @@ footer h4 {
   width: 90%;
   align-items: center;
   gap: 15px;
+  border: 4px solid transparent;
+  animation: glow-border 1.5s infinite;
+}
+
+.end-box.active {
+  animation: glow-border 1.5s infinite;
 }
 
 .end-message {
@@ -323,6 +333,19 @@ footer h4 {
 
 .hamburger-menu {
   display: none; 
+}
+
+/*efektit*/
+@keyframes glow-border {
+  0% {
+      box-shadow: 0 0 10px #ffecb3, 0 0 20px #ffecb3, 0 0 30px #ffecb3;
+  }
+  50% {
+      box-shadow: 0 0 15px #ffca28, 0 0 30px #ffca28, 0 0 40px #ffca28;
+  }
+  100% {
+      box-shadow: 0 0 10px #ffecb3, 0 0 20px #ffecb3, 0 0 30px #ffecb3;
+  }
 }
 
 /*responsiivisuudet*/

@@ -2,64 +2,64 @@
 
 const questions = [
     {
-        question: "Tämä eläin rakastaa kiipeillä puissa, mikä se on?",
+        question: "Tämä vipeltäjä viihtyy puiden latvoissa ja heiluu oksalta toiselle. Arvaa kuka se on?",
         answers: ["Apina", "Kirahvi", "Seepra"],
         correct: "Apina",
-        background: "images/apina.png"
+        background: "/images/substantiivisavanni/apina.png"
     },
     {
-        question: "Tällä eläimellä on pitkä kärsä, mikä se on?",
+        question: "Tällä mahtavalla jättiläisellä on kärsä, jolla se voi napata ruokaa ja suihkuttaa vettä. Mikä eläin on kyseessä?",
         answers: ["Elefantti", "Virtahepo", "Krokotiili"],
         correct: "Elefantti",
-        background: "images/elefantti.png"
+        background: "/images/substantiivisavanni/elefantti.png"
     },
     {
-        question: "Tämä eläin nauraa usein ja kovaa, mikä se on?",
+        question: "Kukahan se nauraja on? Tämä kaveri hekottaa niin, että savanni raikaa!",
         answers: ["Hyeena", "Apina", "Leijona"],
         correct: "Hyeena",
-        background: "images/hyeena.png"
+        background: "/images/substantiivisavanni/hyeena.png"
     },
     {
-        question: "Tällä eläimellä on erittäin pitkä kaula, mikä se on?",
+        question: "Pystyisitkö kurkottamaan tämän eläimen kanssa samaan korkeuteen? Sen kaula yltää pilviin asti!",
         answers: ["Kirahvi", "Strutsi", "Krokotiili"],
         correct: "Kirahvi",
-        background: "images/kirahvi.png"
+        background: "/images/substantiivisavanni/kirahvi.png"
     },
     {
-        question: "Tällä eläimellä on terävät hampaat ja se asuu vedessä, mikä se on?",
+        question: "Tässä veden valtias: terävät hampaat ja iso hymy! Mikä eläin tämä voisi olla?",
         answers: ["Krokotiili", "Elefantti", "Strutsi"],
         correct: "Krokotiili",
-        background: "images/krokotiili.png"
+        background: "/images/substantiivisavanni/krokotiili.png"
     },
     {
-        question: "Tämä eläin on savannin kuningas, mikä se on?",
+        question: "Kuka se savannin hallitsija on, jolla on muhkea harja ja kova karjaisu?",
         answers: ["Leijona", "Kirahvi", "Seepra"],
         correct: "Leijona",
-        background: "images/leijona.png"
+        background: "/images/substantiivisavanni/leijona.png"
     },
     {
-        question: "Tällä eläimellä on sarvi päässä, mikä se on?",
+        question: "Tässä eläimessä on jotain erityistä päässään – iso sarvi! Mikä eläin on kyseessä?",
         answers: ["Sarvikuono", "Krokotiili", "Elefantti"],
         correct: "Sarvikuono",
-        background: "images/sarvikuono.png"
+        background: "/images/substantiivisavanni/sarvikuono.png"
     },
     {
-        question: "Tällä eläimellä on mustavalkoiset raidat, mikä se on?",
+        question: "Tämä eläin pukeutuu aina tyylikkäästi mustavalkoisiin raitoihin. Tiedätkö, kuka se on?",
         answers: ["Seepra", "Strutsi", "Apina"],
         correct: "Seepra",
-        background: "images/seepra.png"
+        background: "/images/substantiivisavanni/seepra.png"
     },
     {
-        question: "Tämä eläin ei lennä, mutta juoksee todella nopeasti, mikä se on?",
+        question: "Vaikka tämä lintu ei lennä, se pinkoo nopeammin kuin moni auto. Kuka se voisi olla?",
         answers: ["Strutsi", "Apina", "Hyeena"],
         correct: "Strutsi",
-        background: "images/strutsi.png"
+        background: "/images/substantiivisavanni/strutsi.png"
     },
     {
-        question: "Tämä eläin viettää paljon aikaa vedessä, mikä se on?",
+        question: "Tämä jättiläinen viihtyy vedessä, mutta on myös melkoinen mahtipontinen maalla. Mikä eläin se on?",
         answers: ["Virtahepo", "Krokotiili", "Elefantti"],
         correct: "Virtahepo",
-        background: "images/virtahepo.png"
+        background: "/images/substantiivisavanni/virtahepo.png"
     }
 ];
 
@@ -128,32 +128,65 @@ function handleAnswer(selected) {
     buttons.forEach((button) => (button.disabled = true));
 
     const correctAnswer = questions[currentQuestionIndex].correct;
+    let feedbackMessage;
 
     if (selected === correctAnswer) {
         score++;
-        showFeedbackMessage(`Oikein! Hyvin tehty! 🐾`);
+        feedbackMessage = getRandomFeedback(true);
     } else {
-        showFeedbackMessage(`Väärin! Oikea vastaus on ${correctAnswer}. 🌱`);
+        feedbackMessage = getRandomFeedback(false, correctAnswer); 
     }
 
+    showFeedbackMessage(feedbackMessage);
     currentQuestionIndex++;
 }
+
+const correctFeedbackMessages = [
+        "Täysosuma! 🐘 Savannin kuningas on ylpeä sinusta!",
+        "Jee! Osuit nappiin! 🐒 Eläimet taputtavat sinulle tassuillaan!",
+        "Wow, olet ihan kuin eläintieteen professori! 🦉 Hyvää työtä!",
+        "Oikein! Sinusta tulee vielä savannin supertähti! 🌟",
+        "Mahtavaa, eläinmestari! 🐾 Tämä meni kuin leijonan karjaisu!",
+        "Oikein! Nyt olet askeleen lähempänä eläinasiantuntijan titteliä! 🦒"
+]
+
+const incorrectFeedbackMessages = [
+        "Väärin, mutta ei haittaa! Oikea vastaus on ${correctAnswer}. Kokeile seuraavaa kysymystä rohkeasti! 🌟",
+        "Ei osunut tällä kertaa! Oikea vastaus on ${correctAnswer}. Seuraava kysymys odottaa sinua! 🌱",
+        "Ei haittaa, jokainen oppii! Oikea vastaus on ${correctAnswer}. Nyt vain uutta yritystä! 🦋",
+        "Melkein! Oikea vastaus on ${correctAnswer}. Jatka samaan malliin, sinä pystyt siihen! 🦒",
+        "Väärin, mutta hei, nyt tiedät enemmän! Oikea vastaus on ${correctAnswer}. Hyvä yritys! 🐾"
+];
+
+/* shuffeli palautteen */
+function getRandomFeedback(isCorrect, correctAnswer) {
+    if (isCorrect) {
+        return correctFeedbackMessages[Math.floor(Math.random() * correctFeedbackMessages.length)];
+    } else {
+
+        const randomMessage = incorrectFeedbackMessages[Math.floor(Math.random() * incorrectFeedbackMessages.length)];
+        return randomMessage.replace("${correctAnswer}", correctAnswer);
+    }
+}
+
 
 /* ponnarit */
 function showFeedbackMessage(message) {
     feedbackMessage.textContent = message;
+    feedbackContainer.classList.remove("d-none");
     feedbackContainer.classList.add("active");
 }
-
 closeFeedbackButton.addEventListener("click", () => {
     feedbackContainer.classList.remove("active");
+    feedbackContainer.classList.add("d-none");
 
     if (currentQuestionIndex < questions.length) {
-        showQuestion(); 
+        showQuestion();
     } else {
-        showEndScreen(); 
+        showEndScreen();
     }
 });
+
 
 /* loppari*/
 function showEndScreen() {
@@ -161,7 +194,7 @@ function showEndScreen() {
     endScreen.classList.remove("d-none"); 
     document.body.style.background = "linear-gradient(to bottom right, #9ddca5, #e8dba4)"; 
 
-    endMessage.textContent = `Peli ohi! Sait ${score}/${questions.length} pistettä! 🎉`;
+    endMessage.textContent = `Savannin seikkailu päättyi mutta seikkailusi jatkuu vielä muualla!🎉Tunnistit ${score}/${questions.length} savannin eläimistä!🐾`;
 
     // pisteiden tallennus
     tallennaPisteet("Substantiivit", score);
@@ -212,3 +245,4 @@ const navbarLinks = document.querySelector('.navbar-links');
 hamburgerMenu.addEventListener('click', () => {
     navbarLinks.classList.toggle('active');
 });
+
