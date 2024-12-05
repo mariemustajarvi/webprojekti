@@ -61,7 +61,7 @@ main {
 /* etusivu */ 
 .etusivu {
   background-color: var(--vihrea);
-  background-image: url(/images/substantiivisavanni/tervetuloa.png);
+  background-image: url(../images/substantiivisavanni/tervetuloa.png);
   background-size: contain;
   background-position: center;
   background-attachment: fixed;
@@ -272,7 +272,7 @@ footer h4 {
   height: calc(100vh - 100px); 
   text-align: center;
   background-color: var(--vihrea); 
-  background-image: url(/images/substantiivisavanni/loppu.png);
+  background-image: url(../images/substantiivisavanni/loppu.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
