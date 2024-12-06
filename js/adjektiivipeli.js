@@ -1,3 +1,4 @@
+import { setScore } from './scores.js'
 
 const questions = [
     {
@@ -117,6 +118,7 @@ function checkAnswer() {
 
 // Tulos funktio
 function displayResults() {
+    setScore('adjektiivi', correctAnswers)
     const quizElement = document.getElementById("quiz")
     const instructionsElement = document.getElementById("instructions") 
     quizElement.innerHTML = "" 

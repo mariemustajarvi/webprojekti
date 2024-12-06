@@ -7,7 +7,7 @@ const scoreObj = {
     adjektiivi: {score: 0, scoreReq: 6},
     numeraali: {score: 0, scoreReq: 6},
     pronomini: {score: 0, scoreReq: 6},
-    bonus: {score: 0, scoreReq: 6}
+    sanaluokat: {score: 0, scoreReq: 6}
 }
 
 let scores = {}
@@ -39,8 +39,11 @@ export const setScore = (game, newScore) => {
     updateScores()
     
     if (gameExists(game)) {
-        scores[game].score = newScore;
-        localStorage.setItem('scores', JSON.stringify(scores))
+        // Tallennetaan pisteet mikäli uudet pisteet ovat isommat kuin vanhat.
+        if (newScore > scores[game].score) {
+            scores[game].score = newScore;
+            localStorage.setItem('scores', JSON.stringify(scores))
+        }
     }
 }
 

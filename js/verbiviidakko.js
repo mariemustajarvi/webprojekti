@@ -1,6 +1,6 @@
 'use strict'
 
-import { getScore, setScore } from './scores.js'
+import { setScore } from './scores.js'
 
 const startupContainer = document.querySelector('#startupContainer')
 const gameContainer = document.querySelector('#gameContainer')
@@ -125,11 +125,9 @@ startBtn.addEventListener('click', () => {
 
 nextBtn.addEventListener('click', () => {
     if (gameRound === maxRounds) {
-        // Tallennetaan pisteet localStorageen mikäli saavutetut pisteet
-        // ovat suuremmat kuin aikaisemmin saadut pisteet.
-        if (corrAnswers > getScore('verbi').score) {
-            setScore('verbi', corrAnswers)
-        }
+        // Tallennetaan pisteet localStorageen
+        setScore('verbi', corrAnswers)
+
         hideElement(overlay)
         hideElement(popup)
         hideElement(gameContainer)
