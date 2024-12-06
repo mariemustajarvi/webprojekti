@@ -6,20 +6,18 @@ const game = document.getElementById("game-container")
 startButton.addEventListener("click", () => {
     startGame.style.display = "none"
     game.style.display = "block"
-});
+})
 
 document.addEventListener("DOMContentLoaded", () => {
     const upperParts = document.getElementById("upper-parts")
     const bottomParts = document.getElementById("bottom-parts")
     const scoreDisplay = document.getElementById("score")
-    const errorsDisplay = document.getElementById("errors")
-    const notification = document.getElementById("notification")
     const totalPairsDisplay = document.getElementById("total-pairs")
-    const finalBox = document.getElementById("final-box") // lopputuloslaatikko
-    const finalScore = document.getElementById("final-score") // kokonaispisteet
+    const notification = document.getElementById("notification")
+    const finalBox = document.getElementById("final-box")
+    const finalScore = document.getElementById("final-score")
 
     let score = 0
-    let errors = 0
     let currentRound = 1
 
     const rounds = [
@@ -59,10 +57,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 { text: "Neljäkymmentäkaksi", value: "42" },
             ],
         },
+        {
+            correctBoxes: [
+                { text: "Kaksituhatta", value: "2000" },
+                { text: "Kahdeksan", value: "8" },
+                { text: "Kolmekymmentäkahdeksan", value: "38" },
+                { text: "Neljätoista", value: "14" },
+                { text: "Yksitoista", value: "11" },
+                { text: "Yhdeksän", value: "9" },
+                { text: "Seitsemäntoista", value: "17" },
+                { text: "Kolmekymmentä", value: "30" },
+            ],
+            extraBoxes: [
+                { text: "Viisi", value: "5" },
+                { text: "Neljä", value: "4" },
+                { text: "Kolmesataa", value: "300" },
+                { text: "Kaksikymmentäkahdeksan", value: "28" },
+            ],
+        },
     ]
 
+    const totalScore = rounds.reduce((sum, round) => sum + round.correctBoxes.length, 0)
+
     function showFinalResults() {
-        finalScore.textContent = score
+        finalScore.textContent = `${score} / ${totalScore}`
         finalBox.style.display = "block"
         upperParts.style.display = "none"
         bottomParts.style.display = "none"
@@ -81,12 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
             bottomParts.appendChild(targetBox)
         })
 
-        const allBoxes = [...round.correctBoxes]
-        round.extraBoxes.forEach((box) => allBoxes.push(box))
+        const allBoxes = [...round.correctBoxes, ...round.extraBoxes]
         allBoxes.sort(() => Math.random() - 0.5)
 
         const placedPositions = []
-
         allBoxes.forEach((box) => {
             const draggableBox = document.createElement("div")
             draggableBox.classList.add("draggable-box")
@@ -98,8 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
             do {
                 left = Math.random() * (window.innerWidth - 200)
                 top = Math.random() * (window.innerHeight / 2 - 100)
-                isOverlapping = placedPositions.some(pos => 
-                    Math.abs(pos.left - left) < 100 && Math.abs(pos.top - top) < 50
+                isOverlapping = placedPositions.some(
+                    (pos) =>
+                        Math.abs(pos.left - left) < 100 && Math.abs(pos.top - top) < 50
                 )
             } while (isOverlapping)
 
@@ -111,45 +128,46 @@ document.addEventListener("DOMContentLoaded", () => {
             upperParts.appendChild(draggableBox)
         })
 
-        totalPairsDisplay.textContent = round.correctBoxes.length
+        scoreDisplay.textContent = `${score} / ${totalScore}`
         addDragAndDropEvents()
     }
 
     function addDragAndDropEvents() {
         const draggableBoxes = document.querySelectorAll(".draggable-box")
         const targetBoxes = document.querySelectorAll(".target-box")
-    
+
         draggableBoxes.forEach((item) => {
             item.addEventListener("dragstart", (e) => {
                 e.dataTransfer.setData("text", e.target.dataset.value)
             })
         })
-    
+
         targetBoxes.forEach((box) => {
             box.addEventListener("dragover", (e) => {
                 e.preventDefault()
             })
-    
+
             box.addEventListener("drop", (e) => {
                 e.preventDefault()
-    
+
                 const draggedValue = e.dataTransfer.getData("text")
                 const targetValue = box.getAttribute("data-value")
-    
+
                 if (draggedValue === targetValue) {
-                    const draggedItem = document.querySelector(`.draggable-box[data-value="${draggedValue}"]`)
-    
+                    const draggedItem = document.querySelector(
+                        `.draggable-box[data-value="${draggedValue}"]`
+                    )
+
                     if (draggedItem) {
-                        // poistetaan raahattu laatikko DOM
                         draggedItem.parentNode.removeChild(draggedItem)
-    
-                        // päivitetään pisteet
                         score++
-                        scoreDisplay.textContent = score
-                        showNotification("Oikein!", "success")
-    
-                        // tarkistetaan onko kierros päättynyt
-                        if (score % 8 === 0 && score !== 0) {
+                        scoreDisplay.textContent = `${score} / ${totalScore}`
+                        showNotification("Oikein!", "success");
+
+                        if (
+                            score % rounds[currentRound - 1].correctBoxes.length === 0 &&
+                            score !== 0
+                        ) {
                             if (currentRound < rounds.length) {
                                 currentRound++
                                 setTimeout(() => {
@@ -161,19 +179,16 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
                 } else {
-                    // lisätään virheellinen pudotus
-                    errors++
-                    errorsDisplay.textContent = errors
                     showNotification("Väärä pari, yritä uudelleen!", "error")
                 }
             })
         })
     }
-    
 
     function showNotification(message, type) {
         notification.textContent = message
-        notification.className = type === "success" ? "notification success" : "notification error"
+        notification.className =
+            type === "success" ? "notification success" : "notification error"
         notification.style.opacity = 1
 
         setTimeout(() => {
