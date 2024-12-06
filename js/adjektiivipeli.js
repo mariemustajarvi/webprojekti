@@ -51,6 +51,11 @@ let wrongAnswers = 0
 
 const quizCopy = document.getElementById("quiz").innerHTML
 
+const checkButton = document.querySelector('#check-button')
+checkButton.addEventListener('click', () => {
+    checkAnswer()
+})
+
 // Kysymys funktio 
 function displayQuestion() {
     const questionElement = document.getElementById("question-text")
