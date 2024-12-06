@@ -1,5 +1,7 @@
 'use strict'
 
+import { getScore, setScore } from './scores.js'
+
 const startupContainer = document.querySelector('#startupContainer')
 const gameContainer = document.querySelector('#gameContainer')
 
@@ -104,8 +106,8 @@ const questions = [
         img: '8.png',
         verb: 'Syödä',
         sentence: 'Gorilla <strong>syö</strong> kasvia.',
-        conjsPos: ['minä juon', 'sinä juot', 'hän juo', 'me juomme', 'te juotte', 'he juovat', 'passiivi: juodaan'],
-        conjsNeg: ['en juo', 'et juo', 'ei juo', 'emme juo', 'ette juo', 'eivät juo', 'passiivi: ei juoda']
+        conjsPos: ['minä syön', 'sinä syöt', 'hän syö', 'me syömme', 'te syötte', 'he syövät', 'passiivi: syödään'],
+        conjsNeg: ['en syö', 'et syö', 'ei syö', 'emme syö', 'ette syö', 'eivät syö', 'passiivi: ei syödä']
     },
     {
         img: '9.png',
@@ -123,6 +125,11 @@ startBtn.addEventListener('click', () => {
 
 nextBtn.addEventListener('click', () => {
     if (gameRound === maxRounds) {
+        // Tallennetaan pisteet localStorageen mikäli saavutetut pisteet
+        // ovat suuremmat kuin aikaisemmin saadut pisteet.
+        if (corrAnswers > getScore('verbi').score) {
+            setScore('verbi', corrAnswers)
+        }
         hideElement(overlay)
         hideElement(popup)
         hideElement(gameContainer)
