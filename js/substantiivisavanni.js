@@ -194,7 +194,17 @@ function showEndScreen() {
     endScreen.classList.remove("d-none"); 
     document.body.style.background = "linear-gradient(to bottom right, #9ddca5, #e8dba4)"; 
 
-    endMessage.textContent = `Savannin seikkailu päättyi mutta seikkailusi jatkuu vielä muualla!🎉Tunnistit ${score}/${questions.length} savannin eläimistä!🐾`;
+     // minimi pistemäärä
+     const passThreshold = 6;
+     if (score >= passThreshold) {
+         endMessage.textContent = `Mahtavaa! 🎉 Tunnistit ${score}/10 savannin eläimistä ja läpäisit seikkailun! 🐾`;
+         endScreen.querySelector(".end-box").classList.add("success");
+         endScreen.querySelector(".end-box").classList.remove("fail");
+     } else {
+         endMessage.textContent = `Ei haittaa! Tunnistit ${score}/10 eläimistä, mutta et vielä läpäissyt peliä. Kokeile uudelleen ja löydä sisäinen eläintuntijasi! 🌟`;
+         endScreen.querySelector(".end-box").classList.add("fail");
+         endScreen.querySelector(".end-box").classList.remove("success");
+     }
 
     // pisteiden tallennus
     tallennaPisteet("Substantiivit", score);

@@ -293,6 +293,17 @@ footer h4 {
   border: 4px solid transparent;
   animation: glow-border 1.5s infinite;
 }
+.end-box.success {
+  background-color: #9ddca5; 
+  color: #003e27;
+  border: 4px solid #4caf50;
+}
+
+.end-box.fail {
+  background-color: #ffcccb; 
+  color: #b71c1c;
+  border: 4px solid #f44336;
+}
 
 .end-box.active {
   animation: glow-border 1.5s infinite;
