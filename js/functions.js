@@ -1,10 +1,26 @@
-// Tämä koodi pitää kirjaa mitä tasoja on läpäisty milläkin saarella.
+'use strict'
 
+import { getAllScores, gameIsBeaten } from './scores.js'
+
+const scores = getAllScores()
+let bonusUnlocked = true;
+for (let game in scores) {
+    if (game !== 'sanaluokat') {
+        if (!gameIsBeaten(game)) {
+            bonusUnlocked = false
+            break
+        }
+    }
+}
 
 
 document.addEventListener("DOMContentLoaded", () => {
     const centerIcon = document.querySelector(".center-icon img");
     const outerIcons = document.querySelectorAll(".outer-icons img");
+
+    if (bonusUnlocked) {
+        centerIcon.classList.remove('disabledIcon')
+    }
 
     // ymyprän asettelu
     const circleLayout = document.querySelector(".circle-layout");
