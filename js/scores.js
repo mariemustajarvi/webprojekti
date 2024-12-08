@@ -2,12 +2,12 @@
 
 // Pisteet sisältävän objektin pohja.
 const scoreObj = {
-    verbi: {score: 0, scoreReq: 6},
-    substantiivi: {score: 0, scoreReq: 6},
-    adjektiivi: {score: 0, scoreReq: 6},
-    numeraali: {score: 0, scoreReq: 6},
-    pronomini: {score: 0, scoreReq: 6},
-    sanaluokat: {score: 0, scoreReq: 6}
+    verbi: {score: 0, scoreReq: 6, gameIcon: 'verbi.png'},
+    substantiivi: {score: 0, scoreReq: 6, gameIcon: 'substantiivi.png'},
+    adjektiivi: {score: 0, scoreReq: 3, gameIcon: 'adjektiivi.png'},
+    numeraali: {score: 0, scoreReq: 24, gameIcon: 'numeraali.png'},
+    pronomini: {score: 0, scoreReq: 6, gameIcon: 'pronomini.png'},
+    sanaluokat: {score: 0, scoreReq: 6, gameIcon: 'sanaluokat.png'}
 }
 
 let scores = {}
