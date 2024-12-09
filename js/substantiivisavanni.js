@@ -1,5 +1,7 @@
 /* pelin tiedot */
 
+import { setScore } from './scores.js'
+
 const questions = [
     {
         question: "Tämä vipeltäjä viihtyy puiden latvoissa ja heiluu oksalta toiselle. Arvaa kuka se on?",
@@ -207,6 +209,7 @@ function showEndScreen() {
      }
 
     // pisteiden tallennus
+    setScore('substantiivi', score)
     tallennaPisteet("Substantiivit", score);
 }
 

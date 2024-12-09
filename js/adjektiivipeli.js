@@ -1,3 +1,4 @@
+import { setScore } from './scores.js'
 
 const questions = [
     {
@@ -49,6 +50,11 @@ let correctAnswers = 0
 let wrongAnswers = 0
 
 const quizCopy = document.getElementById("quiz").innerHTML
+
+const checkButton = document.querySelector('#check-button')
+checkButton.addEventListener('click', () => {
+    checkAnswer()
+})
 
 // Kysymys funktio 
 function displayQuestion() {
@@ -117,6 +123,7 @@ function checkAnswer() {
 
 // Tulos funktio
 function displayResults() {
+    setScore('adjektiivi', correctAnswers)
     const quizElement = document.getElementById("quiz")
     const instructionsElement = document.getElementById("instructions") 
     quizElement.innerHTML = "" 

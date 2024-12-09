@@ -1,0 +1,61 @@
+#mainContainer {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#scoreList {
+    list-style: none;
+    padding: 3rem 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#scoreList li {
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+.starPic {
+    position: absolute;
+    width: 50px;
+    height: auto;
+    left: 43%;
+    top: 20%;
+    animation: starAnimation 1.3s ease-in-out infinite alternate;
+}
+
+.gamePic {
+    width: 300px;
+    height: auto;
+    z-index: 4;
+}
+
+#scoreList p {
+    position: absolute;
+    left: 50%;
+    top: 90%;
+    font-size: 2rem;
+    z-index: 5;
+    color: orange;
+    text-shadow: 0px 0px 5px black;
+}
+
+@media (max-width: 992px) {
+    #scoreList {
+        padding: 0rem 0 5rem 0;
+    }
+}
+
+@keyframes starAnimation {
+    0% {
+        width: 50px;
+    }
+    100% {
+        width: 60px;
+        left: 42%;
+    }
+}
