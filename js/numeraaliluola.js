@@ -1,3 +1,5 @@
+import { setScore } from './scores.js'
+
 // start-painikkeen toiminnallisuus
 const startButton = document.getElementById("start-button")
 const startGame = document.getElementById("startgame-container")
@@ -80,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalScore = rounds.reduce((sum, round) => sum + round.correctBoxes.length, 0)
 
     function showFinalResults() {
+        setScore('numeraali', score)
         finalScore.textContent = `${score} / ${totalScore}`
         finalBox.style.display = "block"
         upperParts.style.display = "none"
