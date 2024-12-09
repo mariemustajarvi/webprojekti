@@ -1,0 +1,400 @@
+/* Värimääritykset */
+:root {
+    --vihrea: #9ddca5;
+    --tummanvihrea: #003e27;
+    --keltainen: #e8dba4;
+
+}
+
+/* Fonttimääritykset */
+
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.barlow-thin {
+  font-family: "Barlow", serif;
+  font-weight: 100;
+  font-style: normal;
+}
+  
+.barlow-extralight {
+  font-family: "Barlow", serif;
+  font-weight: 200;
+  font-style: normal;
+}
+  
+.barlow-light {
+  font-family: "Barlow", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+  
+.barlow-regular {
+  font-family: "Barlow", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+  
+.barlow-medium {
+  font-family: "Barlow", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+  
+.barlow-semibold {
+  font-family: "Barlow", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+  
+.barlow-bold {
+  font-family: "Barlow", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+  
+.barlow-extrabold {
+  font-family: "Barlow", serif;
+  font-weight: 800;
+  font-style: normal;
+}
+  
+.barlow-black {
+  font-family: "Barlow", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+  
+.barlow-thin-italic {
+  font-family: "Barlow", serif;
+  font-weight: 100;
+  font-style: italic;
+}
+  
+.barlow-extralight-italic {
+  font-family: "Barlow", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+  
+.barlow-light-italic {
+  font-family: "Barlow", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+  
+.barlow-regular-italic {
+  font-family: "Barlow", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+  
+.barlow-medium-italic {
+  font-family: "Barlow", serif;
+  font-weight: 500;
+  font-style: italic;
+}
+  
+.barlow-semibold-italic {
+  font-family: "Barlow", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+  
+.barlow-bold-italic {
+  font-family: "Barlow", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+  
+.barlow-extrabold-italic {
+   font-family: "Barlow", serif;
+  font-weight: 800;
+  font-style: italic;
+}
+  
+.barlow-black-italic {
+  font-family: "Barlow", serif;
+  font-weight: 900;
+  font-style: italic;
+}
+  
+/* Tyylimääritykset */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: #0f2e23;
+  background-image: url(../images/numeraaliluola/cave-tausta.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.navbar {
+  background-color: var(--vihrea);
+  padding: 1em;
+}
+
+.navbar-brand {
+  color: var(--tummanvihrea);
+  font-size: 3rem;
+}
+
+.nav-link {
+  color: var(--tummanvihrea);
+  font-size: 1.2rem;
+}
+
+.custom-box {
+  background-color: #ffead0; 
+  border-radius: 15px; 
+  color: #003e27;
+  padding: 1em;
+}
+
+@media (min-width: 992px) {
+  .nav-link {
+      font-size: 1.5rem;
+  }
+}
+
+#start-button {
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#start-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+#score-container {
+  background-color: #003e27;
+  color: #ffead0;
+  font-size: 1.1rem;
+  border-radius: 15px;
+  padding: 1em;
+  max-height: 20%;
+  overflow: hidden;
+}
+
+#upper-parts,
+#bottom-parts {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#upper-parts {
+  position: relative;
+  height: 50%;
+}
+
+#bottom-parts {
+  height: 20%;
+  margin-bottom: 60px;
+}
+
+
+#upper-parts .draggable {
+  position: absolute;
+  cursor: grab;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.target-box, .draggable-box {
+  display: flex;               
+  justify-content: center;      
+  align-items: center;          
+  text-align: center;          
+  padding: 0;                   
+  margin: 0;                    
+  line-height: normal;          
+  box-sizing: border-box;       
+  width: 220px;                 
+  height: 80px;                 
+}
+
+.target-box {
+  border: 3px dashed #003e27;   
+  border-radius: 8px;          
+  background-color: white;      
+  font-size: 1.5rem;           
+  color: #003e27;              
+}
+
+.draggable-box {
+  border-radius: 8px;           
+  background-color: #ffead0;   
+  color: #003e27;             
+  font-size: 1.2rem;            
+  font-weight: bold;            
+  cursor: grab;                 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+.draggable-box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+.draggable-box:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+#notification {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1em 2em;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 1000;
+}
+
+.notification.success {
+  background-color: #003e27; 
+}
+
+.notification.error {
+  background-color: #dc3545; 
+}
+
+#final-box {
+  display: none; 
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  z-index: 1000;
+  color: var(--tummanvihrea);
+  background-color: #ffead0; 
+  padding: 2em;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); 
+  border-radius: 10px; 
+  width: 50%; 
+  max-width: 600px; 
+  font-size: 1.5rem; 
+  text-align: center; 
+}
+
+#final-box h2 {
+  font-size: 2rem; 
+  margin-bottom: 15px; 
+}
+
+#final-box p {
+  margin: 10px 0; 
+}
+
+.icon-img {
+  border-radius: 5%;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-img:hover {
+  transform: scale(1.1);
+}
+
+footer {
+  background-color: var(--vihrea);
+  color: var(--tummanvihrea);
+}
+
+@media (max-width:1700px) {
+.target-box, .draggable-box {
+  width: 160px; 
+  height: 70px; 
+  font-size: 1rem; 
+}
+}
+
+@media (max-width:1400px) {
+  .target-box, .draggable-box {
+    width: 120px; 
+    height: 70px; 
+    font-size: 0.8rem; 
+  }
+}
+
+  @media (max-width:1200px) {
+    .target-box, .draggable-box {
+      width: 110px; 
+      height: 60px; 
+      font-size: 0.7rem; 
+    }
+  }
+
+@media (max-width: 1024px) { 
+  .target-box, .draggable-box {
+    width: 130px; 
+    height: 50px; 
+    font-size: 0.7rem; 
+  }
+
+  #bottom-parts {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
+  }
+}
+
+@media (max-width: 768px) { 
+  #startgame-container {
+    flex-direction: column; 
+    align-items: center; 
+    font-size: 0.8rem;
+}
+  .target-box, .draggable-box {
+    width: 120px; 
+    height: 50px; 
+    font-size: 0.6rem; 
+  }
+
+  #upper-parts {
+    height: 43%;
+  }
+
+  #bottom-parts {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
+    justify-content: center;
+  }
+
+  footer h4 {
+    font-size: 0.9rem;
+  }
+
+  footer {
+    padding: 0;
+  }
+}
