@@ -1,0 +1,405 @@
+/* Värimääritykset */
+:root {
+    --vihrea: #9ddca5;
+    --tummanvihrea: #003e27;
+    --keltainen: #e8dba4;
+    --punainen: #ff4c4c;  /* Väärän vastauksen punainen väri */
+    --vihrea-positiivinen: #28a745; /* Oikean vastauksen vihreä väri */
+}
+
+/* Fonttimääritykset */
+.anton-regular {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.barlow-regular {
+    font-family: "Barlow", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.barlow-bold {
+    font-family: "Barlow", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Taustakuva ja sen säilyttäminen täysikokoisena */
+body {
+    background-image: url('../images/bonuspeli/elukat4.jpeg'); /* Taustakuva */
+    background-color: var(--keltainen);
+    margin: 0;
+    font-family: "Barlow", serif;
+    background-size: cover; /* Sovittaa kuvan koko ruutuun */
+    background-position: center; /* Keskittää kuvan */
+    background-attachment: fixed; /* Pitää kuvan paikallaan kun sivu vieritetään */
+
+}
+
+/* Kuvan päälle lisättävä himmeä kerros */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Vaalea kerros */
+    z-index: -1; /* Asetetaan kerros taustalle */
+}
+
+/* Navin tyyli */
+.navbar {
+    background-color: var(--vihrea);
+    padding: 1em;
+}
+
+.navbar-brand {
+    color: var(--tummanvihrea);
+    font-size: 3rem;
+}
+
+.nav-link {
+    color: var(--tummanvihrea);
+    font-size: 1.2rem;
+}
+
+/* Pisteet ja aika */
+#score-container {
+    font-family: "Anton", sans-serif; /* Sama fontti kuin navissa */
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+#words-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Käytetään koko ruudun korkeus */
+    overflow: visible; /* Poistetaan piilotus, jotta kehys näkyy */
+    display: flex;
+    justify-content: center; /* Keskittää sanat vaakasuunnassa */
+    align-items: center; /* Keskittää sanat pystysuunnassa */
+    flex-wrap: wrap; /* Sallii sanojen asettuvan usealle riville tarvittaessa */
+    padding: 0 20px; /* Lisää tilaa reunoille, jotta sanat eivät mene liian lähelle */
+    box-sizing: border-box; /* Varmistaa, että padding lasketaan osaksi leveyttä */
+    border: 5px solid rgba(0, 0, 0, 0); /* Läpinäkyvä kehys */
+}
+
+.word-button {
+    position: relative;
+    padding: 15px;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: #f0ee7c;
+    border: 2px solid var(--tummanvihrea);
+    font-weight: bold;
+    white-space: nowrap;
+    box-sizing: border-box;
+    min-width: 120px; /* Varmistaa napin minimikoon */
+    margin: 10px; /* Lisää tilaa sanojen väliin */
+}
+
+
+#words-container {
+    max-width: 80%; /* Rajoittaa sanojen alueen leveyttä, ei mene yli 80% näytön leveydestä */
+    margin: 0 auto; /* Keskittää #words-containerin */
+}
+
+
+
+
+/* Hover-efekti */
+.word-button:hover {
+    transform: scale(1.1);
+}
+
+.word-button.correct {
+    background-color: var(--vihrea-positiivinen);
+    color: white;
+}
+
+.word-button.incorrect {
+    background-color: var(--punainen);
+    color: white;
+}
+
+/* Oikea ja väärä vastaus */
+#time-left {
+    font-family: "Anton", sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #000000;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 30px; /* Lisää tilaa vasemmalle (noin 30px) */
+    margin-right: 30px; /* Lisää tilaa oikealle (noin 30px) */
+    padding: 10px 20px; /* Lisää tilaa ympärille */
+    background-color: rgba(255, 255, 255); /* Hento vaalea tausta */
+    border-radius: 8px; /* Pyöristetyt kulmat */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hento varjo taustan ympärille */
+    width: fit-content; /* Taustan koko mukautuu sisällön mukaan */
+    border: 5px solid #ff0000; /* Lisää värillinen rajaus */
+    position: relative; /* Tämä mahdollistaa liikkumisen */
+}
+
+/* Sykkivä efekti */
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Alkuperäinen koko */
+    }
+    50% {
+        transform: scale(1.1); /* Suurentaa hieman */
+    }
+    100% {
+        transform: scale(1); /* Palauttaa alkuperäiseen kokoonsa */
+    }
+}
+
+.sykkiva {
+    animation: pulse 1s infinite; /* Sykkivä animaatio, joka toistuu loputtomasti */
+}
+
+#score {
+    font-family: "Anton", sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000000;
+    padding: 10px 20px; /* Lisää tilaa ympärille */
+    background-color: rgba(255, 255, 255); /* Hento vaalea tausta */
+    border-radius: 8px; /* Pyöristetyt kulmat */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hento varjo taustan ympärille */
+    width: fit-content; /* Taustan koko mukautuu sisällön mukaan */
+    position: relative;
+    margin-top: 20px;
+    margin-left: 30px; /* Lisää tilaa vasemmalle (noin 30px) */
+    margin-right: 30px; /* Lisää tilaa oikealle (noin 30px) */
+    border: 5px solid #ff0000; /* Lisää värillinen rajaus */
+}
+
+
+
+/* Pelin otsikko ja footer */
+#game-title h3 {
+    font-family: "Anton", sans-serif; /* Sama fontti kuin navissa */
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000000; /* Kirkas vihreä väri */
+    text-align: center;
+    padding: 15px 30px; /* Lisää tilaa ympärille */
+    background-color: var(--keltainen); /* Taustaväri */
+    border-radius: 12px; /* Pyöristetyt kulmat */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hento varjo */
+    margin-top: 40px; /* Lisää etäisyyttä */
+    width: auto; /* Kapeampi leveys */
+    max-width: 80%; /* Rajoittaa leveys enintään 80% ruudusta */
+    margin-left: auto; /* Keskittää laatikon */
+    margin-right: auto; /* Keskittää laatikon */
+}
+
+
+footer {
+    background-color: var(--vihrea);
+    color: var(--tummanvihrea);
+    padding: 1em 0;
+    text-align: center;
+}
+
+footer h4 {
+    margin: 0;
+    padding: 0.4em 0;
+}
+
+/* Responsiivisuus */
+@media (min-width: 992px) {
+    .nav-link {
+        font-size: 1.5rem;
+    }
+
+    #game-title h3 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Lopetusikkuna */
+#end-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--keltainen);
+    border: 15px solid var(--tummanvihrea); /* Paksumpi kehys */
+    border-radius: 40px; /* Pyöreämmät kulmat */
+    padding: 50px; /* Lisää tilaa sisältöön */
+    width: 90%;
+    max-width: 700px; /* Suurempi leveys */
+    text-align: center;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4); /* Syvempi varjo */
+    font-family: "Anton", sans-serif;
+    font-size: 1.8rem; /* Suurempi teksti */
+    color: var(--tummanvihrea);
+    z-index: 1000;
+    display: none; /* Piilotetaan oletuksena */
+    animation: popUp 0.8s ease-out;
+}
+
+/* Animaatio pop-up-ikkunalle */
+@keyframes popUp {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Teksti asettelu ja väli */
+#end-popup p {
+    font-size: 1.6rem; /* Suurempi tekstikoko */
+    font-weight: bold;
+    color: var(--tummanvihrea);
+    margin-bottom: 25px; /* Lisää tilaa tekstien väliin */
+    line-height: 1.6; /* Lisää riviväliä */
+}
+
+/* Tsemppiviesti */
+#final-message {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--vihrea-positiivinen);
+    margin-bottom: 35px;
+}
+
+/* Pelaa uudelleen -painike */
+.play-again-button {
+    font-family: "Anton", sans-serif;
+    font-size: 1.8rem;
+    color: #000000;
+    background-color: #f0935d;
+    padding: 1em 0; /* Poistetaan sivupadding */
+    border-radius: 10px;
+    text-decoration: none;
+    border: 3px solid #ff5722;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(255, 87, 34, 0.3);
+    margin: 20px auto;
+    max-width: 400px;
+    width: 95%;
+    text-align: center;
+    white-space: nowrap; /* Estää tekstin rivittymisen */
+    text-align: center; /* Varmistaa tekstin keskityksen */
+    line-height: 1; /* Tasapainottaa tekstin pystysuunnassa */
+    display: flex; /* Varmistaa täydellisen keskityksen */
+    justify-content: center; /* Keskittää sisällön vaakasuunnassa */
+    align-items: center; /* Keskittää sisällön pystysuunnassa */
+}
+
+/* Hover-tila: kun painike on aktiivinen */
+.play-again-button:hover {
+    background-color: #ff5722;
+    color: #ffffff;
+    transform: scale(1.15);
+    box-shadow: 0 8px 15px rgba(255, 87, 34, 0.5);
+}
+
+
+
+
+
+
+/* Koriste-elementit */
+#end-popup::before {
+    content: "🌟"; /* Vaihdettu koristeena oleva symboli */
+    font-size: 3.5rem;
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: rotate 1.5s infinite linear; /* Pyörivä koriste-elementti */
+}
+
+/* Pyörimisanimaatio koristeelle */
+@keyframes rotate {
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    100% {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+
+
+/* Overlay-tyyli */
+#overlay {
+    display: none; /* Piilotetaan oletuksena */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Tumma läpinäkyvä tausta */
+    z-index: 999; /* Ylimmälle kerrokselle */
+}
+
+.fixed-bottom {
+    z-index: 10;
+}
+
+/* Responsiivisuus */
+@media (min-width: 576px) {
+    .navbar-brand {
+        font-size: 2rem;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+    }
+
+    #game-title h3 {
+        font-size: 2.2rem;
+    }
+
+    .completion-popup {
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-brand {
+        font-size: 2.5rem;
+    }
+
+    #score, #time-left {
+        font-size: 1.2rem;
+    }
+
+    .completion-popup {
+        max-width: 600px;
+    }
+
+    #game-title h3 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    #words-container {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+    }
+}
