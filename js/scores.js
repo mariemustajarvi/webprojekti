@@ -6,8 +6,8 @@ const scoreObj = {
     substantiivi: {score: 0, scoreReq: 6, gameIcon: 'substantiivi.png'},
     adjektiivi: {score: 0, scoreReq: 3, gameIcon: 'adjektiivi.png'},
     numeraali: {score: 0, scoreReq: 24, gameIcon: 'numeraali.png'},
-    pronomini: {score: 0, scoreReq: 6, gameIcon: 'pronomini.png'},
-    sanaluokat: {score: 0, scoreReq: 6, gameIcon: 'sanaluokat.png'}
+    pronomini: {score: 0, scoreReq: 5, gameIcon: 'pronomini.png'},
+    sanaluokat: {score: 0, scoreReq: 40, gameIcon: 'sanaluokat.png'}
 }
 
 let scores = {}
