@@ -18,7 +18,7 @@ html, body {
 }
 
 .sisalto {
-    background: url("../images/IMG_3011.jpg") no-repeat center center;
+    background: url("../images/Pronominimetsaretki/IMG_3011.jpg") no-repeat center center;
     background-size: cover;
     height: calc(100vh - 110px);
     width:100%;

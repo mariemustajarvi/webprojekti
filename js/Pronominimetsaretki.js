@@ -3,55 +3,55 @@ const questions = [
         question: "Mikä pronomini sopii lauseeseen: '___ on minun lempivärini?'",
         options: ["Hän", "Tämä", "Mikä", "Sinun"],
         correct: "Mikä",
-        image: "./images/IMG_3012.jpg" 
+        image: "./images/Pronominimetsaretki/IMG_3012.jpg" 
     },
     {
         question: "Mikä pronomini täydentää lauseen: 'Kaikki odottavat, että ___ saapuu ajoissa.'",
         options: ["He", "Hän", "Joka", "Kuka"],
         correct: "Hän",
-        image: "./images/IMG_3013.jpg"
+        image: "./images/Pronominimetsaretki/IMG_3013.jpg"
     },
     {
         question: "Mikä pronomini kuuluu lauseeseen: 'Kirja, ___ lainasit minulle, oli todella hyvä.'",
         options: ["Kuka", "Mikä", "Joka", "Tuo"],
         correct: "Joka",
-        image: "./images/IMG_3014.jpg"
+        image: "./images/Pronominimetsaretki/IMG_3014.jpg"
     },
     {
         question: "Valitse oikea pronomini: 'Kenelle nämä kuuluvat? Ovatko ne ___?'",
         options: ["Sinun", "Minun", "Meidän", "Teidän"],
         correct: "Sinun",
-        image: "./images/IMG_3015.jpg"
+        image: "./images/Pronominimetsaretki/IMG_3015.jpg"
     },
     {
         question: "Täydennä lause: '___ näistä vaihtoehdoista on mielestäsi paras?'",
         options: ["Mikä", "Mitä", "Kuka", "Ne"],
         correct: "Mikä",
-        image: "./images/IMG_3017.jpg"
+        image: "./images/Pronominimetsaretki/IMG_3017.jpg"
     },
     {
         question: "Mikä pronomini puuttuu: 'Henkilö, ___ näin eilen, oli vanha opettajani.'",
         options: ["Kenet", "Jonka", "Joka", "Jotka"],
         correct: "Jonka",
-        image: "./images/IMG_3018.jpg"
+        image: "./images/Pronominimetsaretki/IMG_3018.jpg"
     },
     {
         question: "Valitse oikea pronomini: 'Tiedätkö, ___ tämä kuuluu?'",
         options: ["Kenen", "Kuka", "Minkä", "Kenenkä"],
         correct: "Kenen",
-        image: "./images/IMG_3019.jpg"
+        image: "./images/Pronominimetsaretki/IMG_3019.jpg"
     },
     {
         question: "Mikä pronomini sopii lauseeseen: '___ tuo on?'",
         options: ["Kuka", "Mikä", "Kenen", "Mitä"],
         correct: "Mikä",
-        image: "./images/IMG_3012.jpg"
+        image: "./images/Pronominimetsaretki/IMG_3012.jpg"
     },
     {
         question: "Valitse oikea pronomini: '___ heistä haluaa tulla mukaan?'",
         options: ["Kuka", "Mikä", "Kenen", "Ketkä"],
         correct: "Kuka",
-        image: "./images/IMG_3013.jpg"
+        image: "./images/Pronominimetsaretki/IMG_3013.jpg"
     }
 ];
 
@@ -155,7 +155,7 @@ function displayResults() {
 
     for (let i = 0; i < correctAnswers; i++) {
         const star = document.createElement("img");
-        star.src = "./images/IMG_0022.webp";
+        star.src = "./images/Pronominimetsaretki/IMG_0022.webp";
         star.classList.add("star");
         starContainer.appendChild(star);
     }
