@@ -234,7 +234,7 @@ document.getElementById("home-btn").addEventListener("click", () => {
     // Tallenna pisteet ennen siirtymistä
     tallennaPisteet("Substantiivit", score);
     // etusivulle
-    window.location.href = "etusivu.html";
+    window.location.href = "index.html";
 });
 
 /* pisteiden tallennus */
