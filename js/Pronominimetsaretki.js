@@ -142,6 +142,8 @@ function displayResults() {
     const instructionsElement = document.getElementById("instructions");
     quizElement.innerHTML = "";
 
+    const passingScore = 5;
+
     const resultMessage = document.createElement("h2");
     resultMessage.style.textAlign = "center";
     resultMessage.style.marginBottom = "20px";
