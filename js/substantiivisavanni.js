@@ -198,14 +198,20 @@ function showEndScreen() {
 
      // minimi pistemäärä
      const passThreshold = 6;
-     if (score >= passThreshold) {
-         endMessage.textContent = `Mahtavaa! 🎉 Tunnistit ${score}/10 savannin eläimistä ja läpäisit seikkailun! 🐾`;
+
+     if (score === 10) {
+        // Täydelliset pisteet
+        endMessage.textContent = `Hurraa! 🎉 Olet todellinen savannin sankari! 🐾 Tunnistit kaikki ${score}/10 eläintä ja osoitit olevasi savannin supertähti! 🌟 Eläimet taputtavat tassuillaan – erinomainen suoritus!`;
+        endScreen.querySelector(".end-box").classList.add("perfect");
+        endScreen.querySelector(".end-box").classList.remove("fail", "success");
+    } else if (score >= passThreshold) {
+         endMessage.textContent = `Mahtavaa! 🎉 Tunnistit ${score}/10 savannin eläimistä ja läpäisit seikkailun! 🐾 Hyvää työtä!`;
          endScreen.querySelector(".end-box").classList.add("success");
-         endScreen.querySelector(".end-box").classList.remove("fail");
+         endScreen.querySelector(".end-box").classList.remove("fail", "perfect");
      } else {
          endMessage.textContent = `Ei haittaa! Tunnistit ${score}/10 eläimistä, mutta et vielä läpäissyt peliä. Kokeile uudelleen ja löydä sisäinen eläintuntijasi! 🌟`;
          endScreen.querySelector(".end-box").classList.add("fail");
-         endScreen.querySelector(".end-box").classList.remove("success");
+         endScreen.querySelector(".end-box").classList.remove("success", "perfect");
      }
 
     // pisteiden tallennus

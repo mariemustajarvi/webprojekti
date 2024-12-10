@@ -293,6 +293,11 @@ footer h4 {
   border: 4px solid transparent;
   animation: glow-border 1.5s infinite;
 }
+.end-box.perfect {
+  border: 5px solid gold;
+  background-color: #fffbea;
+  animation: glow 2s infinite;
+}
 .end-box.success {
   background-color: #9ddca5; 
   color: #003e27;
@@ -356,6 +361,18 @@ footer h4 {
   }
   100% {
       box-shadow: 0 0 10px #ffecb3, 0 0 20px #ffecb3, 0 0 30px #ffecb3;
+  }
+}
+
+@keyframes glow {
+  0% {
+      box-shadow: 0 0 10px gold;
+  }
+  50% {
+      box-shadow: 0 0 20px orange;
+  }
+  100% {
+      box-shadow: 0 0 10px gold;
   }
 }
 
