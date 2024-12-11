@@ -8,16 +8,20 @@ html, body {
     position:relative;
 }
 
-.custom-nav {
-    background: linear-gradient(45deg, #73C8A9, #373B44);
-    height:60px;
+h1 {
+    margin-top: 0px;
+    text-align: center;
+    font-size: 40px; 
+    margin-bottom: 40px;
 }
 
-.navbar-brand {
-    font-size:24px;
+p {
+    text-align: center;
+    font-size: 30px;
 }
 
 .sisalto {
+    margin-top: 0px;
     background: url("../images/Pronominimetsaretki/IMG_3011.jpg") no-repeat center center;
     background-size: cover;
     height: calc(100vh - 110px);
