@@ -17,9 +17,10 @@ for (let game in scores) {
 document.addEventListener("DOMContentLoaded", () => {
     const centerIcon = document.querySelector(".center-icon img");
     const outerIcons = document.querySelectorAll(".outer-icons img");
+    const overlay = document.querySelector(".center-icon .overlay")
 
     if (bonusUnlocked) {
-        centerIcon.classList.remove('disabledIcon')
+        overlay.classList.remove('disabledIcon')
     }
 
     // ymyprän asettelu
@@ -65,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
- 
+    /*
     let userPoints = 0
     const requiredPoints = 10
 
@@ -103,4 +104,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateScoreDisplay()
     updateOverlay()
+    */
 })

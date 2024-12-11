@@ -1,3 +1,17 @@
+import { setScore } from './scores.js'
+
+document.querySelector('.start-btn').addEventListener('click', () => {
+    startGame()
+})
+
+document.querySelector('#check-button').addEventListener('click', () => {
+    checkAnswer()
+})
+
+document.querySelector('#music-toggle').addEventListener('click', () => {
+    toggleMusic()
+})
+
 const questions = [
     {
         question: "Mikä pronomini sopii lauseeseen: '___ on minun lempivärini?'",
@@ -138,6 +152,7 @@ function checkAnswer() {
 }
 
 function displayResults() {
+    setScore('pronomini', correctAnswers)
     const quizElement = document.getElementById("quiz");
     const instructionsElement = document.getElementById("instructions");
     quizElement.innerHTML = "";

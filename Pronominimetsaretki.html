@@ -54,7 +54,7 @@
         </div>
     </nav>
 
-    <button id="music-toggle" class="music-btn" onclick="toggleMusic()">♫</button>
+    <button id="music-toggle" class="music-btn">♫</button>
     <audio id="forest-symphony" loop>
         <source src="./audio/music.mp3" type="audio/mp3">
     </audio>
@@ -63,7 +63,7 @@
     
         <div id="start-screen" class="content fade-in">
             <h1>Pronominisankarit Metsäretkellä</h1>
-            <button class="start-btn" onclick="startGame()">Aloita peli</button>
+            <button class="start-btn">Aloita peli</button>
         </div>
 
         
@@ -78,7 +78,7 @@
                 <form id="quiz-form" class="d-flex flex-column gap-2">
                    
                 </form>
-                <button id="check-button" class="btn btn-dark fw-bold mt-3 quiz-btn" onclick="checkAnswer()">Tarkista</button>
+                <button id="check-button" class="btn btn-dark fw-bold mt-3 quiz-btn">Tarkista</button>
                 <div id="result" style="margin-top:20px; font-size:18px; font-weight:bold;"></div>
             </div>
         </div>
@@ -92,6 +92,6 @@
         </div>
     </div>
 
-    <script src="./js/Pronominimetsaretki.js"></script>
+    <script type="module" src="./js/Pronominimetsaretki.js"></script>
 </body>
 </html>
