@@ -13,14 +13,15 @@ const scoreObj = {
 let scores = {}
 
 const updateScores = () => {
-    // Haetaan pisteet localstoragesta.
-    scores = JSON.parse(localStorage.getItem('scores'))
+    // Haetaan pisteet sessionstoragesta.
+    scores = JSON.parse(sessionStorage.getItem('scores'))
     
-    // Jos pisteitä ei löydy localstoragesta, kopioidaan scoreObj objektin rakenne scoresiin.
+    // Jos pisteitä ei löydy sessionstoragesta, kopioidaan scoreObj objektin rakenne scoresiin.
     if (!scores) {
         // Käytetään spread operaattoria koska emme halua vain asettaa scorea referoimaan scoreObjectiin vaan haluamme vain kopioida
         // scoreObjectin arvot scoreen.
         scores = {...scoreObj}
+        sessionStorage.setItem('scores', JSON.stringify(scores))
     }
 }
 
@@ -42,7 +43,7 @@ export const setScore = (game, newScore) => {
         // Tallennetaan pisteet mikäli uudet pisteet ovat isommat kuin vanhat.
         if (newScore > scores[game].score) {
             scores[game].score = newScore;
-            localStorage.setItem('scores', JSON.stringify(scores))
+            sessionStorage.setItem('scores', JSON.stringify(scores))
         }
     }
 }
