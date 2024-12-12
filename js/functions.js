@@ -1,5 +1,4 @@
 'use strict'
-import { toggleSanaluokatNav } from './path/to/sanaluokatToggle.js'
 import { getAllScores, gameIsBeaten } from './scores.js'
 
 const scores = getAllScores()
@@ -15,7 +14,6 @@ for (let game in scores) {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    toggleSanaluokatNav()
     const centerIcon = document.querySelector(".center-icon img")
     const outerIcons = document.querySelectorAll(".outer-icons img")
     const overlay = document.querySelector(".center-icon .overlay")

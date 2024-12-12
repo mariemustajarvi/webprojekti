@@ -2,7 +2,7 @@
 
 import { getAllScores, gameIsBeaten } from './scores.js'
 
-export function toggleSanaluokatNav() {
+function toggleSanaluokatNav() {
     // haetaan kaikki pelit ja niiden pisteet
     const scores = getAllScores()
 
@@ -14,17 +14,18 @@ export function toggleSanaluokatNav() {
             break
         }
     }
-
+    
     // päivitetäään Sanaluokat-navigaatiokohdan näkyvyys
-    const sanaluokatNav = document.querySelector(".sanaluokat-nav")
+    const sanaluokatNav = document.querySelector('a[href="bonusetusivu.html"')
+    
     if (sanaluokatNav) {
-        if (bonusUnlocked) {
-            sanaluokatNav.classList.remove("hidden") // näytä
-        } else {
-            sanaluokatNav.classList.add("hidden") // piilota
+        if (!bonusUnlocked) {
+            sanaluokatNav.style.pointerEvents = 'none'
+            sanaluokatNav.style.color = 'grey'
         }
     }
 }
 
-console.log('Scores:', scores)
-console.log('Bonus Unlocked:', bonusUnlocked)
+document.addEventListener("DOMContentLoaded", () => {
+    toggleSanaluokatNav()
+})
