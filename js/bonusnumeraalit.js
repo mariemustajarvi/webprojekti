@@ -1,3 +1,5 @@
+import { setScore } from './scores.js'
+
 let score = 0; // Globaali pisteiden muuttuja
 
 // Lataa tallennetut pisteet localStoragesta
@@ -121,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (correctNumerals === numerals.length || timeLeft <= 0) {
             clearInterval(timer);
             saveScore(); // Tallennetaan pisteet pelin lopussa
+            setScore('sanaluokat', score)
             showCompletionPopup();
         }
     }

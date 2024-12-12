@@ -1,65 +1,67 @@
 /* pelin tiedot */
 
+import { setScore } from './scores.js'
+
 const questions = [
     {
         question: "Tämä vipeltäjä viihtyy puiden latvoissa ja heiluu oksalta toiselle. Arvaa kuka se on?",
         answers: ["Apina", "Kirahvi", "Seepra"],
         correct: "Apina",
-        background: "/images/substantiivisavanni/apina.png"
+        background: "./images/substantiivisavanni/apina.png"
     },
     {
         question: "Tällä mahtavalla jättiläisellä on kärsä, jolla se voi napata ruokaa ja suihkuttaa vettä. Mikä eläin on kyseessä?",
         answers: ["Elefantti", "Virtahepo", "Krokotiili"],
         correct: "Elefantti",
-        background: "/images/substantiivisavanni/elefantti.png"
+        background: "./images/substantiivisavanni/elefantti.png"
     },
     {
         question: "Kukahan se nauraja on? Tämä kaveri hekottaa niin, että savanni raikaa!",
         answers: ["Hyeena", "Apina", "Leijona"],
         correct: "Hyeena",
-        background: "/images/substantiivisavanni/hyeena.png"
+        background: "./images/substantiivisavanni/hyeena.png"
     },
     {
         question: "Pystyisitkö kurkottamaan tämän eläimen kanssa samaan korkeuteen? Sen kaula yltää pilviin asti!",
         answers: ["Kirahvi", "Strutsi", "Krokotiili"],
         correct: "Kirahvi",
-        background: "/images/substantiivisavanni/kirahvi.png"
+        background: "./images/substantiivisavanni/kirahvi.png"
     },
     {
         question: "Tässä veden valtias: terävät hampaat ja iso hymy! Mikä eläin tämä voisi olla?",
         answers: ["Krokotiili", "Elefantti", "Strutsi"],
         correct: "Krokotiili",
-        background: "/images/substantiivisavanni/krokotiili.png"
+        background: "./images/substantiivisavanni/krokotiili.png"
     },
     {
         question: "Kuka se savannin hallitsija on, jolla on muhkea harja ja kova karjaisu?",
         answers: ["Leijona", "Kirahvi", "Seepra"],
         correct: "Leijona",
-        background: "/images/substantiivisavanni/leijona.png"
+        background: "./images/substantiivisavanni/leijona.png"
     },
     {
         question: "Tässä eläimessä on jotain erityistä päässään – iso sarvi! Mikä eläin on kyseessä?",
         answers: ["Sarvikuono", "Krokotiili", "Elefantti"],
         correct: "Sarvikuono",
-        background: "/images/substantiivisavanni/sarvikuono.png"
+        background: "./images/substantiivisavanni/sarvikuono.png"
     },
     {
         question: "Tämä eläin pukeutuu aina tyylikkäästi mustavalkoisiin raitoihin. Tiedätkö, kuka se on?",
         answers: ["Seepra", "Strutsi", "Apina"],
         correct: "Seepra",
-        background: "/images/substantiivisavanni/seepra.png"
+        background: "./images/substantiivisavanni/seepra.png"
     },
     {
         question: "Vaikka tämä lintu ei lennä, se pinkoo nopeammin kuin moni auto. Kuka se voisi olla?",
         answers: ["Strutsi", "Apina", "Hyeena"],
         correct: "Strutsi",
-        background: "/images/substantiivisavanni/strutsi.png"
+        background: "./images/substantiivisavanni/strutsi.png"
     },
     {
         question: "Tämä jättiläinen viihtyy vedessä, mutta on myös melkoinen mahtipontinen maalla. Mikä eläin se on?",
         answers: ["Virtahepo", "Krokotiili", "Elefantti"],
         correct: "Virtahepo",
-        background: "/images/substantiivisavanni/virtahepo.png"
+        background: "./images/substantiivisavanni/virtahepo.png"
     }
 ];
 
@@ -194,9 +196,26 @@ function showEndScreen() {
     endScreen.classList.remove("d-none"); 
     document.body.style.background = "linear-gradient(to bottom right, #9ddca5, #e8dba4)"; 
 
-    endMessage.textContent = `Savannin seikkailu päättyi mutta seikkailusi jatkuu vielä muualla!🎉Tunnistit ${score}/${questions.length} savannin eläimistä!🐾`;
+     // minimi pistemäärä
+     const passThreshold = 6;
+
+     if (score === 10) {
+        // Täydelliset pisteet
+        endMessage.textContent = `Hurraa! 🎉 Olet todellinen savannin sankari! 🐾 Tunnistit kaikki ${score}/10 eläintä ja osoitit olevasi savannin supertähti! 🌟 Eläimet taputtavat tassuillaan – erinomainen suoritus!`;
+        endScreen.querySelector(".end-box").classList.add("perfect");
+        endScreen.querySelector(".end-box").classList.remove("fail", "success");
+    } else if (score >= passThreshold) {
+         endMessage.textContent = `Mahtavaa! 🎉 Tunnistit ${score}/10 savannin eläimistä ja läpäisit seikkailun! 🐾 Hyvää työtä!`;
+         endScreen.querySelector(".end-box").classList.add("success");
+         endScreen.querySelector(".end-box").classList.remove("fail", "perfect");
+     } else {
+         endMessage.textContent = `Ei haittaa! Tunnistit ${score}/10 eläimistä, mutta et vielä läpäissyt peliä. Kokeile uudelleen ja löydä sisäinen eläintuntijasi! 🌟`;
+         endScreen.querySelector(".end-box").classList.add("fail");
+         endScreen.querySelector(".end-box").classList.remove("success", "perfect");
+     }
 
     // pisteiden tallennus
+    setScore('substantiivi', score)
     tallennaPisteet("Substantiivit", score);
 }
 
@@ -221,7 +240,7 @@ document.getElementById("home-btn").addEventListener("click", () => {
     // Tallenna pisteet ennen siirtymistä
     tallennaPisteet("Substantiivit", score);
     // etusivulle
-    window.location.href = "etusivu.html";
+    window.location.href = "index.html";
 });
 
 /* pisteiden tallennus */
@@ -245,4 +264,8 @@ const navbarLinks = document.querySelector('.navbar-links');
 hamburgerMenu.addEventListener('click', () => {
     navbarLinks.classList.toggle('active');
 });
+
+
+
+
 

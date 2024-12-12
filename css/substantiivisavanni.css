@@ -61,7 +61,7 @@ main {
 /* etusivu */ 
 .etusivu {
   background-color: var(--vihrea);
-  background-image: url(/images/substantiivisavanni/tervetuloa.png);
+  background-image: url(../images/substantiivisavanni/tervetuloa.png);
   background-size: contain;
   background-position: center;
   background-attachment: fixed;
@@ -272,7 +272,7 @@ footer h4 {
   height: calc(100vh - 100px); 
   text-align: center;
   background-color: var(--vihrea); 
-  background-image: url(/images/substantiivisavanni/loppu.png);
+  background-image: url(../images/substantiivisavanni/loppu.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -292,6 +292,22 @@ footer h4 {
   gap: 15px;
   border: 4px solid transparent;
   animation: glow-border 1.5s infinite;
+}
+.end-box.perfect {
+  border: 5px solid gold;
+  background-color: #fffbea;
+  animation: glow 2s infinite;
+}
+.end-box.success {
+  background-color: #9ddca5; 
+  color: #003e27;
+  border: 4px solid #4caf50;
+}
+
+.end-box.fail {
+  background-color: #ffcccb; 
+  color: #b71c1c;
+  border: 4px solid #f44336;
 }
 
 .end-box.active {
@@ -345,6 +361,18 @@ footer h4 {
   }
   100% {
       box-shadow: 0 0 10px #ffecb3, 0 0 20px #ffecb3, 0 0 30px #ffecb3;
+  }
+}
+
+@keyframes glow {
+  0% {
+      box-shadow: 0 0 10px gold;
+  }
+  50% {
+      box-shadow: 0 0 20px orange;
+  }
+  100% {
+      box-shadow: 0 0 10px gold;
   }
 }
 

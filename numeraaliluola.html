@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/numeraaliluola.css">
+    <title>Sanaseikkailija</title>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg container-fluid">
+                <span class="navbar-brand mb-0 h1 anton-regular">SANASEIKKAILIJA</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-wrap justify-content-end anton-regular">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Etusivu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="verbiviidakko.html">Verbiviidakko</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="adjektiivipeli.html">Adjektiivimaailma</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Pronominimetsaretki.html">Pronominisankarit</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="numeraaliluola.html">Numeraaliluola</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="substantiivisavanni.html">Substantiivisavanni</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="bonus-link" href="bonusetusivu.html">Sanaluokkasaari</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pisteet.html">Pisteet</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="info.html">Info</a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+    </div>
+    <div id="startgame-container"> <!--alkuun näkyvät elementit-->
+        <div class="row m-5 p-5 gap-1 justify-content-center align-items-center"> 
+            <div class="col-12 col-sm-8 col-md-7 col-lg-4 mt-3">
+                <div class="container m-2">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="card custom-box">
+                            <div class="card-body">
+                                <div>
+                                    <img src="./images/numeraaliluola/numeraaliluola_otsikko.png" class="w-100" alt="Numeraaliluola-otsikko">
+                                </div>
+                                <div>
+                                    <p class="card-text text-center anton-regular"><br>Numeraaliluolassa pääset harjoittelemaan tietämystäsi numeraaleista. Pelissä on numeraaleja ja numeroita sisältäviä laatikoita, ja sinun tehtäväsi on yhdistää oikeat parit keskenään. <br>Astu sisään!</p>
+                                    <div class="d-flex p-2 justify-content-center">
+                                        <img src="./images/numeraaliluola/nappi.svg" id="start-button" class="w-50 h-auto" alt="Aloita-peli-nappi">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <img src="./images/numeraaliluola/lepakko.png">
+            </div>
+        </div>
+    </div>
+    <!--nämä esiin start-painikkeesta-->
+    <div id="game-container" style="display: none;"> 
+        <div id="score-container" class="anton-regular col-5 col-sm-5 col-md-3 col-lg-1 m-4 text-center">
+            <p>Pisteet: <span id="score">0</span></p>
+            <div id="notification" class="anton-regular"></div> <!-- ilmoitukset -->
+        </div>
+        <!-- yläosan laatikot -->
+        <div id="upper-parts" class="row justify-content-center align-items-center text-center p-3">
+        </div>   
+        <!-- alarivin pudotuskohteet -->
+        <div id="bottom-parts" class="row justify-content-center align-items-center gap-3 p-3"> 
+            <div class="target-box" data-value="1000">
+                <p class="anton-regular">1000</p>
+            </div>
+            <div class="target-box" data-value="3">
+                <p class="anton-regular">3</p>
+            </div>
+            <div class="target-box" data-value="0">
+                <p class="anton-regular">0</p>
+            </div>
+            <div class="target-box" data-value="30">
+                <p class="anton-regular">30</p>
+            </div>
+            <div class="target-box" data-value="100">
+                <p class="anton-regular">100</p>
+            </div>
+            <div class="target-box" data-value="22">
+                <p class="anton-regular">22</p>
+            </div>
+            <div class="target-box" data-value="15">
+                <p class="anton-regular">15</p>
+            </div>
+            <div class="target-box" data-value="2">
+                <p class="anton-regular">2</p>
+            </div>
+        </div>
+        <div id="final-box" class="final-box anton-regular text-center">
+            <h2>Onneksi olkoon!</h2>
+            <p>Suoritit pelin läpi onnistuneesti.</p>
+            <p>Kokonaispisteet:</p>
+            <p><span id="final-score"></span>/16</p>
+            <a href="./index.html">
+                <img src="./images/numeraaliluola/etusivulle_nappi.png" alt="Etusivulle" class="icon-img">
+            </a>
+        </div>
+    </div>  
+    <footer class="d-flex justify-content-center fixed-bottom p-1">
+        <h5 class="anton-regular mt-1">Ryhmä 4</h5>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="./js/numeraaliluola.js"></script>
+</body>
+</html>

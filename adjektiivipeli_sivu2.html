@@ -23,25 +23,31 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-wrap justify-content-end anton-regular">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Etusivu</a>
+                        <a class="nav-link" href="index.html">Etusivu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Verbit</a>
+                        <a class="nav-link" href="verbiviidakko.html">Verbiviidakko</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Adjektiivit</a>
+                        <a class="nav-link" href="adjektiivipeli.html">Adjektiivimaailma</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pronominit</a>
+                        <a class="nav-link" href="Pronominimetsaretki.html">Pronominisankarit</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Numeraalit</a>
+                        <a class="nav-link" href="numeraaliluola.html">Numeraaliluola</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Substantiivit</a>
+                        <a class="nav-link" href="substantiivisavanni.html">Substantiivisavanni</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sanaluokat</a>
+                        <a class="nav-link" id="bonus-link" href="bonusetusivu.html">Sanaluokkasaari</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pisteet.html">Pisteet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="info.html">Info</a>
                     </li>
                 </ul>
             </div>
@@ -63,7 +69,7 @@
                 <form id="quiz-form" class="d-flex flex-column gap-2">
                     <!-- Vastausvaihtoehdot lisätään JavaScriptillä -->
                 </form>
-                <button id="check-button" onclick="checkAnswer()">Tarkista</button>
+                <button id="check-button">Tarkista</button>
                 <div id="result"></div>
             </div>
         </div>
@@ -79,5 +85,5 @@
     </div>
     
 </body>
-<script src="./js/adjektiivipeli.js"></script>
+<script type="module" src="./js/adjektiivipeli.js"></script>
 </html>
