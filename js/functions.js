@@ -1,9 +1,9 @@
 'use strict'
-
+import { toggleSanaluokatNav } from './path/to/sanaluokatToggle.js'
 import { getAllScores, gameIsBeaten } from './scores.js'
 
 const scores = getAllScores()
-let bonusUnlocked = true;
+let bonusUnlocked = true
 for (let game in scores) {
     if (game !== 'sanaluokat') {
         if (!gameIsBeaten(game)) {
@@ -15,8 +15,9 @@ for (let game in scores) {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const centerIcon = document.querySelector(".center-icon img");
-    const outerIcons = document.querySelectorAll(".outer-icons img");
+    toggleSanaluokatNav()
+    const centerIcon = document.querySelector(".center-icon img")
+    const outerIcons = document.querySelectorAll(".outer-icons img")
     const overlay = document.querySelector(".center-icon .overlay")
 
     if (bonusUnlocked) {
@@ -24,17 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ymyprän asettelu
-    const circleLayout = document.querySelector(".circle-layout");
-    const circleWidth = circleLayout.offsetWidth / 2; // ovaalin vaakasäde
-    const circleHeight = circleLayout.offsetHeight / 2; // ovaalin pystysäde
+    const circleLayout = document.querySelector(".circle-layout")
+    const circleWidth = circleLayout.offsetWidth / 2 // ovaalin vaakasäde
+    const circleHeight = circleLayout.offsetHeight / 2 // ovaalin pystysäde
     const centerX = circleWidth; // keskipiste X
     const centerY = circleHeight; // keskipiste Y
     const totalIcons = outerIcons.length; // ulkokehän kuvakkeiden määrää
 
     // keskimmäisen kuvakkeen säätö
-    centerIcon.style.position = "absolute";
-    centerIcon.style.left = `${centerX - centerIcon.offsetWidth / 2}px`;
-    centerIcon.style.top = `${centerY - centerIcon.offsetHeight / 2}px`;
+    centerIcon.style.position = "absolute"
+    centerIcon.style.left = `${centerX - centerIcon.offsetWidth / 2}px`
+    centerIcon.style.top = `${centerY - centerIcon.offsetHeight / 2}px`
 
     // ulkokehän kuvakkeet ovaalin/ympyrän kehälle
     outerIcons.forEach((icon, index) => {

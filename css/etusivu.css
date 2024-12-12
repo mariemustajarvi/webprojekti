@@ -125,6 +125,10 @@
 
 /* Tyylimääritykset */
 
+.hidden {
+  display: none !important;
+}
+
 #mainContainer {
   padding-left: 0;
   padding-right: 0;
